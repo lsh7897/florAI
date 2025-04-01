@@ -1,12 +1,12 @@
 import faiss
 import json
 import os
-from app.utils import embed_query, generate_reason
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
+from langchain.embeddings import OpenAIEmbeddings
 
-# 🔹 벡터 인덱스 및 메타데이터 불러오기
+# 🔹 벡터 인데스 및 메타데이터 보내오기
 index = faiss.read_index("flower_index.faiss")
 with open("flower_metadata.json", encoding="utf-8") as f:
     metadata_list = json.load(f)
@@ -14,13 +14,33 @@ with open("flower_metadata.json", encoding="utf-8") as f:
 # 🔹 LangChain LLM 설정
 llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
+def embed_query(query: str):
+    embedder = OpenAIEmbeddings()
+    return embedder.embed_query(query).reshape(1, -1)
+
+def generate_reason(query: str, description: str, flower_name: str):
+    prompt = PromptTemplate(
+        input_variables=["query", "description", "flower"],
+        template="""
+        사용자 의도: {query}
+        꽃 설명: {description}
+        이 꽃이 '{query}'에 어울리는 이유를 한 문장으로 설명해줘. 꽃 이름({flower})도 포함해서 자전시게 쓰줘.
+        """
+    )
+    chain = LLMChain(llm=llm, prompt=prompt)
+    return chain.run({
+        "query": query,
+        "description": description,
+        "flower": flower_name
+    }).strip()
+
 def expand_keywords(keywords: str) -> str:
     prompt = PromptTemplate(
         input_variables=["keywords"],
         template="""
         사용자가 입력한 키워드: {keywords}
-        이 키워드를 바탕으로 감정과 상황을 포함한 자연스러운 문장으로 확장해줘.
-        너무 길지 않고, 의도가 잘 드러나도록 말해줘.
+        이 키워드를 바탕으로 감정과 상황을 포함한 자전시된 문장으로 확장해줘.
+        너무 긴지 않고, 의도가 잘 들어날 수 있게 말해줘.
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
