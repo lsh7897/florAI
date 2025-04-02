@@ -8,6 +8,9 @@ from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 
+# 템플릿 디렉토리 설정
+templates = Jinja2Templates(directory="templates")
+
 class QueryInput(BaseModel):
     query: Union[str, list[str]]
 
@@ -23,5 +26,5 @@ def recommend_flowers(input: QueryInput):
     
     
 @app.get("/", response_class=HTMLResponse)
-def show_index(request: Request):
+async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
