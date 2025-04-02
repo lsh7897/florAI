@@ -8,7 +8,10 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "낭만적인사랑"
+    "description": "낭만적인사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_1",
@@ -19,7 +22,10 @@
     ],
     "color": "노란색",
     "scent": "강한향",
-    "description": "질투, 증오, 배신"
+    "description": "질투, 증오, 배신",
+    "emotion_tags": [
+      "이별(분노)"
+    ]
   },
   {
     "id": "flower_2",
@@ -30,7 +36,10 @@
     ],
     "color": "초록색",
     "scent": "강한향",
-    "description": "천상의 고귀한 사랑"
+    "description": "천상의 고귀한 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_3",
@@ -41,7 +50,10 @@
     ],
     "color": "파란색",
     "scent": "강한향",
-    "description": "기적, 포기하지 않는 사랑"
+    "description": "기적, 포기하지 않는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_4",
@@ -52,7 +64,10 @@
     ],
     "color": "보라색",
     "scent": "강한향",
-    "description": "영원한 사랑"
+    "description": "영원한 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_5",
@@ -63,7 +78,10 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "행복한 사랑"
+    "description": "행복한 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_6",
@@ -74,7 +92,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "순수, 결백, 젊음, 새로운시작"
+    "description": "순수, 결백, 젊음, 새로운시작",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_7",
@@ -85,7 +106,10 @@
     ],
     "color": "검은색",
     "scent": "강한향",
-    "description": "당신은 영원히 나의 것"
+    "description": "당신은 영원히 나의 것",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_8",
@@ -95,7 +119,10 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "사랑의 고백"
+    "description": "사랑의 고백",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_9",
@@ -105,7 +132,10 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "사랑의 시작"
+    "description": "사랑의 시작",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_10",
@@ -115,7 +145,10 @@
     ],
     "color": "보라색",
     "scent": "강한향",
-    "description": "영원한 사랑, 영원하지 않는 사랑"
+    "description": "영원한 사랑, 영원하지 않는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_11",
@@ -125,7 +158,10 @@
     ],
     "color": "노란색",
     "scent": "강한향",
-    "description": "헛된 사랑, 짝사랑"
+    "description": "헛된 사랑, 짝사랑",
+    "emotion_tags": [
+      "이별(분노)"
+    ]
   },
   {
     "id": "flower_12",
@@ -135,7 +171,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "추억, 실연, 용서"
+    "description": "추억, 실연, 용서",
+    "emotion_tags": [
+      "이별(화해)"
+    ]
   },
   {
     "id": "flower_13",
@@ -145,7 +184,10 @@
     ],
     "color": "검은색",
     "scent": "강한향",
-    "description": "당신을 저주합니다"
+    "description": "당신을 저주합니다",
+    "emotion_tags": [
+      "이별(분노)"
+    ]
   },
   {
     "id": "flower_14",
@@ -155,7 +197,10 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "모정, 부인의 애정"
+    "description": "모정, 부인의 애정",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_15",
@@ -165,7 +210,10 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "사랑의 고백, 감사하는 마음"
+    "description": "사랑의 고백, 감사하는 마음",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_16",
@@ -175,7 +223,11 @@
     ],
     "color": "노란색",
     "scent": "강한향",
-    "description": "거절, 실망, 질투, 경멸"
+    "description": "거절, 실망, 질투, 경멸",
+    "emotion_tags": [
+      "거절",
+      "실망"
+    ]
   },
   {
     "id": "flower_17",
@@ -185,7 +237,10 @@
     ],
     "color": "파란색",
     "scent": "강한향",
-    "description": "영원한 행복"
+    "description": "영원한 행복",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_18",
@@ -195,7 +250,10 @@
     ],
     "color": "보라색",
     "scent": "강한향",
-    "description": "기품, 자랑, 자유"
+    "description": "기품, 자랑, 자유",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_19",
@@ -205,7 +263,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "내 사랑은 살아있어요"
+    "description": "내 사랑은 살아있어요",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_20",
@@ -216,7 +277,10 @@
     ],
     "color": "빨간색",
     "scent": "무향",
-    "description": "열정적인 사랑"
+    "description": "열정적인 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_21",
@@ -227,7 +291,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "우아함"
+    "description": "우아함",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_22",
@@ -238,7 +305,10 @@
     ],
     "color": "노란색",
     "scent": "무향",
-    "description": "기쁨, 용기, 새로운 시작"
+    "description": "기쁨, 용기, 새로운 시작",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_23",
@@ -249,7 +319,11 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "부귀, 화려, 변영"
+    "description": "부귀, 화려, 변영",
+    "emotion_tags": [
+      "부귀",
+      "화려"
+    ]
   },
   {
     "id": "flower_24",
@@ -260,7 +334,11 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "부귀, 화려, 변영"
+    "description": "부귀, 화려, 변영",
+    "emotion_tags": [
+      "부귀",
+      "화려"
+    ]
   },
   {
     "id": "flower_25",
@@ -270,7 +348,10 @@
     ],
     "color": "빨간색",
     "scent": "무향",
-    "description": "허무한 사랑, 속절없는 사랑, 버림"
+    "description": "허무한 사랑, 속절없는 사랑, 버림",
+    "emotion_tags": [
+      "이별(분노)"
+    ]
   },
   {
     "id": "flower_26",
@@ -280,7 +361,11 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "당신을 믿으며 기다려"
+    "description": "당신을 믿으며 기다려",
+    "emotion_tags": [
+      "사랑(고백)",
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_27",
@@ -290,7 +375,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "진정성, 성실"
+    "description": "진정성, 성실",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_28",
@@ -303,7 +391,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "순수한 사랑, 순결, 깨끗한 사랑"
+    "description": "순수한 사랑, 순결, 깨끗한 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_29",
@@ -316,7 +407,10 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "핑크빛 사랑"
+    "description": "핑크빛 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_30",
@@ -329,7 +423,10 @@
     ],
     "color": "주황색",
     "scent": "강한향",
-    "description": "명량한 사랑"
+    "description": "명량한 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_31",
@@ -342,7 +439,11 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "열정, 깨끗함"
+    "description": "열정, 깨끗함",
+    "emotion_tags": [
+      "사랑(고백)",
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_32",
@@ -353,7 +454,10 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "내 마음에 당신의 사랑이 머물러 있습니다"
+    "description": "내 마음에 당신의 사랑이 머물러 있습니다",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_33",
@@ -364,7 +468,10 @@
     ],
     "color": "파란색",
     "scent": "강한향",
-    "description": "당신이 나를 사랑해 주어 기쁩니다"
+    "description": "당신이 나를 사랑해 주어 기쁩니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_34",
@@ -375,7 +482,10 @@
     ],
     "color": "보라색",
     "scent": "강한향",
-    "description": "영원한 사랑"
+    "description": "영원한 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_35",
@@ -386,7 +496,10 @@
     ],
     "color": "노란색",
     "scent": "강한향",
-    "description": "용기, 승부"
+    "description": "용기, 승부",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_36",
@@ -397,7 +510,10 @@
     ],
     "color": "노란색",
     "scent": "강한향",
-    "description": "기쁨, 우정 당신의 시작을 응원합니다"
+    "description": "기쁨, 우정 당신의 시작을 응원합니다",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_37",
@@ -408,7 +524,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "순수함, 신뢰, 인내, 새로운 우정, 사려 깊음"
+    "description": "순수함, 신뢰, 인내, 새로운 우정, 사려 깊음",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_38",
@@ -419,7 +538,10 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "열정, 사랑, 당신은 아름다워요"
+    "description": "열정, 사랑, 당신은 아름다워요",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_39",
@@ -430,7 +552,10 @@
     ],
     "color": "주황색",
     "scent": "강한향",
-    "description": "깊은 우정, 행복한 시절, 당신과 함께 있으면"
+    "description": "깊은 우정, 행복한 시절, 당신과 함께 있으면",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_40",
@@ -441,7 +566,10 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "여성스러움, 어머니의 사랑"
+    "description": "여성스러움, 어머니의 사랑",
+    "emotion_tags": [
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_41",
@@ -452,7 +580,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "존경과 신비"
+    "description": "존경과 신비",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_42",
@@ -463,7 +594,10 @@
     ],
     "color": "노란색",
     "scent": "강한향",
-    "description": "사랑해주세요, 내 곁으로 돌아와 주세요"
+    "description": "사랑해주세요, 내 곁으로 돌아와 주세요",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_43",
@@ -474,7 +608,10 @@
     ],
     "color": "주황색",
     "scent": "강한향",
-    "description": "희망, 봄의 방문"
+    "description": "희망, 봄의 방문",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_44",
@@ -486,7 +623,10 @@
     ],
     "color": "보라색",
     "scent": "은은한향",
-    "description": "헌명함, 존경, 칭찬"
+    "description": "헌명함, 존경, 칭찬",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_45",
@@ -498,7 +638,10 @@
     ],
     "color": "파란색",
     "scent": "은은한향",
-    "description": "희망, 진실"
+    "description": "희망, 진실",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_46",
@@ -510,7 +653,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "열정"
+    "description": "열정",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_47",
@@ -522,7 +668,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "순수함, 결백"
+    "description": "순수함, 결백",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_48",
@@ -532,7 +681,10 @@
     ],
     "color": "파란색",
     "scent": "은은한향",
-    "description": "냉정, 냉담"
+    "description": "냉정, 냉담",
+    "emotion_tags": [
+      "이별(분노)"
+    ]
   },
   {
     "id": "flower_49",
@@ -542,7 +694,10 @@
     ],
     "color": "보라색",
     "scent": "은은한향",
-    "description": "첫사랑의 추억"
+    "description": "첫사랑의 추억",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_50",
@@ -552,7 +707,11 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "진실한 사랑, 강한 사랑"
+    "description": "진실한 사랑, 강한 사랑",
+    "emotion_tags": [
+      "사랑(고백)",
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_51",
@@ -562,7 +721,10 @@
     ],
     "color": "노란색",
     "scent": "무향",
-    "description": "선함, 진실함, 영원함"
+    "description": "선함, 진실함, 영원함",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_52",
@@ -572,7 +734,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "순수함, 재탄생, 평화"
+    "description": "순수함, 재탄생, 평화",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_53",
@@ -584,7 +749,10 @@
     ],
     "color": "노란색",
     "scent": "강한향",
-    "description": "반드시 오고야 말 행복"
+    "description": "반드시 오고야 말 행복",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_54",
@@ -596,7 +764,10 @@
     ],
     "color": "주황색",
     "scent": "강한향",
-    "description": "반드시 오고야 말 행복"
+    "description": "반드시 오고야 말 행복",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_55",
@@ -606,7 +777,10 @@
     ],
     "color": "파란색",
     "scent": "은은한향",
-    "description": "슬퍼하는 당신을 사랑합니다"
+    "description": "슬퍼하는 당신을 사랑합니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_56",
@@ -616,7 +790,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "혼자하는 사랑, 짝사랑"
+    "description": "혼자하는 사랑, 짝사랑",
+    "emotion_tags": [
+      "이별(분노)"
+    ]
   },
   {
     "id": "flower_57",
@@ -626,7 +803,10 @@
     ],
     "color": "빨간색",
     "scent": "은은한향",
-    "description": "당신을 사랑합니다"
+    "description": "당신을 사랑합니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_58",
@@ -636,7 +816,11 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "감사, 진실, 성실"
+    "description": "감사, 진실, 성실",
+    "emotion_tags": [
+      "감사",
+      "진실"
+    ]
   },
   {
     "id": "flower_59",
@@ -646,7 +830,10 @@
     ],
     "color": "보라색",
     "scent": "은은한향",
-    "description": "내 모든 것을 그대에게"
+    "description": "내 모든 것을 그대에게",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_60",
@@ -656,7 +843,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "정조, 사랑"
+    "description": "정조, 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_61",
@@ -669,7 +859,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "소녀의 순결"
+    "description": "소녀의 순결",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_62",
@@ -682,7 +875,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "소녀의 순결, 수녀의 진심"
+    "description": "소녀의 순결, 수녀의 진심",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_63",
@@ -695,7 +891,10 @@
     ],
     "color": "빨간색",
     "scent": "은은한향",
-    "description": "소녀의 사랑"
+    "description": "소녀의 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_64",
@@ -708,7 +907,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "야생의 아름다움, 자연미"
+    "description": "야생의 아름다움, 자연미",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_65",
@@ -721,7 +923,10 @@
     ],
     "color": "주황색",
     "scent": "은은한향",
-    "description": "야성적인 아름다움"
+    "description": "야성적인 아름다움",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_66",
@@ -731,7 +936,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "고백"
+    "description": "고백",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_67",
@@ -743,7 +951,10 @@
     ],
     "color": "빨간색",
     "scent": "무향",
-    "description": "열정적인 사랑, 로맨스, 욕망"
+    "description": "열정적인 사랑, 로맨스, 욕망",
+    "emotion_tags": [
+      "열정적인 사랑"
+    ]
   },
   {
     "id": "flower_68",
@@ -755,7 +966,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "우아함, 달콤함, 친절, 애정"
+    "description": "우아함, 달콤함, 친절, 애정",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_69",
@@ -767,7 +981,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "순결, 순수, 시작"
+    "description": "순결, 순수, 시작",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_70",
@@ -779,7 +996,10 @@
     ],
     "color": "노란색",
     "scent": "무향",
-    "description": "행복, 기쁨, 우정"
+    "description": "행복, 기쁨, 우정",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_71",
@@ -791,7 +1011,10 @@
     ],
     "color": "주황색",
     "scent": "무향",
-    "description": "응원, 활력, 창의성"
+    "description": "응원, 활력, 창의성",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_72",
@@ -803,7 +1026,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "왕족, 고급스러움, 우아함"
+    "description": "왕족, 고급스러움, 우아함",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_73",
@@ -815,7 +1041,10 @@
     ],
     "color": "빨간색",
     "scent": "은은한향",
-    "description": "불타는 마음, 정열"
+    "description": "불타는 마음, 정열",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_74",
@@ -828,7 +1057,10 @@
     ],
     "color": "보라색",
     "scent": "강한향",
-    "description": "사랑의 기쁨, 사랑의 신비, 로맨틱한 사랑"
+    "description": "사랑의 기쁨, 사랑의 신비, 로맨틱한 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_75",
@@ -841,7 +1073,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "사랑의 초상, 감사, 희망"
+    "description": "사랑의 초상, 감사, 희망",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_76",
@@ -854,7 +1089,10 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "사랑의 꿈, 로맨스"
+    "description": "사랑의 꿈, 로맨스",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_77",
@@ -867,7 +1105,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "새로운 만남, 새로운 시작"
+    "description": "새로운 만남, 새로운 시작",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_78",
@@ -880,7 +1121,10 @@
     ],
     "color": "노란색",
     "scent": "무향",
-    "description": "새로운 만남, 새로운시작"
+    "description": "새로운 만남, 새로운시작",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_79",
@@ -893,7 +1137,11 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "새로운 만남, 새로운시작"
+    "description": "새로운 만남, 새로운시작",
+    "emotion_tags": [
+      "새로운 만남",
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_80",
@@ -906,7 +1154,10 @@
     ],
     "color": "주황색",
     "scent": "무향",
-    "description": "새로운 만남, 새로운시작"
+    "description": "새로운 만남, 새로운시작",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_81",
@@ -919,7 +1170,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "새로운 만남, 새로운시작"
+    "description": "새로운 만남, 새로운시작",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_82",
@@ -932,7 +1186,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "순결, 영성, 평생의 유대"
+    "description": "순결, 영성, 평생의 유대",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_83",
@@ -945,7 +1202,10 @@
     ],
     "color": "보라색",
     "scent": "은은한향",
-    "description": "아름다움, 고귀함"
+    "description": "아름다움, 고귀함",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_84",
@@ -958,7 +1218,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "밝음, 긍정적인 에너지"
+    "description": "밝음, 긍정적인 에너지",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_85",
@@ -971,7 +1234,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "로맨스, 사랑, 애정, 사랑스러운 연인"
+    "description": "로맨스, 사랑, 애정, 사랑스러운 연인",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_86",
@@ -983,7 +1249,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "행복, 기쁨, 함께하겠다는 약속"
+    "description": "행복, 기쁨, 함께하겠다는 약속",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_87",
@@ -995,7 +1264,10 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "죽을 만큼 사랑합니다"
+    "description": "죽을 만큼 사랑합니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_88",
@@ -1007,7 +1279,10 @@
     ],
     "color": "파란색",
     "scent": "강한향",
-    "description": "끝나지 않을 영원한 사랑"
+    "description": "끝나지 않을 영원한 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_89",
@@ -1017,7 +1292,10 @@
     ],
     "color": "파란색",
     "scent": "무향",
-    "description": "나를 잊지 말아요"
+    "description": "나를 잊지 말아요",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_90",
@@ -1029,7 +1307,10 @@
     ],
     "color": "빨간색",
     "scent": "무향",
-    "description": "사랑과 열정"
+    "description": "사랑과 열정",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_91",
@@ -1041,7 +1322,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "모성애"
+    "description": "모성애",
+    "emotion_tags": [
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_92",
@@ -1053,7 +1337,10 @@
     ],
     "color": "노란색",
     "scent": "무향",
-    "description": "존경"
+    "description": "존경",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_93",
@@ -1065,7 +1352,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "순수, 진실"
+    "description": "순수, 진실",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_94",
@@ -1077,7 +1367,11 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "매력, 우아함, 성공"
+    "description": "매력, 우아함, 성공",
+    "emotion_tags": [
+      "존경(우상)",
+      "행복(성공)"
+    ]
   },
   {
     "id": "flower_95",
@@ -1089,7 +1383,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "순수함, 영성"
+    "description": "순수함, 영성",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_96",
@@ -1101,7 +1398,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "어머니의 사랑"
+    "description": "어머니의 사랑",
+    "emotion_tags": [
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_97",
@@ -1114,7 +1414,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "당신의 마음은 진실로 아름답다"
+    "description": "당신의 마음은 진실로 아름답다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_98",
@@ -1125,7 +1428,11 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "진실한 사랑, 수수함, 청아함"
+    "description": "진실한 사랑, 수수함, 청아함",
+    "emotion_tags": [
+      "사랑(고백)",
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_99",
@@ -1137,7 +1444,11 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "감탄, 기쁨, 감사"
+    "description": "감탄, 기쁨, 감사",
+    "emotion_tags": [
+      "감탄",
+      "기쁨"
+    ]
   },
   {
     "id": "flower_100",
@@ -1149,7 +1460,10 @@
     ],
     "color": "보라색",
     "scent": "강한향",
-    "description": "마법, 신비주의, 영적 연결"
+    "description": "마법, 신비주의, 영적 연결",
+    "emotion_tags": [
+      "마법, 신비주의, 영적 연결"
+    ]
   },
   {
     "id": "flower_101",
@@ -1161,7 +1475,11 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "새로운 시작, 순수함"
+    "description": "새로운 시작, 순수함",
+    "emotion_tags": [
+      "새로운 시작",
+      "순수함"
+    ]
   },
   {
     "id": "flower_102",
@@ -1173,7 +1491,11 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "열정, 사랑, 욕망"
+    "description": "열정, 사랑, 욕망",
+    "emotion_tags": [
+      "열정",
+      "사랑"
+    ]
   },
   {
     "id": "flower_103",
@@ -1184,7 +1506,10 @@
     ],
     "color": "노란색",
     "scent": "강한향",
-    "description": "영원한 행복"
+    "description": "영원한 행복",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_104",
@@ -1197,7 +1522,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "아이같은 마음, 동심"
+    "description": "아이같은 마음, 동심",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_105",
@@ -1210,7 +1538,10 @@
     ],
     "color": "초록색",
     "scent": "강한향",
-    "description": "추억을 함께 만들어가자"
+    "description": "추억을 함께 만들어가자",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_106",
@@ -1223,7 +1554,10 @@
     ],
     "color": "파란색",
     "scent": "무향",
-    "description": "사랑의 방문, 행복한 사랑, 서로를 믿는 마음"
+    "description": "사랑의 방문, 행복한 사랑, 서로를 믿는 마음",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_107",
@@ -1236,7 +1570,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "사랑의 방문, 행복한 사랑, 서로를 믿는 마음"
+    "description": "사랑의 방문, 행복한 사랑, 서로를 믿는 마음",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_108",
@@ -1249,7 +1586,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "사랑의 방문, 행복한 사랑, 서로를 믿는 마음"
+    "description": "사랑의 방문, 행복한 사랑, 서로를 믿는 마음",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_109",
@@ -1262,7 +1602,10 @@
     ],
     "color": "빨간색",
     "scent": "무향",
-    "description": "당신을 사랑합니다"
+    "description": "당신을 사랑합니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_110",
@@ -1275,7 +1618,10 @@
     ],
     "color": "주황색",
     "scent": "무향",
-    "description": "열정과 에너지"
+    "description": "열정과 에너지",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_111",
@@ -1288,7 +1634,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "친절과 감사"
+    "description": "친절과 감사",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_112",
@@ -1301,7 +1650,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "순결"
+    "description": "순결",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_113",
@@ -1314,7 +1666,10 @@
     ],
     "color": "노란색",
     "scent": "무향",
-    "description": "행복과 우정"
+    "description": "행복과 우정",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_114",
@@ -1327,7 +1682,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "내 마음은 진심입니다"
+    "description": "내 마음은 진심입니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_115",
@@ -1340,7 +1698,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "내 마음은 진심입니다"
+    "description": "내 마음은 진심입니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_116",
@@ -1353,7 +1714,10 @@
     ],
     "color": "초록색",
     "scent": "은은한향",
-    "description": "내 마음은 진심입니다"
+    "description": "내 마음은 진심입니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_117",
@@ -1366,7 +1730,10 @@
     ],
     "color": "보라색",
     "scent": "은은한향",
-    "description": "내 마음은 진심입니다"
+    "description": "내 마음은 진심입니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_118",
@@ -1379,7 +1746,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "내 마음은 진심입니다"
+    "description": "내 마음은 진심입니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_119",
@@ -1392,7 +1762,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "당신을 행복하게 해드릴게요"
+    "description": "당신을 행복하게 해드릴게요",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_120",
@@ -1405,7 +1778,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "당신을 행복하게 해드릴게요"
+    "description": "당신을 행복하게 해드릴게요",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_121",
@@ -1418,7 +1794,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "당신을 행복하게 해드릴게요"
+    "description": "당신을 행복하게 해드릴게요",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_122",
@@ -1431,7 +1810,10 @@
     ],
     "color": "파란색",
     "scent": "은은한향",
-    "description": "당신을 행복하게 해드릴게요"
+    "description": "당신을 행복하게 해드릴게요",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_123",
@@ -1442,7 +1824,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "마음을 풍성하게 하고 축복을 가져다준다"
+    "description": "마음을 풍성하게 하고 축복을 가져다준다",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_124",
@@ -1453,7 +1838,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "마음을 풍성하게 하고 축복을 가져다준다"
+    "description": "마음을 풍성하게 하고 축복을 가져다준다",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_125",
@@ -1465,7 +1853,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "화해, 이제 그만 화 풀어요"
+    "description": "화해, 이제 그만 화 풀어요",
+    "emotion_tags": [
+      "이별(화해)"
+    ]
   },
   {
     "id": "flower_126",
@@ -1477,7 +1868,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "순수함, 영성"
+    "description": "순수함, 영성",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_127",
@@ -1489,7 +1883,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "사랑, 애정, 부드러움"
+    "description": "사랑, 애정, 부드러움",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_128",
@@ -1501,7 +1898,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "다시 만날 그날까지"
+    "description": "다시 만날 그날까지",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_129",
@@ -1513,7 +1913,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "다시 만날 그날까지"
+    "description": "다시 만날 그날까지",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_130",
@@ -1523,7 +1926,10 @@
     ],
     "color": "회색",
     "scent": "무향",
-    "description": "사랑의 방문, 불변"
+    "description": "사랑의 방문, 불변",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_131",
@@ -1536,7 +1942,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "순수함, 신성함"
+    "description": "순수함, 신성함",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_132",
@@ -1549,7 +1958,10 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "사랑, 로맨스"
+    "description": "사랑, 로맨스",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_133",
@@ -1562,7 +1974,10 @@
     ],
     "color": "노란색",
     "scent": "강한향",
-    "description": "행복, 희망"
+    "description": "행복, 희망",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_134",
@@ -1575,7 +1990,10 @@
     ],
     "color": "보라색",
     "scent": "강한향",
-    "description": "신비, 영감"
+    "description": "신비, 영감",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_135",
@@ -1588,7 +2006,10 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "열정, 사랑"
+    "description": "열정, 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_136",
@@ -1598,7 +2019,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "팔방미인, 고결"
+    "description": "팔방미인, 고결",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_137",
@@ -1610,7 +2034,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "순수함, 깨끗함, 존엄한, 신비함"
+    "description": "순수함, 깨끗함, 존엄한, 신비함",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_138",
@@ -1622,7 +2049,10 @@
     ],
     "color": "빨간색",
     "scent": "은은한향",
-    "description": "사랑의 고백, 강렬한 아름다움"
+    "description": "사랑의 고백, 강렬한 아름다움",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_139",
@@ -1634,7 +2064,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "행복, 기쁨, 활력, 쾌활함"
+    "description": "행복, 기쁨, 활력, 쾌활함",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_140",
@@ -1646,7 +2079,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "사랑, 로맨스, 부드러움"
+    "description": "사랑, 로맨스, 부드러움",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_141",
@@ -1658,7 +2094,10 @@
     ],
     "color": "보라색",
     "scent": "은은한향",
-    "description": "로열티, 독창성, 귀족적인 아름다움"
+    "description": "로열티, 독창성, 귀족적인 아름다움",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_142",
@@ -1668,7 +2107,10 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "수줍음, 부끄러움"
+    "description": "수줍음, 부끄러움",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_143",
@@ -1678,7 +2120,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "행복한 결혼"
+    "description": "행복한 결혼",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_144",
@@ -1688,7 +2133,10 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "성실함"
+    "description": "성실함",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_145",
@@ -1701,7 +2149,10 @@
     ],
     "color": "빨간색",
     "scent": "무향",
-    "description": "불타는 마음, 번뇌"
+    "description": "불타는 마음, 번뇌",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_146",
@@ -1714,7 +2165,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "불타는 마음, 번뇌"
+    "description": "불타는 마음, 번뇌",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_147",
@@ -1727,7 +2181,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "불타는 마음, 번뇌"
+    "description": "불타는 마음, 번뇌",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_148",
@@ -1740,7 +2197,10 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "불타는 마음, 번뇌"
+    "description": "불타는 마음, 번뇌",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_149",
@@ -1752,7 +2212,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "사랑의 소식"
+    "description": "사랑의 소식",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_150",
@@ -1763,7 +2226,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "미인, 귀부인, 우아한 여인"
+    "description": "미인, 귀부인, 우아한 여인",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_151",
@@ -1774,7 +2240,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "미인, 귀부인, 우아한 여인"
+    "description": "미인, 귀부인, 우아한 여인",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_152",
@@ -1786,7 +2255,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "영원한 사랑, 사랑의 굴레, 역경"
+    "description": "영원한 사랑, 사랑의 굴레, 역경",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_153",
@@ -1798,7 +2270,11 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "영원한 사랑, 사랑의 굴레, 역경"
+    "description": "영원한 사랑, 사랑의 굴레, 역경",
+    "emotion_tags": [
+      "사랑(영원)",
+      "이별(화해)"
+    ]
   },
   {
     "id": "flower_154",
@@ -1810,7 +2286,10 @@
     ],
     "color": "보라색",
     "scent": "강한향",
-    "description": "영원한 사랑, 사랑의 굴레, 역경"
+    "description": "영원한 사랑, 사랑의 굴레, 역경",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_155",
@@ -1823,7 +2302,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "운치, 사랑을 잃다"
+    "description": "운치, 사랑을 잃다",
+    "emotion_tags": [
+      "이별(슬픔)"
+    ]
   },
   {
     "id": "flower_156",
@@ -1836,7 +2318,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "운치, 사랑을 잃다"
+    "description": "운치, 사랑을 잃다",
+    "emotion_tags": [
+      "이별(슬픔)"
+    ]
   },
   {
     "id": "flower_157",
@@ -1848,7 +2333,10 @@
     ],
     "color": "초록색",
     "scent": "강한향",
-    "description": "재능, 평정, 무욕"
+    "description": "재능, 평정, 무욕",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_158",
@@ -1860,7 +2348,10 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "재능, 평정, 무욕"
+    "description": "재능, 평정, 무욕",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_159",
@@ -1872,7 +2363,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "재능, 평정, 무욕"
+    "description": "재능, 평정, 무욕",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_160",
@@ -1884,7 +2378,11 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "재능, 평정, 무욕"
+    "description": "재능, 평정, 무욕",
+    "emotion_tags": [
+      "존경(우상)",
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_161",
@@ -1897,7 +2395,10 @@
     ],
     "color": "빨간색",
     "scent": "은은한향",
-    "description": "시들지 않는 사랑"
+    "description": "시들지 않는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_162",
@@ -1910,7 +2411,10 @@
     ],
     "color": "주황색",
     "scent": "은은한향",
-    "description": "시들지 않는 사랑"
+    "description": "시들지 않는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_163",
@@ -1923,7 +2427,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "시들지 않는 사랑"
+    "description": "시들지 않는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_164",
@@ -1936,7 +2443,10 @@
     ],
     "color": "초록색",
     "scent": "은은한향",
-    "description": "시들지 않는 사랑"
+    "description": "시들지 않는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_165",
@@ -1949,7 +2459,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "시들지 않는 사랑"
+    "description": "시들지 않는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_166",
@@ -1962,7 +2475,10 @@
     ],
     "color": "갈색",
     "scent": "은은한향",
-    "description": "시들지 않는 사랑"
+    "description": "시들지 않는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_167",
@@ -1973,7 +2489,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "순수함, 깨끗함"
+    "description": "순수함, 깨끗함",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_168",
@@ -1984,7 +2503,11 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "우정, 기쁨, 행복"
+    "description": "우정, 기쁨, 행복",
+    "emotion_tags": [
+      "우정",
+      "기쁨"
+    ]
   },
   {
     "id": "flower_169",
@@ -1995,7 +2518,10 @@
     ],
     "color": "보라색",
     "scent": "은은한향",
-    "description": "고귀함, 심비로움"
+    "description": "고귀함, 심비로움",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_170",
@@ -2006,7 +2532,10 @@
     ],
     "color": "빨간색",
     "scent": "은은한향",
-    "description": "당신은 매력적이다"
+    "description": "당신은 매력적이다",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_171",
@@ -2017,7 +2546,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "꾸밈없는 아름다움"
+    "description": "꾸밈없는 아름다움",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_172",
@@ -2028,7 +2560,10 @@
     ],
     "color": "주황색",
     "scent": "은은한향",
-    "description": "비밀"
+    "description": "비밀",
+    "emotion_tags": [
+      "이별(분노)"
+    ]
   },
   {
     "id": "flower_173",
@@ -2039,7 +2574,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "친절한 배려"
+    "description": "친절한 배려",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_174",
@@ -2050,7 +2588,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "순결"
+    "description": "순결",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_175",
@@ -2063,7 +2604,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "충실, 견고"
+    "description": "충실, 견고",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_176",
@@ -2076,7 +2620,11 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "충실, 견고"
+    "description": "충실, 견고",
+    "emotion_tags": [
+      "사랑(고백)",
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_177",
@@ -2089,7 +2637,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "충실, 견고"
+    "description": "충실, 견고",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_178",
@@ -2099,7 +2650,11 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "따뜻한 사랑, 상냥한 사랑"
+    "description": "따뜻한 사랑, 상냥한 사랑",
+    "emotion_tags": [
+      "사랑(고백)",
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_179",
@@ -2109,7 +2664,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "따뜻한 사랑, 상냥한 사랑"
+    "description": "따뜻한 사랑, 상냥한 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_180",
@@ -2119,7 +2677,11 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "따뜻한 사랑, 상냥한 사랑"
+    "description": "따뜻한 사랑, 상냥한 사랑",
+    "emotion_tags": [
+      "사랑(고백)",
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_181",
@@ -2129,7 +2691,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "쑥쑥 자라는 아이"
+    "description": "쑥쑥 자라는 아이",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_182",
@@ -2139,7 +2704,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "쑥쑥 자라는 아이"
+    "description": "쑥쑥 자라는 아이",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_183",
@@ -2149,7 +2717,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "쑥쑥 자라는 아이"
+    "description": "쑥쑥 자라는 아이",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_184",
@@ -2162,7 +2733,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "영원한 사랑"
+    "description": "영원한 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_185",
@@ -2175,7 +2749,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "영원한 사랑"
+    "description": "영원한 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_186",
@@ -2188,7 +2765,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "영원한 사랑"
+    "description": "영원한 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_187",
@@ -2199,7 +2779,11 @@
     ],
     "color": "파란색",
     "scent": "무향",
-    "description": "꿈과 사랑, 신비로움"
+    "description": "꿈과 사랑, 신비로움",
+    "emotion_tags": [
+      "사랑(고백)",
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_188",
@@ -2210,7 +2794,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "꿈과 사랑, 신비로움"
+    "description": "꿈과 사랑, 신비로움",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_189",
@@ -2221,7 +2808,11 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "꿈과 사랑, 신비로움"
+    "description": "꿈과 사랑, 신비로움",
+    "emotion_tags": [
+      "사랑(고백)",
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_190",
@@ -2231,7 +2822,11 @@
     ],
     "color": "보라색",
     "scent": "강한향",
-    "description": "사랑, 행운, 왕의 품격"
+    "description": "사랑, 행운, 왕의 품격",
+    "emotion_tags": [
+      "사랑(고백)",
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_191",
@@ -2241,7 +2836,11 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "사랑, 행운, 왕의 품격"
+    "description": "사랑, 행운, 왕의 품격",
+    "emotion_tags": [
+      "사랑(고백)",
+      "행운"
+    ]
   },
   {
     "id": "flower_192",
@@ -2251,7 +2850,10 @@
     ],
     "color": "빨간색",
     "scent": "강한향",
-    "description": "감수성이 풍부함"
+    "description": "감수성이 풍부함",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_193",
@@ -2261,7 +2863,10 @@
     ],
     "color": "분홍색",
     "scent": "강한향",
-    "description": "감수성이 풍부함"
+    "description": "감수성이 풍부함",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_194",
@@ -2271,7 +2876,10 @@
     ],
     "color": "보라색",
     "scent": "강한향",
-    "description": "감수성이 풍부함"
+    "description": "감수성이 풍부함",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_195",
@@ -2281,7 +2889,10 @@
     ],
     "color": "하얀색",
     "scent": "강한향",
-    "description": "감수성이 풍부함"
+    "description": "감수성이 풍부함",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_196",
@@ -2291,7 +2902,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "청초한 사랑"
+    "description": "청초한 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_197",
@@ -2301,7 +2915,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "청초한 사랑"
+    "description": "청초한 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_198",
@@ -2311,7 +2928,10 @@
     ],
     "color": "노란색",
     "scent": "무향",
-    "description": "청초한 사랑"
+    "description": "청초한 사랑",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_199",
@@ -2321,7 +2941,11 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "청초한 사랑"
+    "description": "청초한 사랑",
+    "emotion_tags": [
+      "사랑(고백)",
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_200",
@@ -2332,7 +2956,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "당신의 친절에 감사합니다"
+    "description": "당신의 친절에 감사합니다",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_201",
@@ -2343,7 +2970,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "순수함, 천진난만함, 영성"
+    "description": "순수함, 천진난만함, 영성",
+    "emotion_tags": [
+      "순수(응원)"
+    ]
   },
   {
     "id": "flower_202",
@@ -2354,7 +2984,10 @@
     ],
     "color": "파란색",
     "scent": "무향",
-    "description": "평온, 내면의 평화"
+    "description": "평온, 내면의 평화",
+    "emotion_tags": [
+      "순수(믿음)"
+    ]
   },
   {
     "id": "flower_203",
@@ -2365,7 +2998,10 @@
     ],
     "color": "보라색",
     "scent": "무향",
-    "description": "왕족, 야망, 존경"
+    "description": "왕족, 야망, 존경",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_204",
@@ -2378,7 +3014,10 @@
     ],
     "color": "보라색",
     "scent": "은은한향",
-    "description": "우리의 마음은 하나"
+    "description": "우리의 마음은 하나",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_205",
@@ -2391,7 +3030,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "우리의 마음은 하나"
+    "description": "우리의 마음은 하나",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_206",
@@ -2404,7 +3046,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "우리의 마음은 하나"
+    "description": "우리의 마음은 하나",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_207",
@@ -2417,7 +3062,10 @@
     ],
     "color": "파란색",
     "scent": "은은한향",
-    "description": "우리의 마음은 하나"
+    "description": "우리의 마음은 하나",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_208",
@@ -2430,7 +3078,10 @@
     ],
     "color": "보라색",
     "scent": "은은한향",
-    "description": "의젓함, 고요한 사랑"
+    "description": "의젓함, 고요한 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_209",
@@ -2443,7 +3094,10 @@
     ],
     "color": "파란색",
     "scent": "은은한향",
-    "description": "의젓함, 고요한 사랑"
+    "description": "의젓함, 고요한 사랑",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_210",
@@ -2456,7 +3110,10 @@
     ],
     "color": "하얀색",
     "scent": "은은한향",
-    "description": "의젓함, 고요한 사랑"
+    "description": "의젓함, 고요한 사랑",
+    "emotion_tags": [
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_211",
@@ -2467,7 +3124,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "당신을 사랑합니다"
+    "description": "당신을 사랑합니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_212",
@@ -2479,7 +3139,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "설레임"
+    "description": "설레임",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_213",
@@ -2491,7 +3154,10 @@
     ],
     "color": "노란색",
     "scent": "무향",
-    "description": "설레임"
+    "description": "설레임",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_214",
@@ -2503,7 +3169,10 @@
     ],
     "color": "빨간색",
     "scent": "은은한향",
-    "description": "그대가 있어 행복합니다"
+    "description": "그대가 있어 행복합니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_215",
@@ -2515,7 +3184,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "그대가 있어 행복합니다"
+    "description": "그대가 있어 행복합니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_216",
@@ -2525,7 +3197,10 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "환희, 기쁨, 즐거움"
+    "description": "환희, 기쁨, 즐거움",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_217",
@@ -2535,7 +3210,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "환희, 기쁨, 즐거움"
+    "description": "환희, 기쁨, 즐거움",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_218",
@@ -2545,7 +3223,10 @@
     ],
     "color": "빨간색",
     "scent": "무향",
-    "description": "제 마음은 불타오르고 있어요"
+    "description": "제 마음은 불타오르고 있어요",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_219",
@@ -2557,7 +3238,10 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "변함없는 사랑"
+    "description": "변함없는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_220",
@@ -2568,7 +3252,10 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "행운, 행복, 부귀"
+    "description": "행운, 행복, 부귀",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_221",
@@ -2580,7 +3267,10 @@
     ],
     "color": "빨간색",
     "scent": "은은한향",
-    "description": "당신을 짝사랑합니다"
+    "description": "당신을 짝사랑합니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_222",
@@ -2592,7 +3282,10 @@
     ],
     "color": "분홍색",
     "scent": "은은한향",
-    "description": "당신을 짝사랑합니다"
+    "description": "당신을 짝사랑합니다",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_223",
@@ -2602,7 +3295,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "희망, 행복의 열쇠"
+    "description": "희망, 행복의 열쇠",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_224",
@@ -2612,7 +3308,10 @@
     ],
     "color": "보라색",
     "scent": "은은한향",
-    "description": "나를 생각해주세요"
+    "description": "나를 생각해주세요",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_225",
@@ -2622,7 +3321,10 @@
     ],
     "color": "노란색",
     "scent": "은은한향",
-    "description": "나를 생각해주세요"
+    "description": "나를 생각해주세요",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_226",
@@ -2633,7 +3335,10 @@
     ],
     "color": "파란색",
     "scent": "은은한향",
-    "description": "모성애"
+    "description": "모성애",
+    "emotion_tags": [
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_227",
@@ -2644,7 +3349,11 @@
     ],
     "color": "빨간색",
     "scent": "은은한향",
-    "description": "진실한 애정"
+    "description": "진실한 애정",
+    "emotion_tags": [
+      "사랑(고백)",
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_228",
@@ -2655,7 +3364,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "이상적인사랑"
+    "description": "이상적인사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_229",
@@ -2666,7 +3378,10 @@
     ],
     "color": "분홍색",
     "scent": "무향",
-    "description": "이상적인사랑"
+    "description": "이상적인사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_230",
@@ -2677,7 +3392,11 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "번영, 발전"
+    "description": "번영, 발전",
+    "emotion_tags": [
+      "행복(기원)",
+      "행복(성공)"
+    ]
   },
   {
     "id": "flower_231",
@@ -2688,7 +3407,11 @@
     ],
     "color": "회색",
     "scent": "무향",
-    "description": "번영, 발전"
+    "description": "번영, 발전",
+    "emotion_tags": [
+      "행복(기원)",
+      "행복(성공)"
+    ]
   },
   {
     "id": "flower_232",
@@ -2698,7 +3421,10 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "관용"
+    "description": "관용",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_233",
@@ -2708,7 +3434,10 @@
     ],
     "color": "노란색",
     "scent": "무향",
-    "description": "관용"
+    "description": "관용",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_234",
@@ -2719,7 +3448,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "감싸는사랑"
+    "description": "감싸는사랑",
+    "emotion_tags": [
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_235",
@@ -2730,7 +3462,10 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "감싸는사랑"
+    "description": "감싸는사랑",
+    "emotion_tags": [
+      "사랑(부모)"
+    ]
   },
   {
     "id": "flower_236",
@@ -2743,7 +3478,10 @@
     ],
     "color": "하얀색",
     "scent": "무향",
-    "description": "꾸미지 않은 아름다움"
+    "description": "꾸미지 않은 아름다움",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_237",
@@ -2756,7 +3494,10 @@
     ],
     "color": "빨간색",
     "scent": "무향",
-    "description": "꾸미지 않은 아름다움"
+    "description": "꾸미지 않은 아름다움",
+    "emotion_tags": [
+      "존경(우상)"
+    ]
   },
   {
     "id": "flower_238",
@@ -2768,7 +3509,10 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "장고한 행운"
+    "description": "장고한 행운",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_239",
@@ -2780,7 +3524,10 @@
     ],
     "color": "노란색",
     "scent": "무향",
-    "description": "장고한 행운"
+    "description": "장고한 행운",
+    "emotion_tags": [
+      "행복(기원)"
+    ]
   },
   {
     "id": "flower_240",
@@ -2790,7 +3537,10 @@
     ],
     "color": "초록색",
     "scent": "강한향",
-    "description": "나를 생각해요"
+    "description": "나를 생각해요",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   },
   {
     "id": "flower_241",
@@ -2801,7 +3551,10 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "행운과 함께하는 사랑"
+    "description": "행운과 함께하는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_242",
@@ -2811,7 +3564,10 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "변치않는 사랑"
+    "description": "변치않는 사랑",
+    "emotion_tags": [
+      "사랑(영원)"
+    ]
   },
   {
     "id": "flower_243",
@@ -2821,6 +3577,9 @@
     ],
     "color": "초록색",
     "scent": "무향",
-    "description": "나를 사랑해줘요"
+    "description": "나를 사랑해줘요",
+    "emotion_tags": [
+      "사랑(고백)"
+    ]
   }
 ]
