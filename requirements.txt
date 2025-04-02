@@ -5,3 +5,4 @@ openai
 python-dotenv
 langchain
 langchain_community
+tiktoken
