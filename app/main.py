@@ -1,21 +1,17 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from app.recommend import get_flower_recommendations  # 여기에 추천 로직 분리
+from typing import List
+from app.recommend import get_flower_recommendations
 
 app = FastAPI()
 
-# 입력 모델 정의
 class QueryInput(BaseModel):
-    query: str
+    query: List[str]  # ✅ 리스트로 받는다!
 
 @app.post("/recommend")
 def recommend(input: QueryInput):
-    try:
-        # 핵심 추천 함수 호출
-        result = get_flower_recommendations(input.query)
-        return result
-    except Exception as e:
-        return {"error": str(e)}
+    return get_flower_recommendations(input.query)
+
 
 @app.get("/")
 def root():
