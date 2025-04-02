@@ -5,7 +5,7 @@ from langchain.chains import LLMChain
 from langchain.embeddings import OpenAIEmbeddings
 
 # 🔹 LangChain LLM 설정
-llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
+llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-4")
 
 def embed_query(query: str):
     embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
