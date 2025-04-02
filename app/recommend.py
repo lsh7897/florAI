@@ -8,7 +8,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
 # 🔹 메타데이터 로드 (emotion_tags, vector 포함)
-with open("flower_metadata_with_emotions.json", encoding="utf-8") as f:
+with open("flower_metadata.json", encoding="utf-8") as f:
     metadata_list = json.load(f)
 
 # 🔹 LLM 세팅
