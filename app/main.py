@@ -12,7 +12,11 @@ class QueryInput(BaseModel):
 # 엔드포인트
 @app.post("/recommend")
 def recommend_flowers(input: QueryInput):
-    return get_flower_recommendations(input.query)
+    try:
+        return get_flower_recommendations(input.query)
+    except Exception as e:
+        # 에러 로그 출력
+        return {"error": str(e)}
 
 # 기본 root 테스트용 엔드포인트
 @app.get("/")
