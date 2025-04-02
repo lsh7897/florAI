@@ -11,7 +11,7 @@ from langchain.chains import LLMChain
 index = faiss.read_index("flower_index.faiss")
 
 # 🔹 메타데이터 로드 (벡터 없음)
-with open("flower_metadata_clean.json", encoding="utf-8") as f:
+with open("flower_metadata.json", encoding="utf-8") as f:
     metadata_list = json.load(f)
 
 # 🔹 LLM 세팅
