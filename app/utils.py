@@ -25,7 +25,7 @@ def generate_reason(query: str, description: str, flower_name: str):
         template="""
         사용자 의도: {query}
         꽃 설명: {description}
-        이 꽃이 '{query}'에 어울리는 이유를 한 문장으로 설명해줘. 꽃 이름({flower})도 포함해서 자전시게 쓰줘.
+        이 꽃이 '{query}'에 어울리는 이유를 한 문장으로 설명해줘. 꽃 이름({flower})도 포함해서 구매자를 충분히 설득할 수 있도록 표현해줘.
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
@@ -40,8 +40,7 @@ def expand_keywords(keywords: str) -> str:
         input_variables=["keywords"],
         template="""
         사용자가 입력한 키워드: {keywords}
-        이 키워드를 바탕으로 감정과 상황을 포함한 자전시된 문장으로 확장해줘.
-        너무 긴지 않고, 의도가 잘 들어날 수 있게 말해줘.
+        키워드들을 활용해서 누구에게 어떠한 감정을 전달하고 싶은지에 대한 설명을 해줘 너무 추상적이지 않게 최대한 정확하게 해줘.
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
