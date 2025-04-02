@@ -2,71 +2,87 @@ import faiss
 import json
 import os
 import numpy as np
-from typing import List
 from app.utils import embed_query, generate_reason
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
-# 🔹 FAISS 인덱스 및 메타데이터 로딩
-index = faiss.read_index("flower_index.faiss")
-with open("flower_metadata.json", encoding="utf-8") as f:
+# 🔹 메타데이터 로드 (emotion_tags, vector 포함)
+with open("flower_metadata_with_emotions.json", encoding="utf-8") as f:
     metadata_list = json.load(f)
 
-# 🔹 LangChain LLM 설정
-llm = ChatOpenAI(
-    openai_api_key=os.getenv("OPENAI_API_KEY"),
-    model="gpt-3.5-turbo"
-)
+# 🔹 LLM 세팅
+llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
-# 🔹 키워드 리스트 → 하나의 확장 문장 생성
-def expand_keywords(keywords: List[str]) -> str:
-    keywords_str = ", ".join(keywords)
+
+# 🔸 감정 카테고리 분류
+def classify_emotion(keywords: str) -> str:
     prompt = PromptTemplate(
         input_variables=["keywords"],
         template="""
-        사용자가 입력한 키워드들: {keywords}
-        이 키워드들을 바탕으로 감정과 상황이 느껴지는 자연스러운 하나의 문장 또는 단락으로 확장해줘.
-        키워드들이 연결된 이야기처럼 이어지게 하고, 줄거리처럼 부드럽게 써줘.
+        다음 키워드는 꽃을 추천받기 위한 상황입니다:
+        {keywords}
+
+        이 키워드에서 느껴지는 중심 감정을 다음 중 하나로 분류해줘:
+
+        사랑(고백), 사랑(부모), 사랑(영원),
+        이별(분노), 이별(슬픔), 이별(화해),
+        순수(응원), 순수(믿음),
+        존경(우상),
+        행복(기원), 행복(성공)
+
+        가장 적절한 하나를 골라줘. 이유는 쓰지 말고 분류명만 줘.
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
-    return chain.run(keywords=keywords_str).strip()
+    return chain.run({"keywords": keywords}).strip()
 
-# 🔹 꽃 추천 함수
-def get_flower_recommendations(keywords: List[str], top_k: int = 3):
-    print("📥 [시작] get_flower_recommendations()")
-    print("🔤 입력 키워드 리스트:", keywords)
 
-    # 1. 키워드 확장
+# 🔸 키워드 확장
+def expand_keywords(keywords: str) -> str:
+    prompt = PromptTemplate(
+        input_variables=["keywords"],
+        template="""
+        사용자가 입력한 키워드: {keywords}
+        이 키워드를 바탕으로 감정과 상황을 포함한 자연스러운 문장으로 확장해줘.
+        너무 길지 않고, 의도가 잘 드러나도록 말해줘.
+        """
+    )
+    chain = LLMChain(llm=llm, prompt=prompt)
+    return chain.run(keywords).strip()
+
+
+# 🔹 추천 시스템 핵심 함수
+def get_flower_recommendations(keywords: str, top_k: int = 3):
     expanded_query = expand_keywords(keywords)
-    print("🪄 확장된 문장:", expanded_query)
+    emotion_category = classify_emotion(keywords)
+    query_vector = embed_query(expanded_query)
 
-    # 2. 임베딩 → (1, D) numpy 배열
-    try:
-        raw_vector = embed_query(expanded_query)
-        query_vector = np.array(raw_vector).reshape(1, -1)
-    except Exception as e:
-        print("❌ 임베딩 변환 에러:", e)
-        return {"error": f"임베딩 에러: {e}"}
+    # 🔍 감정 필터
+    filtered_flowers = [
+        flower for flower in metadata_list
+        if "emotion_tags" in flower and emotion_category in flower["emotion_tags"]
+    ]
 
-    # 3. FAISS 검색
-    try:
-        distances, indices = index.search(query_vector, 10)
-        print("🔎 FAISS 결과:", indices)
-    except Exception as e:
-        print("❌ FAISS 검색 에러:", e)
-        return {"error": f"faiss.search 에러: {e}"}
+    if not filtered_flowers:
+        return {
+            "expanded_query": expanded_query,
+            "emotion_category": emotion_category,
+            "recommendations": [],
+            "error": f"'{emotion_category}' 감정에 해당하는 꽃이 없습니다."
+        }
 
-    # 4. 추천 결과 정리
+    # 🔧 임시 FAISS 인덱스 만들기
+    dim = len(filtered_flowers[0]["vector"])
+    tmp_index = faiss.IndexFlatL2(dim)
+    vectors = np.array([flower["vector"] for flower in filtered_flowers]).astype("float32")
+    tmp_index.add(vectors)
+
+    distances, indices = tmp_index.search(query_vector, top_k)
+
     results = []
-    seen = set()
     for idx in indices[0]:
-        flower = metadata_list[idx]
-        if flower["name"] in seen:
-            continue
-        seen.add(flower["name"])
-
+        flower = filtered_flowers[idx]
         reason = generate_reason(expanded_query, flower["description"], flower["name"])
         results.append({
             "name": flower["name"],
@@ -77,10 +93,8 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3):
             "reason": reason
         })
 
-        if len(results) == top_k:
-            break
-
     return {
         "expanded_query": expanded_query,
+        "emotion_category": emotion_category,
         "recommendations": results
     }
