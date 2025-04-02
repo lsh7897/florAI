@@ -28,13 +28,13 @@ def expand_keywords(keywords: str) -> str:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run(keywords).strip()
 
-# 🔹 추천 함수 (에러 수정 완료)
 def get_flower_recommendations(keywords: str, top_k: int = 3):
     expanded_query = expand_keywords(keywords)
-    
-    # ✅ 반드시 2D 배열로 넘겨야 FAISS search가 작동함
-    query_vector = np.array([embed_query(expanded_query)])  # (1, D)
-    
+
+    # ✅ 임베딩을 2차원 numpy 배열로 보장
+    raw_vector = embed_query(expanded_query)
+    query_vector = np.array(raw_vector).reshape(1, -1)
+
     distances, indices = index.search(query_vector, 10)
 
     results = []
