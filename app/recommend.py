@@ -31,12 +31,27 @@ def expand_keywords(keywords: str) -> str:
 def get_flower_recommendations(keywords: str, top_k: int = 3):
     expanded_query = expand_keywords(keywords)
 
-    # ✅ 임베딩을 2차원 numpy 배열로 보장
+    # 1. 임베딩 → numpy array (2D)
     raw_vector = embed_query(expanded_query)
     query_vector = np.array(raw_vector).reshape(1, -1)
 
-    distances, indices = index.search(query_vector, 10)
+    # ✅ 디버깅: shape 확인
+    print("▶ query_vector shape:", query_vector.shape)
+    print("▶ query_vector type:", type(query_vector))
 
+    # 2. FAISS 검색
+    result = index.search(query_vector, 10)
+
+    # ✅ 디버깅: 반환값 확인
+    print("▶ FAISS search() result:", result)
+
+    # 3. 튜플 형태인지 확인
+    if not isinstance(result, tuple) or len(result) != 2:
+        raise ValueError(f"❌ search() 결과가 튜플이 아님: {result}")
+    
+    distances, indices = result
+
+    # 4. 결과 조합
     results = []
     seen = set()
     for idx in indices[0]:
