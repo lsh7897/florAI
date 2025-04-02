@@ -71,14 +71,12 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
         }
 
     # 🔧 FAISS 임시 인덱스 구성 (필터된 것만)
-        # 🔧 FAISS 임시 인덱스 구성 (필터된 것만)
     dim = index.d
     sub_index = faiss.IndexFlatL2(dim)
     sub_vectors = [index.reconstruct(i) for i in filtered_indices]
-    sub_index.add(np.array(sub_vectors).astype("float32"))  #  이 줄 꼭 필요
+    sub_index.add(np.array(sub_vectors).astype("float32"))  # ✅ numpy array로 변환
 
-
-    distances, sub_idxs = sub_index.search(query_vector, top_k)
+    distances, sub_idxs = sub_index.search(np.array(query_vector).astype("float32"), top_k)
 
     results = []
     for sub_i in sub_idxs[0]:
