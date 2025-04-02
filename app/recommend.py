@@ -15,7 +15,7 @@ with open("flower_metadata.json", encoding="utf-8") as f:
     metadata_list = json.load(f)
 
 # 🔹 LLM 세팅
-llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
+llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-4")
 
 # 🔸 감정 카테고리 분류
 def classify_emotion(keywords: str) -> str:
