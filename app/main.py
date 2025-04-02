@@ -15,8 +15,9 @@ def recommend_flowers(input: QueryInput):
     try:
         return get_flower_recommendations(input.query)
     except Exception as e:
-        # 에러 로그 출력
-        return {"error": str(e)}
+        import traceback
+        print(traceback.format_exc())  # 서버 콘솔에 전체 에러 출력
+        return {"error": str(e)}       # 클라이언트에도 에러 메시지 전달
 
 # 기본 root 테스트용 엔드포인트
 @app.get("/")
