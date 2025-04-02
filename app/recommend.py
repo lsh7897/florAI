@@ -1,6 +1,7 @@
 import faiss
 import json
 import os
+import numpy as np
 from app.utils import embed_query, generate_reason
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
@@ -14,6 +15,7 @@ with open("flower_metadata.json", encoding="utf-8") as f:
 # 🔹 LangChain LLM 설정
 llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
+# 🔹 키워드 확장 함수
 def expand_keywords(keywords: str) -> str:
     prompt = PromptTemplate(
         input_variables=["keywords"],
@@ -26,9 +28,13 @@ def expand_keywords(keywords: str) -> str:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run(keywords).strip()
 
+# 🔹 추천 함수 (에러 수정 완료)
 def get_flower_recommendations(keywords: str, top_k: int = 3):
     expanded_query = expand_keywords(keywords)
-    query_vector = embed_query(expanded_query)
+    
+    # ✅ 반드시 2D 배열로 넘겨야 FAISS search가 작동함
+    query_vector = np.array([embed_query(expanded_query)])  # (1, D)
+    
     distances, indices = index.search(query_vector, 10)
 
     results = []
