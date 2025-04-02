@@ -25,19 +25,28 @@ def classify_emotion(keywords: str) -> str:
         다음 키워드는 꽃을 추천받기 위한 상황입니다:
         {keywords}
 
-            이 키워드에서 느껴지는 중심 감정을 다음 중 하나로만 분류해줘 (목록 외 감정은 절대 사용하지 마):
+        이 키워드에서 느껴지는 중심 감정을 다음 중 하나로 분류해줘 (목록 외 감정은 절대 사용하지 마):
 
-            사랑(고백), 사랑(부모), 사랑(영원),
-            이별(분노), 이별(슬픔), 이별(화해),
-            순수(응원), 순수(믿음), 이별(그리움),
-            존경(우상),
-            행복(기원), 행복(성공)
+        사랑(고백), 사랑(부모), 사랑(영원),
+        이별(분노), 이별(슬픔), 이별(화해),
+        순수(응원), 순수(믿음),
+        존경(우상),
+        행복(기원), 행복(성공)
 
-            정확하게 위 목록 중 하나만 출력해. 이유는 쓰지 말고.
+        정확하게 위 목록 중 하나만 출력해. 이유는 쓰지 말고.
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
-    return chain.run({"keywords": keywords}).strip()
+    result = chain.run({"keywords": keywords}).strip()
+
+    VALID_CATEGORIES = {
+        "사랑(고백)", "사랑(부모)", "사랑(영원)",
+        "이별(분노)", "이별(슬픔)", "이별(화해)",
+        "순수(응원)", "순수(믿음)",
+        "존경(우상)",
+        "행복(기원)", "행복(성공)"
+    }
+    return result if result in VALID_CATEGORIES else "이별(슬픔)"
 
 # 🔸 키워드 확장
 def expand_keywords(keywords: str) -> str:
@@ -74,7 +83,7 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
     dim = index.d
     sub_index = faiss.IndexFlatL2(dim)
     sub_vectors = [index.reconstruct(i) for i in filtered_indices]
-    sub_index.add(np.array(sub_vectors).astype("float32"))  # ✅ numpy array로 변환
+    sub_index.add(np.array(sub_vectors).astype("float32"))
 
     distances, sub_idxs = sub_index.search(np.array(query_vector).astype("float32"), top_k)
 
