@@ -17,3 +17,8 @@ def recommend_flowers(input: QueryInput):
         import traceback
         print(traceback.format_exc())
         return {"error": str(e)}
+    
+    
+@app.get("/", response_class=HTMLResponse)
+def show_index(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
