@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
 from app.recommend import get_flower_recommendations
+from typing import Union
 
 app = FastAPI()
 
