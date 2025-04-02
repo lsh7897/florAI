@@ -13,7 +13,10 @@ with open("flower_metadata.json", encoding="utf-8") as f:
     metadata_list = json.load(f)
 
 # 🔹 LangChain LLM 설정
-llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
+llm = ChatOpenAI(
+    openai_api_key=os.getenv("OPENAI_API_KEY"),
+    model="gpt-3.5-turbo"
+)
 
 # 🔹 키워드 확장 함수
 def expand_keywords(keywords: str) -> str:
@@ -28,30 +31,42 @@ def expand_keywords(keywords: str) -> str:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run(keywords).strip()
 
+# 🔹 추천 함수 (디버깅 포함, 에러 방지 완비)
 def get_flower_recommendations(keywords: str, top_k: int = 3):
+    print("📥 [시작] get_flower_recommendations()")
+    print("🔤 입력 키워드:", keywords)
+
+    # 1. 키워드 확장
     expanded_query = expand_keywords(keywords)
+    print("🪄 확장된 문장:", expanded_query)
 
-    # 1. 임베딩 → numpy array (2D)
+    # 2. 임베딩 처리 + 2차원 변환
     raw_vector = embed_query(expanded_query)
-    query_vector = np.array(raw_vector).reshape(1, -1)
+    print("📦 원시 임베딩 길이:", len(raw_vector))
 
-    # ✅ 디버깅: shape 확인
-    print("▶ query_vector shape:", query_vector.shape)
-    print("▶ query_vector type:", type(query_vector))
+    try:
+        query_vector = np.array(raw_vector).reshape(1, -1)
+    except Exception as e:
+        print("❌ query_vector 변환 실패:", e)
+        return {"error": f"query_vector 에러: {e}"}
 
-    # 2. FAISS 검색
-    result = index.search(query_vector, 10)
+    print("📐 query_vector.shape:", query_vector.shape)
 
-    # ✅ 디버깅: 반환값 확인
-    print("▶ FAISS search() result:", result)
+    # 3. FAISS 검색
+    try:
+        result = index.search(query_vector, 10)
+        print("🔎 FAISS 검색 결과:", result)
+    except Exception as e:
+        print("❌ FAISS 검색 중 에러:", e)
+        return {"error": f"faiss.search 에러: {e}"}
 
-    # 3. 튜플 형태인지 확인
+    # 4. 결과 언팩
     if not isinstance(result, tuple) or len(result) != 2:
-        raise ValueError(f"❌ search() 결과가 튜플이 아님: {result}")
-    
+        return {"error": f"❌ FAISS 결과가 튜플 아님: {result}"}
+
     distances, indices = result
 
-    # 4. 결과 조합
+    # 5. 결과 정리
     results = []
     seen = set()
     for idx in indices[0]:
