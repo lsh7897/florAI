@@ -41,7 +41,7 @@ def classify_emotion(keywords: str) -> str:
 
     VALID_CATEGORIES = {
         "사랑(고백)", "사랑(부모)", "사랑(영원)",
-        "슬픔(이별)", "슬픔(화해)", "슬픔(그리움)","슬픔(위로)",
+        "이별(분노)", "이별(슬픔)", "이별(화해)",
         "순수(응원)", "순수(믿음)",
         "존경(우상)",
         "행복(기원)", "행복(성공)"
@@ -85,21 +85,31 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
     sub_vectors = [index.reconstruct(i) for i in filtered_indices]
     sub_index.add(np.array(sub_vectors).astype("float32"))
 
-    distances, sub_idxs = sub_index.search(np.array(query_vector).astype("float32"), top_k)
+    distances, sub_idxs = sub_index.search(np.array(query_vector).astype("float32"), len(filtered_indices))
 
+    # 🔄 같은 꽃 이름이 여러 번 나올 경우 유사도 순서 유지하며 1개만 선택
+    seen = set()
     results = []
     for sub_i in sub_idxs[0]:
         real_index = filtered_indices[sub_i]
         flower = metadata_list[real_index]
-        reason = generate_reason(expanded_query, flower["description"], flower["name"])
+        name = flower["name"]
+        if name in seen:
+            continue
+        seen.add(name)
+
+        reason = generate_reason(expanded_query, flower["description"], name)
         results.append({
-            "name": flower["name"],
+            "name": name,
             "description": flower["description"],
             "color": flower["color"],
             "season": flower["season"],
             "scent": flower["scent"],
             "reason": reason
         })
+
+        if len(results) == top_k:
+            break
 
     return {
         "expanded_query": expanded_query,
