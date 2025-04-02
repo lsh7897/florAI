@@ -87,29 +87,29 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
 
     distances, sub_idxs = sub_index.search(np.array(query_vector).astype("float32"), len(filtered_indices))
 
-    # 🔄 같은 꽃 이름이 여러 번 나올 경우 유사도 순서 유지하며 1개만 선택
-    seen = set()
-    results = []
+    # 🔄 같은 이름의 꽃이 있으면 유사도 높은 순서대로 하나만 선택
+    ranked_by_name = {}
     for sub_i in sub_idxs[0]:
         real_index = filtered_indices[sub_i]
         flower = metadata_list[real_index]
         name = flower["name"]
-        if name in seen:
-            continue
-        seen.add(name)
+        if name not in ranked_by_name:
+            ranked_by_name[name] = real_index
 
-        reason = generate_reason(expanded_query, flower["description"], name)
+    final_indices = list(ranked_by_name.values())[:top_k]
+
+    results = []
+    for real_index in final_indices:
+        flower = metadata_list[real_index]
+        reason = generate_reason(expanded_query, flower["description"], flower["name"])
         results.append({
-            "name": name,
+            "name": flower["name"],
             "description": flower["description"],
             "color": flower["color"],
             "season": flower["season"],
             "scent": flower["scent"],
             "reason": reason
         })
-
-        if len(results) == top_k:
-            break
 
     return {
         "expanded_query": expanded_query,
