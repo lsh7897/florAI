@@ -7,13 +7,15 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
-# 🔹 메타데이터 로드 (emotion_tags, vector 포함)
-with open("flower_metadata.json", encoding="utf-8") as f:
+# 🔹 FAISS 인덱스 로드 (벡터만 저장)
+index = faiss.read_index("flower_index.faiss")
+
+# 🔹 메타데이터 로드 (벡터 없음)
+with open("flower_metadata_clean.json", encoding="utf-8") as f:
     metadata_list = json.load(f)
 
 # 🔹 LLM 세팅
 llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
-
 
 # 🔸 감정 카테고리 분류
 def classify_emotion(keywords: str) -> str:
@@ -37,7 +39,6 @@ def classify_emotion(keywords: str) -> str:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run({"keywords": keywords}).strip()
 
-
 # 🔸 키워드 확장
 def expand_keywords(keywords: str) -> str:
     prompt = PromptTemplate(
@@ -51,20 +52,17 @@ def expand_keywords(keywords: str) -> str:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run(keywords).strip()
 
-
 # 🔹 추천 시스템 핵심 함수
 def get_flower_recommendations(keywords: str, top_k: int = 3):
     expanded_query = expand_keywords(keywords)
     emotion_category = classify_emotion(keywords)
     query_vector = embed_query(expanded_query)
 
-    # 🔍 감정 필터
-    filtered_flowers = [
-        flower for flower in metadata_list
-        if "emotion_tags" in flower and emotion_category in flower["emotion_tags"]
-    ]
+    # 🔍 감정에 해당하는 꽃만 필터링 (index 기반)
+    filtered_indices = [i for i, flower in enumerate(metadata_list)
+                        if "emotion_tags" in flower and emotion_category in flower["emotion_tags"]]
 
-    if not filtered_flowers:
+    if not filtered_indices:
         return {
             "expanded_query": expanded_query,
             "emotion_category": emotion_category,
@@ -72,17 +70,18 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
             "error": f"'{emotion_category}' 감정에 해당하는 꽃이 없습니다."
         }
 
-    # 🔧 임시 FAISS 인덱스 만들기
-    dim = len(filtered_flowers[0]["vector"])
-    tmp_index = faiss.IndexFlatL2(dim)
-    vectors = np.array([flower["vector"] for flower in filtered_flowers]).astype("float32")
-    tmp_index.add(vectors)
+    # 🔧 FAISS 임시 인덱스 구성 (필터된 것만)
+    dim = index.d
+    sub_index = faiss.IndexFlatL2(dim)
+    sub_vectors = [index.reconstruct(i) for i in filtered_indices]
+    sub_index.add(np.array(sub_vectors).astype("float32"))
 
-    distances, indices = tmp_index.search(query_vector, top_k)
+    distances, sub_idxs = sub_index.search(query_vector, top_k)
 
     results = []
-    for idx in indices[0]:
-        flower = filtered_flowers[idx]
+    for sub_i in sub_idxs[0]:
+        real_index = filtered_indices[sub_i]
+        flower = metadata_list[real_index]
         reason = generate_reason(expanded_query, flower["description"], flower["name"])
         results.append({
             "name": flower["name"],
