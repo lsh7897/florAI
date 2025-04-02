@@ -15,13 +15,9 @@ with open("flower_metadata.json", encoding="utf-8") as f:
 llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
 def embed_query(query: str):
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        raise ValueError("환경변수 OPENAI_API_KEY가 비어 있어요!")
-
-    # 👉 명시적으로 환경변수에서 읽어서 넘기기 (LangChain 버그 방지)
-    embedder = OpenAIEmbeddings(openai_api_key=api_key)
-    return embedder.embed_query(query).reshape(1, -1)
+    embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
+    vector = embedder.embed_query(query)  # list[float]
+    return [vector] 
 
 def generate_reason(query: str, description: str, flower_name: str):
     prompt = PromptTemplate(
