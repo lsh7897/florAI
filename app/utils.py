@@ -25,7 +25,7 @@ def generate_reason(query: str, description: str, flower_name: str):
         template="""
         사용자 의도: {query}
         꽃 설명: {description}
-        이 꽃이 '{query}'에 어울리는 이유를 한 문장으로 설명해줘. 꽃 이름({flower})도 포함해서 구매자를 충분히 설득할 수 있도록 표현해줘.
+        이 꽃이 '{query}'에 어울리는 이유를 두 문장이상으로 설명해줘. 꽃 이름({flower})도 포함해서 구매자를 충분히 설득 할 수 있도록 구체적으로 설명명해줘.
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
