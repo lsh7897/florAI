@@ -1,5 +1,6 @@
 [
   {
+    "id": "flower_0",
     "name": "장미",
     "season": [
       "봄",
@@ -8,9 +9,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "낭만적인사랑",
-    "FLW_IDX": 1
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_1",
     "name": "장미",
     "season": [
       "봄",
@@ -19,9 +23,12 @@
     "color": "노란색",
     "scent": "강한향",
     "description": "질투, 증오, 배신",
-    "FLW_IDX": 2
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_2",
     "name": "장미",
     "season": [
       "봄",
@@ -30,9 +37,12 @@
     "color": "초록색",
     "scent": "강한향",
     "description": "천상의 고귀한 사랑",
-    "FLW_IDX": 3
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_3",
     "name": "장미",
     "season": [
       "봄",
@@ -41,9 +51,12 @@
     "color": "파란색",
     "scent": "강한향",
     "description": "기적, 포기하지 않는 사랑",
-    "FLW_IDX": 4
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_4",
     "name": "장미",
     "season": [
       "봄",
@@ -52,9 +65,12 @@
     "color": "보라색",
     "scent": "강한향",
     "description": "영원한 사랑",
-    "FLW_IDX": 5
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_5",
     "name": "장미",
     "season": [
       "봄",
@@ -63,9 +79,10 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "행복한 사랑",
-    "FLW_IDX": 6
+    "emotion_tags": []
   },
   {
+    "id": "flower_6",
     "name": "장미",
     "season": [
       "봄",
@@ -74,9 +91,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "순수, 결백, 젊음, 새로운시작",
-    "FLW_IDX": 7
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_7",
     "name": "장미",
     "season": [
       "봄",
@@ -85,9 +105,12 @@
     "color": "검은색",
     "scent": "강한향",
     "description": "당신은 영원히 나의 것",
-    "FLW_IDX": 8
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_8",
     "name": "튤립",
     "season": [
       "봄"
@@ -95,9 +118,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "사랑의 고백",
-    "FLW_IDX": 9
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_9",
     "name": "튤립",
     "season": [
       "봄"
@@ -105,9 +131,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "사랑의 시작",
-    "FLW_IDX": 10
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_10",
     "name": "튤립",
     "season": [
       "봄"
@@ -115,9 +144,12 @@
     "color": "보라색",
     "scent": "강한향",
     "description": "영원한 사랑, 영원하지 않는 사랑",
-    "FLW_IDX": 11
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_11",
     "name": "튤립",
     "season": [
       "봄"
@@ -125,9 +157,12 @@
     "color": "노란색",
     "scent": "강한향",
     "description": "헛된 사랑, 짝사랑",
-    "FLW_IDX": 12
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_12",
     "name": "튤립",
     "season": [
       "봄"
@@ -135,9 +170,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "추억, 실연, 용서",
-    "FLW_IDX": 13
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_13",
     "name": "튤립",
     "season": [
       "봄"
@@ -145,9 +183,12 @@
     "color": "검은색",
     "scent": "강한향",
     "description": "당신을 저주합니다",
-    "FLW_IDX": 14
+    "emotion_tags": [
+      "슬픔(위로)"
+    ]
   },
   {
+    "id": "flower_14",
     "name": "카네이션",
     "season": [
       "여름"
@@ -155,9 +196,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "모정, 부인의 애정",
-    "FLW_IDX": 15
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_15",
     "name": "카네이션",
     "season": [
       "여름"
@@ -165,9 +209,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "사랑의 고백, 감사하는 마음",
-    "FLW_IDX": 16
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_16",
     "name": "카네이션",
     "season": [
       "여름"
@@ -175,9 +222,12 @@
     "color": "노란색",
     "scent": "강한향",
     "description": "거절, 실망, 질투, 경멸",
-    "FLW_IDX": 17
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_17",
     "name": "카네이션",
     "season": [
       "여름"
@@ -185,9 +235,12 @@
     "color": "파란색",
     "scent": "강한향",
     "description": "영원한 행복",
-    "FLW_IDX": 18
+    "emotion_tags": [
+      "행복(영원한)"
+    ]
   },
   {
+    "id": "flower_18",
     "name": "카네이션",
     "season": [
       "여름"
@@ -195,9 +248,12 @@
     "color": "보라색",
     "scent": "강한향",
     "description": "기품, 자랑, 자유",
-    "FLW_IDX": 19
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_19",
     "name": "카네이션",
     "season": [
       "여름"
@@ -205,9 +261,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "내 사랑은 살아있어요",
-    "FLW_IDX": 20
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_20",
     "name": "모란",
     "season": [
       "봄",
@@ -216,9 +275,12 @@
     "color": "빨간색",
     "scent": "무향",
     "description": "열정적인 사랑",
-    "FLW_IDX": 21
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_21",
     "name": "모란",
     "season": [
       "봄",
@@ -227,9 +289,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "우아함",
-    "FLW_IDX": 22
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_22",
     "name": "모란",
     "season": [
       "봄",
@@ -238,9 +303,12 @@
     "color": "노란색",
     "scent": "무향",
     "description": "기쁨, 용기, 새로운 시작",
-    "FLW_IDX": 23
+    "emotion_tags": [
+      "응원(꿈을 향한 도전)"
+    ]
   },
   {
+    "id": "flower_23",
     "name": "모란",
     "season": [
       "봄",
@@ -249,9 +317,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "부귀, 화려, 변영",
-    "FLW_IDX": 24
+    "emotion_tags": [
+      "특별한(고급)"
+    ]
   },
   {
+    "id": "flower_24",
     "name": "모란",
     "season": [
       "봄",
@@ -260,9 +331,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "부귀, 화려, 변영",
-    "FLW_IDX": 25
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_25",
     "name": "아네모네",
     "season": [
       "겨울"
@@ -270,9 +344,12 @@
     "color": "빨간색",
     "scent": "무향",
     "description": "허무한 사랑, 속절없는 사랑, 버림",
-    "FLW_IDX": 26
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_26",
     "name": "아네모네",
     "season": [
       "겨울"
@@ -280,9 +357,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "당신을 믿으며 기다려",
-    "FLW_IDX": 27
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_27",
     "name": "아네모네",
     "season": [
       "겨울"
@@ -290,9 +370,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "진정성, 성실",
-    "FLW_IDX": 28
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_28",
     "name": "백합",
     "season": [
       "봄",
@@ -303,9 +386,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "순수한 사랑, 순결, 깨끗한 사랑",
-    "FLW_IDX": 29
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_29",
     "name": "백합",
     "season": [
       "봄",
@@ -316,9 +402,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "핑크빛 사랑",
-    "FLW_IDX": 30
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_30",
     "name": "백합",
     "season": [
       "봄",
@@ -329,9 +418,12 @@
     "color": "주황색",
     "scent": "강한향",
     "description": "명량한 사랑",
-    "FLW_IDX": 31
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_31",
     "name": "백합",
     "season": [
       "봄",
@@ -342,9 +434,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "열정, 깨끗함",
-    "FLW_IDX": 32
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_32",
     "name": "히야신스",
     "season": [
       "봄",
@@ -353,9 +448,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "내 마음에 당신의 사랑이 머물러 있습니다",
-    "FLW_IDX": 33
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_33",
     "name": "히야신스",
     "season": [
       "봄",
@@ -364,9 +462,12 @@
     "color": "파란색",
     "scent": "강한향",
     "description": "당신이 나를 사랑해 주어 기쁩니다",
-    "FLW_IDX": 34
+    "emotion_tags": [
+      "사랑(행복한)"
+    ]
   },
   {
+    "id": "flower_34",
     "name": "히야신스",
     "season": [
       "봄",
@@ -375,9 +476,12 @@
     "color": "보라색",
     "scent": "강한향",
     "description": "영원한 사랑",
-    "FLW_IDX": 35
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_35",
     "name": "히야신스",
     "season": [
       "봄",
@@ -386,9 +490,12 @@
     "color": "노란색",
     "scent": "강한향",
     "description": "용기, 승부",
-    "FLW_IDX": 36
+    "emotion_tags": [
+      "응원(꿈을 향한 도전)"
+    ]
   },
   {
+    "id": "flower_36",
     "name": "프리지아",
     "season": [
       "봄",
@@ -397,9 +504,12 @@
     "color": "노란색",
     "scent": "강한향",
     "description": "기쁨, 우정 당신의 시작을 응원합니다",
-    "FLW_IDX": 37
+    "emotion_tags": [
+      "응원(새로운 시작)"
+    ]
   },
   {
+    "id": "flower_37",
     "name": "프리지아",
     "season": [
       "봄",
@@ -408,9 +518,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "순수함, 신뢰, 인내, 새로운 우정, 사려 깊음",
-    "FLW_IDX": 38
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_38",
     "name": "프리지아",
     "season": [
       "봄",
@@ -419,9 +532,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "열정, 사랑, 당신은 아름다워요",
-    "FLW_IDX": 39
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_39",
     "name": "프리지아",
     "season": [
       "봄",
@@ -430,9 +546,12 @@
     "color": "주황색",
     "scent": "강한향",
     "description": "깊은 우정, 행복한 시절, 당신과 함께 있으면",
-    "FLW_IDX": 40
+    "emotion_tags": [
+      "행복(함께한)"
+    ]
   },
   {
+    "id": "flower_40",
     "name": "프리지아",
     "season": [
       "봄",
@@ -441,9 +560,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "여성스러움, 어머니의 사랑",
-    "FLW_IDX": 41
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_41",
     "name": "수선화",
     "season": [
       "봄",
@@ -452,9 +574,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "존경과 신비",
-    "FLW_IDX": 42
+    "emotion_tags": [
+      "특별함(신비)"
+    ]
   },
   {
+    "id": "flower_42",
     "name": "수선화",
     "season": [
       "봄",
@@ -463,9 +588,12 @@
     "color": "노란색",
     "scent": "강한향",
     "description": "사랑해주세요, 내 곁으로 돌아와 주세요",
-    "FLW_IDX": 43
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_43",
     "name": "수선화",
     "season": [
       "봄",
@@ -474,9 +602,12 @@
     "color": "주황색",
     "scent": "강한향",
     "description": "희망, 봄의 방문",
-    "FLW_IDX": 44
+    "emotion_tags": [
+      "응원(새로운 시작)"
+    ]
   },
   {
+    "id": "flower_44",
     "name": "아이리스",
     "season": [
       "여름",
@@ -486,9 +617,12 @@
     "color": "보라색",
     "scent": "은은한향",
     "description": "헌명함, 존경, 칭찬",
-    "FLW_IDX": 45
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_45",
     "name": "아이리스",
     "season": [
       "여름",
@@ -498,9 +632,12 @@
     "color": "파란색",
     "scent": "은은한향",
     "description": "희망, 진실",
-    "FLW_IDX": 46
+    "emotion_tags": [
+      "응원(격려)"
+    ]
   },
   {
+    "id": "flower_46",
     "name": "아이리스",
     "season": [
       "여름",
@@ -510,9 +647,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "열정",
-    "FLW_IDX": 47
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_47",
     "name": "아이리스",
     "season": [
       "여름",
@@ -522,9 +662,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "순수함, 결백",
-    "FLW_IDX": 48
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_48",
     "name": "수국",
     "season": [
       "여름"
@@ -532,9 +675,12 @@
     "color": "파란색",
     "scent": "은은한향",
     "description": "냉정, 냉담",
-    "FLW_IDX": 49
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_49",
     "name": "수국",
     "season": [
       "여름"
@@ -542,9 +688,12 @@
     "color": "보라색",
     "scent": "은은한향",
     "description": "첫사랑의 추억",
-    "FLW_IDX": 50
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_50",
     "name": "수국",
     "season": [
       "여름"
@@ -552,9 +701,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "진실한 사랑, 강한 사랑",
-    "FLW_IDX": 51
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_51",
     "name": "해바라기",
     "season": [
       "여름"
@@ -562,9 +714,12 @@
     "color": "노란색",
     "scent": "무향",
     "description": "선함, 진실함, 영원함",
-    "FLW_IDX": 52
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_52",
     "name": "해바라기",
     "season": [
       "여름"
@@ -572,9 +727,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "순수함, 재탄생, 평화",
-    "FLW_IDX": 53
+    "emotion_tags": [
+      "행복(순수한)"
+    ]
   },
   {
+    "id": "flower_53",
     "name": "메리골드",
     "season": [
       "봄",
@@ -584,9 +742,12 @@
     "color": "노란색",
     "scent": "강한향",
     "description": "반드시 오고야 말 행복",
-    "FLW_IDX": 54
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_54",
     "name": "메리골드",
     "season": [
       "봄",
@@ -596,9 +757,12 @@
     "color": "주황색",
     "scent": "강한향",
     "description": "반드시 오고야 말 행복",
-    "FLW_IDX": 55
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_55",
     "name": "용담초",
     "season": [
       "여름"
@@ -606,9 +770,12 @@
     "color": "파란색",
     "scent": "은은한향",
     "description": "슬퍼하는 당신을 사랑합니다",
-    "FLW_IDX": 56
+    "emotion_tags": [
+      "슬픔(위로)"
+    ]
   },
   {
+    "id": "flower_56",
     "name": "국화",
     "season": [
       "가을"
@@ -616,9 +783,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "혼자하는 사랑, 짝사랑",
-    "FLW_IDX": 57
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_57",
     "name": "국화",
     "season": [
       "가을"
@@ -626,9 +796,12 @@
     "color": "빨간색",
     "scent": "은은한향",
     "description": "당신을 사랑합니다",
-    "FLW_IDX": 58
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_58",
     "name": "국화",
     "season": [
       "가을"
@@ -636,9 +809,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "감사, 진실, 성실",
-    "FLW_IDX": 59
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_59",
     "name": "국화",
     "season": [
       "가을"
@@ -646,9 +822,12 @@
     "color": "보라색",
     "scent": "은은한향",
     "description": "내 모든 것을 그대에게",
-    "FLW_IDX": 60
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_60",
     "name": "국화",
     "season": [
       "가을"
@@ -656,9 +835,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "정조, 사랑",
-    "FLW_IDX": 61
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_61",
     "name": "코스모스",
     "season": [
       "봄",
@@ -669,9 +851,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "소녀의 순결",
-    "FLW_IDX": 62
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_62",
     "name": "코스모스",
     "season": [
       "봄",
@@ -682,9 +867,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "소녀의 순결, 수녀의 진심",
-    "FLW_IDX": 63
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_63",
     "name": "코스모스",
     "season": [
       "봄",
@@ -695,9 +883,12 @@
     "color": "빨간색",
     "scent": "은은한향",
     "description": "소녀의 사랑",
-    "FLW_IDX": 64
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_64",
     "name": "코스모스",
     "season": [
       "봄",
@@ -708,9 +899,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "야생의 아름다움, 자연미",
-    "FLW_IDX": 65
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_65",
     "name": "코스모스",
     "season": [
       "봄",
@@ -721,9 +915,12 @@
     "color": "주황색",
     "scent": "은은한향",
     "description": "야성적인 아름다움",
-    "FLW_IDX": 66
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_66",
     "name": "핑크뮬리",
     "season": [
       "가을"
@@ -731,9 +928,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "고백",
-    "FLW_IDX": 67
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_67",
     "name": "천일홍",
     "season": [
       "봄",
@@ -743,9 +943,12 @@
     "color": "빨간색",
     "scent": "무향",
     "description": "열정적인 사랑, 로맨스, 욕망",
-    "FLW_IDX": 68
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_68",
     "name": "천일홍",
     "season": [
       "봄",
@@ -755,9 +958,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "우아함, 달콤함, 친절, 애정",
-    "FLW_IDX": 69
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_69",
     "name": "천일홍",
     "season": [
       "봄",
@@ -767,9 +973,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "순결, 순수, 시작",
-    "FLW_IDX": 70
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_70",
     "name": "천일홍",
     "season": [
       "봄",
@@ -779,9 +988,12 @@
     "color": "노란색",
     "scent": "무향",
     "description": "행복, 기쁨, 우정",
-    "FLW_IDX": 71
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_71",
     "name": "천일홍",
     "season": [
       "봄",
@@ -791,9 +1003,12 @@
     "color": "주황색",
     "scent": "무향",
     "description": "응원, 활력, 창의성",
-    "FLW_IDX": 72
+    "emotion_tags": [
+      "응원(격려)"
+    ]
   },
   {
+    "id": "flower_72",
     "name": "천일홍",
     "season": [
       "봄",
@@ -803,9 +1018,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "왕족, 고급스러움, 우아함",
-    "FLW_IDX": 73
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_73",
     "name": "사루비아",
     "season": [
       "봄",
@@ -815,9 +1033,12 @@
     "color": "빨간색",
     "scent": "은은한향",
     "description": "불타는 마음, 정열",
-    "FLW_IDX": 74
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_74",
     "name": "라벤더",
     "season": [
       "봄",
@@ -828,9 +1049,12 @@
     "color": "보라색",
     "scent": "강한향",
     "description": "사랑의 기쁨, 사랑의 신비, 로맨틱한 사랑",
-    "FLW_IDX": 75
+    "emotion_tags": [
+      "행복(영원한)"
+    ]
   },
   {
+    "id": "flower_75",
     "name": "라벤더",
     "season": [
       "봄",
@@ -841,9 +1065,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "사랑의 초상, 감사, 희망",
-    "FLW_IDX": 76
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_76",
     "name": "라벤더",
     "season": [
       "봄",
@@ -854,9 +1081,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "사랑의 꿈, 로맨스",
-    "FLW_IDX": 77
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_77",
     "name": "알라스토메리아",
     "season": [
       "봄",
@@ -867,9 +1097,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "새로운 만남, 새로운 시작",
-    "FLW_IDX": 78
+    "emotion_tags": [
+      "응원(새로운 시작)"
+    ]
   },
   {
+    "id": "flower_78",
     "name": "알레스토메리아",
     "season": [
       "봄",
@@ -880,9 +1113,12 @@
     "color": "노란색",
     "scent": "무향",
     "description": "새로운 만남, 새로운시작",
-    "FLW_IDX": 79
+    "emotion_tags": [
+      "응원(새로운 시작)"
+    ]
   },
   {
+    "id": "flower_79",
     "name": "알레스토메리아",
     "season": [
       "봄",
@@ -893,9 +1129,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "새로운 만남, 새로운시작",
-    "FLW_IDX": 80
+    "emotion_tags": [
+      "응원(새로운 시작)"
+    ]
   },
   {
+    "id": "flower_80",
     "name": "알레스토메리아",
     "season": [
       "봄",
@@ -906,9 +1145,12 @@
     "color": "주황색",
     "scent": "무향",
     "description": "새로운 만남, 새로운시작",
-    "FLW_IDX": 81
+    "emotion_tags": [
+      "응원(새로운 시작)"
+    ]
   },
   {
+    "id": "flower_81",
     "name": "알레스토메리아",
     "season": [
       "봄",
@@ -919,9 +1161,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "새로운 만남, 새로운시작",
-    "FLW_IDX": 82
+    "emotion_tags": [
+      "응원(새로운 시작)"
+    ]
   },
   {
+    "id": "flower_82",
     "name": "리시안셔스",
     "season": [
       "봄",
@@ -932,9 +1177,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "순결, 영성, 평생의 유대",
-    "FLW_IDX": 83
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_83",
     "name": "리시안셔스",
     "season": [
       "봄",
@@ -945,9 +1193,12 @@
     "color": "보라색",
     "scent": "은은한향",
     "description": "아름다움, 고귀함",
-    "FLW_IDX": 84
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_84",
     "name": "리시안셔스",
     "season": [
       "봄",
@@ -958,9 +1209,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "밝음, 긍정적인 에너지",
-    "FLW_IDX": 85
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_85",
     "name": "리시안셔스",
     "season": [
       "봄",
@@ -971,9 +1225,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "로맨스, 사랑, 애정, 사랑스러운 연인",
-    "FLW_IDX": 86
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_86",
     "name": "안개꽃",
     "season": [
       "봄",
@@ -983,9 +1240,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "행복, 기쁨, 함께하겠다는 약속",
-    "FLW_IDX": 87
+    "emotion_tags": [
+      "행복(함께한)"
+    ]
   },
   {
+    "id": "flower_87",
     "name": "안개꽃",
     "season": [
       "봄",
@@ -995,9 +1255,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "죽을 만큼 사랑합니다",
-    "FLW_IDX": 88
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_88",
     "name": "안개꽃",
     "season": [
       "봄",
@@ -1007,9 +1270,12 @@
     "color": "파란색",
     "scent": "강한향",
     "description": "끝나지 않을 영원한 사랑",
-    "FLW_IDX": 89
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_89",
     "name": "물망초",
     "season": [
       "봄"
@@ -1017,9 +1283,12 @@
     "color": "파란색",
     "scent": "무향",
     "description": "나를 잊지 말아요",
-    "FLW_IDX": 90
+    "emotion_tags": [
+      "슬픔(그리움)"
+    ]
   },
   {
+    "id": "flower_90",
     "name": "스타티스",
     "season": [
       "봄",
@@ -1029,9 +1298,12 @@
     "color": "빨간색",
     "scent": "무향",
     "description": "사랑과 열정",
-    "FLW_IDX": 91
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_91",
     "name": "스타티스",
     "season": [
       "봄",
@@ -1041,9 +1313,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "모성애",
-    "FLW_IDX": 92
+    "emotion_tags": [
+      "축하(출산)"
+    ]
   },
   {
+    "id": "flower_92",
     "name": "스타티스",
     "season": [
       "봄",
@@ -1053,9 +1328,12 @@
     "color": "노란색",
     "scent": "무향",
     "description": "존경",
-    "FLW_IDX": 93
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_93",
     "name": "스타티스",
     "season": [
       "봄",
@@ -1065,9 +1343,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "순수, 진실",
-    "FLW_IDX": 94
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_94",
     "name": "스타티스",
     "season": [
       "봄",
@@ -1077,9 +1358,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "매력, 우아함, 성공",
-    "FLW_IDX": 95
+    "emotion_tags": [
+      "축하(승진)"
+    ]
   },
   {
+    "id": "flower_95",
     "name": "글라디올러스",
     "season": [
       "여름",
@@ -1089,9 +1373,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "순수함, 영성",
-    "FLW_IDX": 96
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_96",
     "name": "글라디올러스",
     "season": [
       "여름",
@@ -1101,9 +1388,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "어머니의 사랑",
-    "FLW_IDX": 97
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_97",
     "name": "클레마티스",
     "season": [
       "봄",
@@ -1114,9 +1404,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "당신의 마음은 진실로 아름답다",
-    "FLW_IDX": 98
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_98",
     "name": "마가렛",
     "season": [
       "봄",
@@ -1125,9 +1418,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "진실한 사랑, 수수함, 청아함",
-    "FLW_IDX": 99
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_99",
     "name": "스위트피",
     "season": [
       "봄",
@@ -1137,9 +1433,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "감탄, 기쁨, 감사",
-    "FLW_IDX": 100
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_100",
     "name": "스위트피",
     "season": [
       "봄",
@@ -1149,9 +1448,12 @@
     "color": "보라색",
     "scent": "강한향",
     "description": "마법, 신비주의, 영적 연결",
-    "FLW_IDX": 101
+    "emotion_tags": [
+      "특별함(마법)"
+    ]
   },
   {
+    "id": "flower_101",
     "name": "스위트피",
     "season": [
       "봄",
@@ -1161,9 +1463,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "새로운 시작, 순수함",
-    "FLW_IDX": 102
+    "emotion_tags": [
+      "응원(새로운 시작)"
+    ]
   },
   {
+    "id": "flower_102",
     "name": "스위트피",
     "season": [
       "봄",
@@ -1173,9 +1478,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "열정, 사랑, 욕망",
-    "FLW_IDX": 103
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_103",
     "name": "루드베키아",
     "season": [
       "봄",
@@ -1184,9 +1492,12 @@
     "color": "노란색",
     "scent": "강한향",
     "description": "영원한 행복",
-    "FLW_IDX": 104
+    "emotion_tags": [
+      "행복(영원한)"
+    ]
   },
   {
+    "id": "flower_104",
     "name": "에키놉스",
     "season": [
       "봄",
@@ -1197,9 +1508,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "아이같은 마음, 동심",
-    "FLW_IDX": 105
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_105",
     "name": "유칼립투스",
     "season": [
       "봄",
@@ -1210,9 +1524,12 @@
     "color": "초록색",
     "scent": "강한향",
     "description": "추억을 함께 만들어가자",
-    "FLW_IDX": 106
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_106",
     "name": "옥시페탈륨",
     "season": [
       "봄",
@@ -1223,9 +1540,12 @@
     "color": "파란색",
     "scent": "무향",
     "description": "사랑의 방문, 행복한 사랑, 서로를 믿는 마음",
-    "FLW_IDX": 107
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_107",
     "name": "옥시페탈륨",
     "season": [
       "봄",
@@ -1236,9 +1556,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "사랑의 방문, 행복한 사랑, 서로를 믿는 마음",
-    "FLW_IDX": 108
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_108",
     "name": "옥시페탈륨",
     "season": [
       "봄",
@@ -1249,9 +1572,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "사랑의 방문, 행복한 사랑, 서로를 믿는 마음",
-    "FLW_IDX": 109
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_109",
     "name": "미니거베라",
     "season": [
       "봄",
@@ -1262,9 +1588,12 @@
     "color": "빨간색",
     "scent": "무향",
     "description": "당신을 사랑합니다",
-    "FLW_IDX": 110
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_110",
     "name": "미니거베라",
     "season": [
       "봄",
@@ -1275,9 +1604,12 @@
     "color": "주황색",
     "scent": "무향",
     "description": "열정과 에너지",
-    "FLW_IDX": 111
+    "emotion_tags": [
+      "응원(꿈을 향한 도전)"
+    ]
   },
   {
+    "id": "flower_111",
     "name": "미니거베라",
     "season": [
       "봄",
@@ -1288,9 +1620,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "친절과 감사",
-    "FLW_IDX": 112
+    "emotion_tags": [
+      "축하(승진)"
+    ]
   },
   {
+    "id": "flower_112",
     "name": "미니거베라",
     "season": [
       "봄",
@@ -1301,9 +1636,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "순결",
-    "FLW_IDX": 113
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_113",
     "name": "미니거베라",
     "season": [
       "봄",
@@ -1314,9 +1652,12 @@
     "color": "노란색",
     "scent": "무향",
     "description": "행복과 우정",
-    "FLW_IDX": 114
+    "emotion_tags": [
+      "행복(함께한)"
+    ]
   },
   {
+    "id": "flower_114",
     "name": "핑퐁디스버드",
     "season": [
       "봄",
@@ -1327,9 +1668,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "내 마음은 진심입니다",
-    "FLW_IDX": 115
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_115",
     "name": "핑퐁디스버드",
     "season": [
       "봄",
@@ -1340,9 +1684,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "내 마음은 진심입니다",
-    "FLW_IDX": 116
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_116",
     "name": "핑퐁디스버드",
     "season": [
       "봄",
@@ -1353,9 +1700,12 @@
     "color": "초록색",
     "scent": "은은한향",
     "description": "내 마음은 진심입니다",
-    "FLW_IDX": 117
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_117",
     "name": "핑퐁디스버드",
     "season": [
       "봄",
@@ -1366,9 +1716,12 @@
     "color": "보라색",
     "scent": "은은한향",
     "description": "내 마음은 진심입니다",
-    "FLW_IDX": 118
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_118",
     "name": "핑퐁디스버드",
     "season": [
       "봄",
@@ -1379,9 +1732,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "내 마음은 진심입니다",
-    "FLW_IDX": 119
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_119",
     "name": "미니델피늄",
     "season": [
       "봄",
@@ -1392,9 +1748,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "당신을 행복하게 해드릴게요",
-    "FLW_IDX": 120
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_120",
     "name": "미니델피늄",
     "season": [
       "봄",
@@ -1405,9 +1764,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "당신을 행복하게 해드릴게요",
-    "FLW_IDX": 121
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_121",
     "name": "미니델피늄",
     "season": [
       "봄",
@@ -1418,9 +1780,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "당신을 행복하게 해드릴게요",
-    "FLW_IDX": 122
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_122",
     "name": "미니델피늄",
     "season": [
       "봄",
@@ -1431,9 +1796,12 @@
     "color": "파란색",
     "scent": "은은한향",
     "description": "당신을 행복하게 해드릴게요",
-    "FLW_IDX": 123
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_123",
     "name": "꽃양배추",
     "season": [
       "가을",
@@ -1442,9 +1810,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "마음을 풍성하게 하고 축복을 가져다준다",
-    "FLW_IDX": 124
+    "emotion_tags": [
+      "축하(출산)"
+    ]
   },
   {
+    "id": "flower_124",
     "name": "꽃양배추",
     "season": [
       "가을",
@@ -1453,9 +1824,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "마음을 풍성하게 하고 축복을 가져다준다",
-    "FLW_IDX": 125
+    "emotion_tags": [
+      "축하(출산)"
+    ]
   },
   {
+    "id": "flower_125",
     "name": "공작초",
     "season": [
       "여름",
@@ -1465,9 +1839,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "화해, 이제 그만 화 풀어요",
-    "FLW_IDX": 126
+    "emotion_tags": [
+      "슬픔(위로)"
+    ]
   },
   {
+    "id": "flower_126",
     "name": "공작초",
     "season": [
       "여름",
@@ -1477,9 +1854,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "순수함, 영성",
-    "FLW_IDX": 127
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_127",
     "name": "공작초",
     "season": [
       "여름",
@@ -1489,9 +1869,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "사랑, 애정, 부드러움",
-    "FLW_IDX": 128
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_128",
     "name": "네리네",
     "season": [
       "봄",
@@ -1501,9 +1884,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "다시 만날 그날까지",
-    "FLW_IDX": 129
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_129",
     "name": "네리네",
     "season": [
       "봄",
@@ -1513,9 +1899,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "다시 만날 그날까지",
-    "FLW_IDX": 130
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_130",
     "name": "브루니아",
     "season": [
       "가을"
@@ -1523,9 +1912,12 @@
     "color": "회색",
     "scent": "무향",
     "description": "사랑의 방문, 불변",
-    "FLW_IDX": 131
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_131",
     "name": "왁스플라워",
     "season": [
       "봄",
@@ -1536,9 +1928,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "순수함, 신성함",
-    "FLW_IDX": 132
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_132",
     "name": "왁스플라워",
     "season": [
       "봄",
@@ -1549,9 +1944,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "사랑, 로맨스",
-    "FLW_IDX": 133
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_133",
     "name": "왁스플라워",
     "season": [
       "봄",
@@ -1562,9 +1960,12 @@
     "color": "노란색",
     "scent": "강한향",
     "description": "행복, 희망",
-    "FLW_IDX": 134
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_134",
     "name": "왁스플라워",
     "season": [
       "봄",
@@ -1575,9 +1976,12 @@
     "color": "보라색",
     "scent": "강한향",
     "description": "신비, 영감",
-    "FLW_IDX": 135
+    "emotion_tags": [
+      "특별함(신비)"
+    ]
   },
   {
+    "id": "flower_135",
     "name": "왁스플라워",
     "season": [
       "봄",
@@ -1588,9 +1992,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "열정, 사랑",
-    "FLW_IDX": 136
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_136",
     "name": "리아트리스",
     "season": [
       "여름"
@@ -1598,9 +2005,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "팔방미인, 고결",
-    "FLW_IDX": 137
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_137",
     "name": "카라",
     "season": [
       "여름",
@@ -1610,9 +2020,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "순수함, 깨끗함, 존엄한, 신비함",
-    "FLW_IDX": 138
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_138",
     "name": "카라",
     "season": [
       "여름",
@@ -1622,9 +2035,12 @@
     "color": "빨간색",
     "scent": "은은한향",
     "description": "사랑의 고백, 강렬한 아름다움",
-    "FLW_IDX": 139
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_139",
     "name": "카라",
     "season": [
       "여름",
@@ -1634,9 +2050,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "행복, 기쁨, 활력, 쾌활함",
-    "FLW_IDX": 140
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_140",
     "name": "카라",
     "season": [
       "여름",
@@ -1646,9 +2065,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "사랑, 로맨스, 부드러움",
-    "FLW_IDX": 141
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_141",
     "name": "카라",
     "season": [
       "여름",
@@ -1658,9 +2080,12 @@
     "color": "보라색",
     "scent": "은은한향",
     "description": "로열티, 독창성, 귀족적인 아름다움",
-    "FLW_IDX": 142
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_142",
     "name": "작약",
     "season": [
       "봄"
@@ -1668,9 +2093,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "수줍음, 부끄러움",
-    "FLW_IDX": 143
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_143",
     "name": "작약",
     "season": [
       "봄"
@@ -1678,9 +2106,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "행복한 결혼",
-    "FLW_IDX": 144
+    "emotion_tags": [
+      "축하(결혼)"
+    ]
   },
   {
+    "id": "flower_144",
     "name": "작약",
     "season": [
       "봄"
@@ -1688,9 +2119,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "성실함",
-    "FLW_IDX": 145
+    "emotion_tags": [
+      "응원(격려)"
+    ]
   },
   {
+    "id": "flower_145",
     "name": "안시리움",
     "season": [
       "봄",
@@ -1701,9 +2135,12 @@
     "color": "빨간색",
     "scent": "무향",
     "description": "불타는 마음, 번뇌",
-    "FLW_IDX": 146
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_146",
     "name": "안시리움",
     "season": [
       "봄",
@@ -1714,9 +2151,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "불타는 마음, 번뇌",
-    "FLW_IDX": 147
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_147",
     "name": "안시리움",
     "season": [
       "봄",
@@ -1727,9 +2167,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "불타는 마음, 번뇌",
-    "FLW_IDX": 148
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_148",
     "name": "안시리움",
     "season": [
       "봄",
@@ -1740,9 +2183,12 @@
     "color": "초록색",
     "scent": "무향",
     "description": "불타는 마음, 번뇌",
-    "FLW_IDX": 149
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_149",
     "name": "아미초",
     "season": [
       "봄",
@@ -1752,9 +2198,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "사랑의 소식",
-    "FLW_IDX": 150
+    "emotion_tags": [
+      "축하(결혼)"
+    ]
   },
   {
+    "id": "flower_150",
     "name": "심비디움",
     "season": [
       "봄",
@@ -1763,9 +2212,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "미인, 귀부인, 우아한 여인",
-    "FLW_IDX": 151
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_151",
     "name": "심비디움",
     "season": [
       "봄",
@@ -1774,9 +2226,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "미인, 귀부인, 우아한 여인",
-    "FLW_IDX": 152
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_152",
     "name": "스토크",
     "season": [
       "봄",
@@ -1786,9 +2241,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "영원한 사랑, 사랑의 굴레, 역경",
-    "FLW_IDX": 153
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_153",
     "name": "스토크",
     "season": [
       "봄",
@@ -1798,9 +2256,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "영원한 사랑, 사랑의 굴레, 역경",
-    "FLW_IDX": 154
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_154",
     "name": "스토크",
     "season": [
       "봄",
@@ -1810,9 +2271,12 @@
     "color": "보라색",
     "scent": "강한향",
     "description": "영원한 사랑, 사랑의 굴레, 역경",
-    "FLW_IDX": 155
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_155",
     "name": "스카비오사",
     "season": [
       "봄",
@@ -1823,9 +2287,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "운치, 사랑을 잃다",
-    "FLW_IDX": 156
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_156",
     "name": "스카비오사",
     "season": [
       "봄",
@@ -1836,9 +2303,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "운치, 사랑을 잃다",
-    "FLW_IDX": 157
+    "emotion_tags": [
+      "슬픔(이별)"
+    ]
   },
   {
+    "id": "flower_157",
     "name": "석죽",
     "season": [
       "봄",
@@ -1848,9 +2318,12 @@
     "color": "초록색",
     "scent": "강한향",
     "description": "재능, 평정, 무욕",
-    "FLW_IDX": 158
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_158",
     "name": "석죽",
     "season": [
       "봄",
@@ -1860,9 +2333,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "재능, 평정, 무욕",
-    "FLW_IDX": 159
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_159",
     "name": "석죽",
     "season": [
       "봄",
@@ -1872,9 +2348,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "재능, 평정, 무욕",
-    "FLW_IDX": 160
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_160",
     "name": "석죽",
     "season": [
       "봄",
@@ -1884,9 +2363,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "재능, 평정, 무욕",
-    "FLW_IDX": 161
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_161",
     "name": "맨드라미",
     "season": [
       "봄",
@@ -1897,9 +2379,12 @@
     "color": "빨간색",
     "scent": "은은한향",
     "description": "시들지 않는 사랑",
-    "FLW_IDX": 162
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_162",
     "name": "맨드라미",
     "season": [
       "봄",
@@ -1910,9 +2395,12 @@
     "color": "주황색",
     "scent": "은은한향",
     "description": "시들지 않는 사랑",
-    "FLW_IDX": 163
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_163",
     "name": "맨드라미",
     "season": [
       "봄",
@@ -1923,9 +2411,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "시들지 않는 사랑",
-    "FLW_IDX": 164
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_164",
     "name": "맨드라미",
     "season": [
       "봄",
@@ -1936,9 +2427,12 @@
     "color": "초록색",
     "scent": "은은한향",
     "description": "시들지 않는 사랑",
-    "FLW_IDX": 165
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_165",
     "name": "맨드라미",
     "season": [
       "봄",
@@ -1949,9 +2443,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "시들지 않는 사랑",
-    "FLW_IDX": 166
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_166",
     "name": "맨드라미",
     "season": [
       "봄",
@@ -1962,9 +2459,12 @@
     "color": "갈색",
     "scent": "은은한향",
     "description": "시들지 않는 사랑",
-    "FLW_IDX": 167
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_167",
     "name": "디알리아",
     "season": [
       "여름",
@@ -1973,9 +2473,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "순수함, 깨끗함",
-    "FLW_IDX": 168
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_168",
     "name": "디알리아",
     "season": [
       "여름",
@@ -1984,9 +2487,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "우정, 기쁨, 행복",
-    "FLW_IDX": 169
+    "emotion_tags": [
+      "행복(다가올)"
+    ]
   },
   {
+    "id": "flower_169",
     "name": "디알리아",
     "season": [
       "여름",
@@ -1995,9 +2501,10 @@
     "color": "보라색",
     "scent": "은은한향",
     "description": "고귀함, 심비로움",
-    "FLW_IDX": 170
+    "emotion_tags": []
   },
   {
+    "id": "flower_170",
     "name": "라넌큘러스",
     "season": [
       "봄",
@@ -2006,9 +2513,10 @@
     "color": "빨간색",
     "scent": "은은한향",
     "description": "당신은 매력적이다",
-    "FLW_IDX": 171
+    "emotion_tags": []
   },
   {
+    "id": "flower_171",
     "name": "라넌큘러스",
     "season": [
       "봄",
@@ -2017,9 +2525,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "꾸밈없는 아름다움",
-    "FLW_IDX": 172
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_172",
     "name": "라넌큘러스",
     "season": [
       "봄",
@@ -2028,9 +2539,12 @@
     "color": "주황색",
     "scent": "은은한향",
     "description": "비밀",
-    "FLW_IDX": 173
+    "emotion_tags": [
+      "특별함(비밀)"
+    ]
   },
   {
+    "id": "flower_173",
     "name": "라넌큘러스",
     "season": [
       "봄",
@@ -2039,9 +2553,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "친절한 배려",
-    "FLW_IDX": 174
+    "emotion_tags": [
+      "슬픔(위로)"
+    ]
   },
   {
+    "id": "flower_174",
     "name": "라넌큘러스",
     "season": [
       "봄",
@@ -2050,9 +2567,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "순결",
-    "FLW_IDX": 175
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_175",
     "name": "베로니카",
     "season": [
       "봄",
@@ -2063,9 +2583,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "충실, 견고",
-    "FLW_IDX": 176
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_176",
     "name": "베로니카",
     "season": [
       "봄",
@@ -2076,9 +2599,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "충실, 견고",
-    "FLW_IDX": 177
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_177",
     "name": "베로니카",
     "season": [
       "봄",
@@ -2089,9 +2615,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "충실, 견고",
-    "FLW_IDX": 178
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_178",
     "name": "캄파눌라",
     "season": [
       "봄"
@@ -2099,9 +2628,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "따뜻한 사랑, 상냥한 사랑",
-    "FLW_IDX": 179
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_179",
     "name": "캄파눌라",
     "season": [
       "봄"
@@ -2109,9 +2641,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "따뜻한 사랑, 상냥한 사랑",
-    "FLW_IDX": 180
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_180",
     "name": "캄파눌라",
     "season": [
       "봄"
@@ -2119,9 +2654,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "따뜻한 사랑, 상냥한 사랑",
-    "FLW_IDX": 181
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_181",
     "name": "디디스커스",
     "season": [
       "봄"
@@ -2129,9 +2667,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "쑥쑥 자라는 아이",
-    "FLW_IDX": 182
+    "emotion_tags": [
+      "축하(출산)"
+    ]
   },
   {
+    "id": "flower_182",
     "name": "디디스커스",
     "season": [
       "봄"
@@ -2139,9 +2680,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "쑥쑥 자라는 아이",
-    "FLW_IDX": 183
+    "emotion_tags": [
+      "축하(출산)"
+    ]
   },
   {
+    "id": "flower_183",
     "name": "디디스커스",
     "season": [
       "봄"
@@ -2149,9 +2693,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "쑥쑥 자라는 아이",
-    "FLW_IDX": 184
+    "emotion_tags": [
+      "축하(출산)"
+    ]
   },
   {
+    "id": "flower_184",
     "name": "시네신스",
     "season": [
       "봄",
@@ -2162,9 +2709,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "영원한 사랑",
-    "FLW_IDX": 185
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_185",
     "name": "시네신스",
     "season": [
       "봄",
@@ -2175,9 +2725,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "영원한 사랑",
-    "FLW_IDX": 186
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_186",
     "name": "시네신스",
     "season": [
       "봄",
@@ -2188,9 +2741,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "영원한 사랑",
-    "FLW_IDX": 187
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_187",
     "name": "니겔라",
     "season": [
       "봄",
@@ -2199,9 +2755,12 @@
     "color": "파란색",
     "scent": "무향",
     "description": "꿈과 사랑, 신비로움",
-    "FLW_IDX": 188
+    "emotion_tags": [
+      "특별함(신비)"
+    ]
   },
   {
+    "id": "flower_188",
     "name": "니겔라",
     "season": [
       "봄",
@@ -2210,9 +2769,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "꿈과 사랑, 신비로움",
-    "FLW_IDX": 189
+    "emotion_tags": [
+      "특별함(신비)"
+    ]
   },
   {
+    "id": "flower_189",
     "name": "니겔라",
     "season": [
       "봄",
@@ -2221,9 +2783,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "꿈과 사랑, 신비로움",
-    "FLW_IDX": 190
+    "emotion_tags": [
+      "특별함(신비)"
+    ]
   },
   {
+    "id": "flower_190",
     "name": "바질꽃",
     "season": [
       "여름"
@@ -2231,9 +2796,12 @@
     "color": "보라색",
     "scent": "강한향",
     "description": "사랑, 행운, 왕의 품격",
-    "FLW_IDX": 191
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_191",
     "name": "바질꽃",
     "season": [
       "여름"
@@ -2241,9 +2809,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "사랑, 행운, 왕의 품격",
-    "FLW_IDX": 192
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_192",
     "name": "베르가못꽃",
     "season": [
       "여름"
@@ -2251,9 +2822,12 @@
     "color": "빨간색",
     "scent": "강한향",
     "description": "감수성이 풍부함",
-    "FLW_IDX": 193
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_193",
     "name": "베르가못꽃",
     "season": [
       "여름"
@@ -2261,9 +2835,12 @@
     "color": "분홍색",
     "scent": "강한향",
     "description": "감수성이 풍부함",
-    "FLW_IDX": 194
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_194",
     "name": "베르가못꽃",
     "season": [
       "여름"
@@ -2271,9 +2848,12 @@
     "color": "보라색",
     "scent": "강한향",
     "description": "감수성이 풍부함",
-    "FLW_IDX": 195
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_195",
     "name": "베르가못꽃",
     "season": [
       "여름"
@@ -2281,9 +2861,12 @@
     "color": "하얀색",
     "scent": "강한향",
     "description": "감수성이 풍부함",
-    "FLW_IDX": 196
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_196",
     "name": "카스피아",
     "season": [
       "여름"
@@ -2291,9 +2874,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "청초한 사랑",
-    "FLW_IDX": 197
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_197",
     "name": "카스피아",
     "season": [
       "여름"
@@ -2301,9 +2887,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "청초한 사랑",
-    "FLW_IDX": 198
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_198",
     "name": "카스피아",
     "season": [
       "여름"
@@ -2311,9 +2900,12 @@
     "color": "노란색",
     "scent": "무향",
     "description": "청초한 사랑",
-    "FLW_IDX": 199
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_199",
     "name": "카스피아",
     "season": [
       "여름"
@@ -2321,9 +2913,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "청초한 사랑",
-    "FLW_IDX": 200
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_200",
     "name": "라그리스",
     "season": [
       "여름",
@@ -2332,9 +2927,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "당신의 친절에 감사합니다",
-    "FLW_IDX": 201
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_201",
     "name": "라그리스",
     "season": [
       "여름",
@@ -2343,9 +2941,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "순수함, 천진난만함, 영성",
-    "FLW_IDX": 202
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_202",
     "name": "라그리스",
     "season": [
       "여름",
@@ -2354,9 +2955,12 @@
     "color": "파란색",
     "scent": "무향",
     "description": "평온, 내면의 평화",
-    "FLW_IDX": 203
+    "emotion_tags": [
+      "행복(영원한)"
+    ]
   },
   {
+    "id": "flower_203",
     "name": "라그리스",
     "season": [
       "여름",
@@ -2365,9 +2969,12 @@
     "color": "보라색",
     "scent": "무향",
     "description": "왕족, 야망, 존경",
-    "FLW_IDX": 204
+    "emotion_tags": [
+      "특별한(고귀)"
+    ]
   },
   {
+    "id": "flower_204",
     "name": "플록스",
     "season": [
       "봄",
@@ -2378,9 +2985,12 @@
     "color": "보라색",
     "scent": "은은한향",
     "description": "우리의 마음은 하나",
-    "FLW_IDX": 205
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_205",
     "name": "플록스",
     "season": [
       "봄",
@@ -2391,9 +3001,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "우리의 마음은 하나",
-    "FLW_IDX": 206
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_206",
     "name": "플록스",
     "season": [
       "봄",
@@ -2404,9 +3017,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "우리의 마음은 하나",
-    "FLW_IDX": 207
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_207",
     "name": "플록스",
     "season": [
       "봄",
@@ -2417,9 +3033,12 @@
     "color": "파란색",
     "scent": "은은한향",
     "description": "우리의 마음은 하나",
-    "FLW_IDX": 208
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_208",
     "name": "바이올렛",
     "season": [
       "봄",
@@ -2430,9 +3049,12 @@
     "color": "보라색",
     "scent": "은은한향",
     "description": "의젓함, 고요한 사랑",
-    "FLW_IDX": 209
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_209",
     "name": "바이올렛",
     "season": [
       "봄",
@@ -2443,9 +3065,12 @@
     "color": "파란색",
     "scent": "은은한향",
     "description": "의젓함, 고요한 사랑",
-    "FLW_IDX": 210
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_210",
     "name": "바이올렛",
     "season": [
       "봄",
@@ -2456,9 +3081,12 @@
     "color": "하얀색",
     "scent": "은은한향",
     "description": "의젓함, 고요한 사랑",
-    "FLW_IDX": 211
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_211",
     "name": "팔레놉시스",
     "season": [
       "봄",
@@ -2467,9 +3095,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "당신을 사랑합니다",
-    "FLW_IDX": 212
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_212",
     "name": "칼란디바",
     "season": [
       "봄",
@@ -2479,9 +3110,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "설레임",
-    "FLW_IDX": 213
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_213",
     "name": "칼란디바",
     "season": [
       "봄",
@@ -2491,9 +3125,12 @@
     "color": "노란색",
     "scent": "무향",
     "description": "설레임",
-    "FLW_IDX": 214
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_214",
     "name": "제라늄",
     "season": [
       "봄",
@@ -2503,9 +3140,12 @@
     "color": "빨간색",
     "scent": "은은한향",
     "description": "그대가 있어 행복합니다",
-    "FLW_IDX": 215
+    "emotion_tags": [
+      "사랑(행복한)"
+    ]
   },
   {
+    "id": "flower_215",
     "name": "제라늄",
     "season": [
       "봄",
@@ -2515,9 +3155,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "그대가 있어 행복합니다",
-    "FLW_IDX": 216
+    "emotion_tags": [
+      "사랑(행복한)"
+    ]
   },
   {
+    "id": "flower_216",
     "name": "칼라디움",
     "season": [
       "여름"
@@ -2525,9 +3168,12 @@
     "color": "초록색",
     "scent": "무향",
     "description": "환희, 기쁨, 즐거움",
-    "FLW_IDX": 217
+    "emotion_tags": [
+      "축하(승진)"
+    ]
   },
   {
+    "id": "flower_217",
     "name": "칼라디움",
     "season": [
       "여름"
@@ -2535,9 +3181,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "환희, 기쁨, 즐거움",
-    "FLW_IDX": 218
+    "emotion_tags": [
+      "축하(승진)"
+    ]
   },
   {
+    "id": "flower_218",
     "name": "포인트세티아",
     "season": [
       "겨울"
@@ -2545,9 +3194,12 @@
     "color": "빨간색",
     "scent": "무향",
     "description": "제 마음은 불타오르고 있어요",
-    "FLW_IDX": 219
+    "emotion_tags": [
+      "사랑(강렬한)"
+    ]
   },
   {
+    "id": "flower_219",
     "name": "크루시아",
     "season": [
       "봄",
@@ -2557,9 +3209,12 @@
     "color": "초록색",
     "scent": "무향",
     "description": "변함없는 사랑",
-    "FLW_IDX": 220
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_220",
     "name": "아글라오네마",
     "season": [
       "봄",
@@ -2568,9 +3223,10 @@
     "color": "초록색",
     "scent": "무향",
     "description": "행운, 행복, 부귀",
-    "FLW_IDX": 221
+    "emotion_tags": []
   },
   {
+    "id": "flower_221",
     "name": "베고니아",
     "season": [
       "봄",
@@ -2580,9 +3236,12 @@
     "color": "빨간색",
     "scent": "은은한향",
     "description": "당신을 짝사랑합니다",
-    "FLW_IDX": 222
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_222",
     "name": "베고니아",
     "season": [
       "봄",
@@ -2592,9 +3251,12 @@
     "color": "분홍색",
     "scent": "은은한향",
     "description": "당신을 짝사랑합니다",
-    "FLW_IDX": 223
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_223",
     "name": "프림로즈",
     "season": [
       "봄"
@@ -2602,9 +3264,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "희망, 행복의 열쇠",
-    "FLW_IDX": 224
+    "emotion_tags": [
+      "행복(영원한)"
+    ]
   },
   {
+    "id": "flower_224",
     "name": "팬지",
     "season": [
       "봄"
@@ -2612,9 +3277,12 @@
     "color": "보라색",
     "scent": "은은한향",
     "description": "나를 생각해주세요",
-    "FLW_IDX": 225
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_225",
     "name": "팬지",
     "season": [
       "봄"
@@ -2622,9 +3290,12 @@
     "color": "노란색",
     "scent": "은은한향",
     "description": "나를 생각해주세요",
-    "FLW_IDX": 226
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_226",
     "name": "루피너스",
     "season": [
       "봄",
@@ -2633,9 +3304,12 @@
     "color": "파란색",
     "scent": "은은한향",
     "description": "모성애",
-    "FLW_IDX": 227
+    "emotion_tags": [
+      "축하(출산)"
+    ]
   },
   {
+    "id": "flower_227",
     "name": "아이비제라늄",
     "season": [
       "봄",
@@ -2644,9 +3318,12 @@
     "color": "빨간색",
     "scent": "은은한향",
     "description": "진실한 애정",
-    "FLW_IDX": 228
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_228",
     "name": "호야",
     "season": [
       "봄",
@@ -2655,9 +3332,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "이상적인사랑",
-    "FLW_IDX": 229
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_229",
     "name": "호야",
     "season": [
       "봄",
@@ -2666,9 +3346,12 @@
     "color": "분홍색",
     "scent": "무향",
     "description": "이상적인사랑",
-    "FLW_IDX": 230
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   },
   {
+    "id": "flower_230",
     "name": "알로카시아",
     "season": [
       "봄",
@@ -2677,9 +3360,12 @@
     "color": "초록색",
     "scent": "무향",
     "description": "번영, 발전",
-    "FLW_IDX": 231
+    "emotion_tags": [
+      "축하(승진)"
+    ]
   },
   {
+    "id": "flower_231",
     "name": "알로카시아",
     "season": [
       "봄",
@@ -2688,9 +3374,12 @@
     "color": "회색",
     "scent": "무향",
     "description": "번영, 발전",
-    "FLW_IDX": 232
+    "emotion_tags": [
+      "축하(승진)"
+    ]
   },
   {
+    "id": "flower_232",
     "name": "산세베리아",
     "season": [
       "여름"
@@ -2698,9 +3387,12 @@
     "color": "초록색",
     "scent": "무향",
     "description": "관용",
-    "FLW_IDX": 233
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_233",
     "name": "산세베리아",
     "season": [
       "여름"
@@ -2708,9 +3400,12 @@
     "color": "노란색",
     "scent": "무향",
     "description": "관용",
-    "FLW_IDX": 234
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_234",
     "name": "스파트필름",
     "season": [
       "봄",
@@ -2719,9 +3414,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "감싸는사랑",
-    "FLW_IDX": 235
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_235",
     "name": "스파트필름",
     "season": [
       "봄",
@@ -2730,9 +3428,12 @@
     "color": "초록색",
     "scent": "무향",
     "description": "감싸는사랑",
-    "FLW_IDX": 236
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_236",
     "name": "안스리움",
     "season": [
       "봄",
@@ -2743,9 +3444,12 @@
     "color": "하얀색",
     "scent": "무향",
     "description": "꾸미지 않은 아름다움",
-    "FLW_IDX": 237
+    "emotion_tags": [
+      "행복(순수한)"
+    ]
   },
   {
+    "id": "flower_237",
     "name": "안스리움",
     "season": [
       "봄",
@@ -2756,9 +3460,12 @@
     "color": "빨간색",
     "scent": "무향",
     "description": "꾸미지 않은 아름다움",
-    "FLW_IDX": 238
+    "emotion_tags": [
+      "행복(순수한)"
+    ]
   },
   {
+    "id": "flower_238",
     "name": "드라세나",
     "season": [
       "봄",
@@ -2768,9 +3475,10 @@
     "color": "초록색",
     "scent": "무향",
     "description": "장고한 행운",
-    "FLW_IDX": 239
+    "emotion_tags": []
   },
   {
+    "id": "flower_239",
     "name": "드라세나",
     "season": [
       "봄",
@@ -2780,9 +3488,10 @@
     "color": "노란색",
     "scent": "무향",
     "description": "장고한 행운",
-    "FLW_IDX": 240
+    "emotion_tags": []
   },
   {
+    "id": "flower_240",
     "name": "로즈마리",
     "season": [
       "봄"
@@ -2790,9 +3499,12 @@
     "color": "초록색",
     "scent": "강한향",
     "description": "나를 생각해요",
-    "FLW_IDX": 241
+    "emotion_tags": [
+      "사랑(따뜻한)"
+    ]
   },
   {
+    "id": "flower_241",
     "name": "페페로미아",
     "season": [
       "봄",
@@ -2801,9 +3513,12 @@
     "color": "초록색",
     "scent": "무향",
     "description": "행운과 함께하는 사랑",
-    "FLW_IDX": 242
+    "emotion_tags": [
+      "축하(결혼)"
+    ]
   },
   {
+    "id": "flower_242",
     "name": "디펜바키아",
     "season": [
       "봄"
@@ -2811,9 +3526,12 @@
     "color": "초록색",
     "scent": "무향",
     "description": "변치않는 사랑",
-    "FLW_IDX": 243
+    "emotion_tags": [
+      "사랑(영원한)"
+    ]
   },
   {
+    "id": "flower_243",
     "name": "필로덴드론",
     "season": [
       "봄"
@@ -2821,6 +3539,8 @@
     "color": "초록색",
     "scent": "무향",
     "description": "나를 사랑해줘요",
-    "FLW_IDX": 244
+    "emotion_tags": [
+      "사랑(순수한)"
+    ]
   }
 ]
