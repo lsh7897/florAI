@@ -18,7 +18,8 @@ class QueryInput(BaseModel):
 def recommend_flowers(input: QueryInput):
     try:
         query = input.query if isinstance(input.query, str) else ", ".join(input.query)
-        return get_flower_recommendations(query)
+        result = get_flower_recommendations(query)
+        return result["recommendations"]  # ✅ 핵심!
     except Exception as e:
         import traceback
         print(traceback.format_exc())
