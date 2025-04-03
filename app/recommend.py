@@ -101,7 +101,5 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
         })
 
     return {
-        "expanded_query": expanded_query,
-        "emotion_category": emotion_category,
         "recommendations": results
     }
