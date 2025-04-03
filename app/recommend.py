@@ -96,11 +96,7 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
         flower = metadata_list[real_index]
         reason = generate_reason(expanded_query, flower["description"], flower["name"])
         results.append({
-            "name": flower["name"],
-            "description": flower["description"],
-            "color": flower["color"],
-            "season": flower["season"],
-            "scent": flower["scent"],
+            "FLW_IDX": flower["FLW_IDX"],
             "reason": reason
         })
 
