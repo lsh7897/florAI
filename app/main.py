@@ -27,4 +27,10 @@ def recommend_flowers(input: QueryInput):
     
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("index.html", {
+        "request": request,
+        "title": "FlorAI 꽃 추천 API",
+        "heading": "FlorAI 꽃 추천 API",
+        "description": "이 페이지는 FlorAI API 서버가 정상 작동 중임을 나타냅니다.",
+        "example_query": "사랑 고백"
+    })
