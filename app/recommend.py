@@ -39,7 +39,19 @@ def classify_emotion(keywords: str) -> str:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run({"keywords": keywords}).strip()
 
-def expand_keywords(keywords: str) -> str:
+def expand_keywords(keywords: str, structured: bool = False) -> str:
+    if structured:
+        try:
+            parsed = eval(keywords) if isinstance(keywords, str) else keywords
+            if isinstance(parsed, list) and len(parsed) >= 4:
+                target = parsed[0]
+                emotion_main = parsed[1]
+                emotion_detail = parsed[2]
+                personality = parsed[3]
+                return f"{target}에게 {emotion_main}에 대한 감정을 표현하고 싶어. {emotion_detail} {emotion_main}을 생각하며 꽃을 받는 상대방은 {personality}"
+        except:
+            pass  # fallback below
+
     prompt = PromptTemplate(
         input_variables=["keywords"],
         template="""
@@ -49,11 +61,20 @@ def expand_keywords(keywords: str) -> str:
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
-    return chain.run(keywords).strip()
+    return chain.run({"keywords": keywords}).strip()
 
 def get_flower_recommendations(keywords: str, top_k: int = 3):
-    expanded_query = expand_keywords(keywords)
-    emotion_category = classify_emotion(keywords)
+    # 자동 structured 모드 적용
+    structured = False
+    try:
+        parsed = eval(keywords) if isinstance(keywords, str) else keywords
+        if isinstance(parsed, list) and len(parsed) >= 4:
+            structured = True
+    except:
+        pass
+
+    expanded_query = expand_keywords(keywords, structured=structured)
+    emotion_category = classify_emotion(keywords if isinstance(keywords, str) else ", ".join(keywords))
     query_vector = embed_query(expanded_query)
 
     distances, indices = index.search(np.array(query_vector).astype("float32"), top_k * 5)
