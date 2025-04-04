@@ -55,7 +55,7 @@ def expand_keywords(keywords: str, structured: bool = False) -> str:
     prompt = PromptTemplate(
         input_variables=["keywords"],
         template="""
-        사용자가 입력한 키워드: {keywords}
+        사용자가 입력한 키워드: f"{target}에게 {emotion_main}에 대한 감정을 표현하고 싶어. {emotion_detail} {emotion_main}을 생각하며 꽃을 받는 상대방은 {personality}"
         이 키워드를 바탕으로 감정과 상황을 포함한 자연스럽고 모든 의도가 잘 전달되게 문장으로 확장해줘.
         너무 길지 않고, 말하고자 하는 목적이 잘 나타나게게 해줘.
         """
