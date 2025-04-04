@@ -39,17 +39,31 @@ def classify_emotion(keywords: str) -> str:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run({"keywords": keywords}).strip()
 
-def expand_keywords(keywords: str) -> str:
+def expand_keywords(keywords: list[str], structured: bool = True) -> str:
+    if structured and isinstance(keywords, list) and len(keywords) >= 4:
+        target = keywords[0]
+        emotion_main = keywords[1]
+        emotion_detail = keywords[2]
+        personality = keywords[3]
+
+        # ✅ 직접 문장 생성
+        return (
+            f"{target}에게 {emotion_main}에 대한 감정을 표현하고 싶어. "
+            f"{emotion_detail} {emotion_main}을 생각하며 꽃을 받는 상대방은 {personality}."
+        )
+
+    # fallback: LLM 자연어 확장
     prompt = PromptTemplate(
         input_variables=["keywords"],
         template="""
-        사용자가 입력한 키워드: f"{target}에게 {emotion_main}에 대한 감정을 표현하고 싶어. {emotion_detail} {emotion_main}을 생각하며 꽃을 받는 상대방은 {personality}"
+        사용자가 입력한 키워드: {keywords}
         이 키워드를 바탕으로 감정과 상황을 포함한 자연스럽고 모든 의도가 잘 전달되게 문장으로 확장해줘.
-        너무 길지 않고, 말하고자 하는 목적이 잘 나타나게게 해줘.
+        너무 길지 않고, 말하고자 하는 목적이 잘 나타나게 해줘.
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
-    return chain.run(keywords).strip()
+    return chain.run({"keywords": ",".join(keywords)}).strip()
+
 
 def get_flower_recommendations(keywords: str, top_k: int = 3):
     expanded_query = expand_keywords(keywords)
