@@ -42,7 +42,7 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
         emotion_main = keywords[1]
         emotion_detail = keywords[2]
         personality = keywords[3]
-        return f"{target}에게 {emotion_main}에 대한 감정을 표현하고 싶어. {emotion_detail} {emotion_main}을 생각하며 꽃을 받는 상대방은 {personality}."
+        return f"{emotion_main}이 제일 핵심적인 키워드로서 {target}에게 {emotion_main}에 대한 감정을 표현하고 싶어. {emotion_detail} {emotion_main}을 생각하며 꽃을 받는 상대방은 {personality}."
     
     # fallback
     prompt = PromptTemplate(
