@@ -85,36 +85,43 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run({"keywords": ",".join(keywords)}).strip()
 
-
 def get_flower_recommendations(keywords: str, top_k: int = 3):
     expanded_query = expand_keywords(keywords)
     emotion_category = classify_emotion(expanded_query)
     query_vector = embed_query(expanded_query)
 
-    distances, indices = index.search(np.array(query_vector).astype("float32"), top_k * 5)
+    distances, indices = index.search(np.array(query_vector).astype("float32"), top_k * 10)
 
-    results_with_score = []
+    seen_names = set()
+    filtered_candidates = []
+    fallback_candidates = []
+
     for i in indices[0]:
         flower = metadata_list[i]
-        base_score = distances[0][list(indices[0]).index(i)]
-        # 감정 태그 일치 여부 기반 스코어 보정 (더 강하게)
-        if emotion_category in flower.get("emotion_tags", []):
-            boost = -1.0  # 더 강한 가중치 부여
-        else:
-            boost = +0.5  # 감정 불일치 시 패널티
-        final_score = base_score + boost
-        results_with_score.append((i, final_score))
+        name = flower["name"]
+        if name in seen_names:
+            continue
+        seen_names.add(name)
 
-    # 유사도+감정 기반 정렬
-    results_with_score.sort(key=lambda x: x[1])
-    seen_names = set()
+        base_score = distances[0][list(indices[0]).index(i)]
+
+        # 1️⃣ 감정 태그 일치한 경우
+        if emotion_category in flower.get("emotion_tags", []):
+            score = base_score - 1.0  # 보너스 점수
+            # 3️⃣ keyword가 description에 포함되어 있으면 추가 보너스
+            if any(word in flower["description"] for word in keywords.split(",")):
+                score -= 0.2
+            filtered_candidates.append((i, score))
+        else:
+            # 2️⃣ fallback 후보 저장 (일치하지 않지만 후보로 유지)
+            fallback_candidates.append((i, base_score + 0.5))
+
+    # 감정 태그 일치한 후보 우선 정렬
+    filtered_candidates.sort(key=lambda x: x[1])
     final_results = []
 
-    for i, _ in results_with_score:
+    for i, _ in filtered_candidates:
         flower = metadata_list[i]
-        if flower["name"] in seen_names:
-            continue
-        seen_names.add(flower["name"])
         reason = generate_reason(expanded_query, flower["description"], flower["name"])
         final_results.append({
             "FLW_IDX": flower["FLW_IDX"],
@@ -122,5 +129,20 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
         })
         if len(final_results) >= top_k:
             break
+
+    # 만약 충분하지 않으면 fallback에서 채우기
+    if len(final_results) < top_k:
+        fallback_candidates.sort(key=lambda x: x[1])
+        for i, _ in fallback_candidates:
+            flower = metadata_list[i]
+            if any(res["FLW_IDX"] == flower["FLW_IDX"] for res in final_results):
+                continue
+            reason = generate_reason(expanded_query, flower["description"], flower["name"])
+            final_results.append({
+                "FLW_IDX": flower["FLW_IDX"],
+                "reason": reason
+            })
+            if len(final_results) >= top_k:
+                break
 
     return {"recommendations": final_results}
