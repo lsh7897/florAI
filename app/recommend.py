@@ -74,11 +74,15 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
         # **수정된 부분**: LLMChain을 활용한 문장 확장 프롬프트 정의
         expand_prompt = PromptTemplate(
             input_variables=["base_sentence"],
-            template="""이 문장을 4~6문장으로 확장해 주세요. 감정을 충분히 담아내고, 자연스럽고 부드러운 문장으로 구성해 주세요:
-            {base_sentence}
-            """
-        )
+            template="""다음 문장을 감정의 깊이를 담아 4~6문장으로 확장해 주세요. 
+                    문장은 감정이 잘 전달되고, 사실을 기반으로한 이야기기처럼 자연스럽고 부드럽게 이어져야 합니다. 
+                    각 문장이 감정을 잘 표현할 수 있도록 구체적으로 만들어 주세요. 
+                    또한, 감정을 잘 전달하면서도 그 사람의 성격이나 관계를 염두에 두고, 
+                    전하려는 감정이 더 강하게 느껴지도록 신경 써 주세요.
 
+                    문장: {base_sentence}
+                    """
+        )
         # **수정된 부분**: LLMChain 정의 (expand_chain)
         expand_chain = LLMChain(llm=llm, prompt=expand_prompt)
 
@@ -118,9 +122,9 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
 
         # 감정 태그가 일치하는 꽃이 있을 경우에만 추가
         if emotion_category_cleaned in flower_tags:
-            # 사랑 관련 꽃은 "슬픔" 또는 "그리움"과 어울리지 않으면 제외
-            if "사랑" in flower_tags and (emotion_category_cleaned in ["슬픔", "그리움"]):
-                continue  # 사랑 관련 꽃 제외
+            # "슬픔" 또는 "그리움"과 관련된 꽃이 "사랑"을 포함하고 있다면 제외
+            if emotion_category_cleaned in ["슬픔", "그리움"] and "사랑" in flower_tags:
+                continue  # "사랑"이 포함된 꽃은 제외
 
             if flower["name"] in seen_names:
                 continue
