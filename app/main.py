@@ -15,9 +15,18 @@ class QueryInput(BaseModel):
 @app.post("/recommend")
 def recommend_flowers(input: QueryInput):
     try:
+        # 입력값이 리스트일 경우 그대로, 아니면 ","로 구분하여 리스트로 변경
         query = input.query if isinstance(input.query, list) else input.query.split(",")
+        
+        # 꽃 추천 함수 호출
         result = get_flower_recommendations(query)
-        return result["recommendations"]
+        
+        # 빈 값이 반환된 경우에 대해 체크
+        if not result.get("recommendations"):
+            return {"error": "추천할 꽃이 없습니다.", "recommendations": []}
+
+        return result  # 정상적인 추천 결과 반환
+
     except Exception as e:
         print(traceback.format_exc())
         return {"error": str(e)}
