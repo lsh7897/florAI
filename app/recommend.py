@@ -6,28 +6,26 @@ from app.utils import embed_query, generate_reason
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 
-# 🔹 FAISS index 경로
+# 패스 전체 열람
 INDEX_PATH = "flower_index.faiss"
-SEARCH_EXPANSION_FACTOR = 5  # top_k * 5 검색
-
-# 🔹 Load FAISS index
+SEARCH_EXPANSION_FACTOR = 5
 index = faiss.read_index(INDEX_PATH)
 
-# 🔹 Load flower metadata
+# flower_metadata 로드
 with open("flower_metadata.json", encoding="utf-8") as f:
     metadata_list = json.load(f)
 
-# 🔹 Set up shared LLM
+# LLM
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
-# 🔹 Emotion Classification Prompt & Chain (신규 방식)
+# 감정 정의 prompt
 emotion_prompt = PromptTemplate(
     input_variables=["keywords"],
     template="""
-    다음 키워드는 꽃을 추천받기 위한 상황입니다:
+    다음 키워드는 꽃을 추천받기 위한 구체적 상황입니다:
     {keywords}
 
-    다음 감정 카테고리 중 가장 적절한 하나만 골라줘 (정확히 하나만):
+    다음 감정 카테고리 중 가장 적절한 하나만 고르어주세요:
     사랑(강렬한), 사랑(순수한), 사랑(영원한), 사랑(행복한), 사랑(따뜻한),
     슬픔(화해), 슬픔(이별), 슬픔(그리움), 슬픔(위로),
     축하(승진), 축하(개업), 축하(합격), 축하(생일), 축하(출산),
@@ -38,24 +36,22 @@ emotion_prompt = PromptTemplate(
 )
 emotion_chain = emotion_prompt | llm
 
-# 🔹 Query 확장 Prompt & Chain (신규 방식)
 expand_prompt = PromptTemplate(
     input_variables=["base_sentence"],
     template="""
-    아래 문장을 감정을 담은 자연스러운 글로 4~6문장으로 확장해줘.  
-    문장은 진심이 담긴 말투로, 전달하고자 하는 감정이 잘 느껴지도록 구성해줘.  
-    너무 딱딱하거나 템플릿처럼 보이지 않게, 부드럽고 자연스럽게 써줘.
-
+    바탕 문장을 감정적으로 4~6문장으로 확장해주세요.
+    자세하고 재료가 감독되도록 만드드릴까요.
+    
     문장: {base_sentence}
     """
 )
 expand_chain = expand_prompt | llm
 
-# 🔧 감정 분류
+
 def classify_emotion(keywords: str) -> str:
     return emotion_chain.invoke({"keywords": keywords}).content.strip()
 
-# 🔧 키워드 → 자연어 문장 (확장 포함)
+
 def expand_keywords(keywords: list[str], structured: bool = True) -> str:
     if structured and isinstance(keywords, list) and len(keywords) >= 5:
         target = keywords[0]
@@ -64,31 +60,36 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
         emotion_detail = keywords[3]
         personality = keywords[4]
 
-        base_sentence = (
+        base = (
             f"나는 성별이 {gender}인 {target}에게 {emotion_main}의 감정에 {emotion_detail}을 더해서 전하고 싶어요. "
-            f"그 사람은 {personality}, 그래서 더욱 조심스럽고 진심을 담아 표현하고 싶어요."
+            f"그 사람은 {personality}, 가장 사랑할 만한 감정을 가진 방식으로 전해야 해요."
         )
+        return expand_chain.invoke({"base_sentence": base}).content.strip()
 
-        expanded = expand_chain.invoke({"base_sentence": base_sentence}).content.strip()
-        return expanded
+    raise ValueError("키워드는 그대, 성별, 감정, 세부 감정, 성향 포함 5개 이상이어야 합니다.")
 
-    raise ValueError("키워드는 최소 5개의 요소(관계, 성별, 감정, 세부감정, 성향)를 포함해야 합니다.")
 
-# 🔧 전체 꽃 추천
-def get_flower_recommendations(keywords: str, top_k: int = 3):
+def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     expanded_query = expand_keywords(keywords)
     emotion_category = classify_emotion(keywords)
     query_vector = embed_query(expanded_query)
 
+    # 감정 카테고리가 맞는 꽃을 무엇보다 먼저 검색
+    filtered_indices = [i for i, flower in enumerate(metadata_list) if emotion_category in flower.get("emotion_tags", [])]
+
+    if not filtered_indices:
+        filtered_indices = list(range(len(metadata_list)))  # fallback
+
+    # FAISS가 가장 가게적으로 검색
     distances, indices = index.search(np.array(query_vector).astype("float32"), top_k * SEARCH_EXPANSION_FACTOR)
 
     results_with_score = []
     for i in indices[0]:
+        if i not in filtered_indices:
+            continue
         flower = metadata_list[i]
         base_score = distances[0][list(indices[0]).index(i)]
-        boost = -0.3 if emotion_category in flower.get("emotion_tags", []) else 0.0
-        final_score = base_score + boost
-        results_with_score.append((i, final_score))
+        results_with_score.append((i, base_score))
 
     results_with_score.sort(key=lambda x: x[1])
     seen_names = set()
@@ -103,7 +104,7 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
         try:
             reason = generate_reason(expanded_query, flower["description"], flower["name"])
         except Exception:
-            reason = "[추천 이유 생성 실패]"
+            reason = "[\ucd94\ucc9c \uc774\uc720 \uc0dd\uc131 \uc2e4\ud328]"
 
         final_results.append({
             "FLW_IDX": flower["FLW_IDX"],
