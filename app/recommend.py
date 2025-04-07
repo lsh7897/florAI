@@ -95,32 +95,26 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
 
 
 def get_flower_recommendations(keywords: list[str], top_k: int = 3):
-    # 문장 확장 (4~6문장으로)
-    expanded_query = expand_keywords(keywords)
-    
-    # 사용자의 감정 카테고리 추출 (슬픔, 그리움 등)
-    emotion_category = classify_emotion(keywords)
+    expanded_query = expand_keywords(keywords)  # 문장 확장
+    emotion_category = classify_emotion(keywords)  # 감정 카테고리 추출
 
-    # emotion_tags에서 괄호 안의 내용 제거하고 태그명만 비교
-    emotion_category_cleaned = emotion_category.split('(')[0].strip()
+    emotion_category_cleaned = emotion_category.split('(')[0].strip()  # 괄호 부분 제거
 
     # 유사도 계산을 위한 쿼리 벡터 생성
     query_vector = embed_query(expanded_query)
-    
+
     # 유사도 검색 (상위 5개 꽃 먼저 검색)
     distances, indices = index.search(np.array(query_vector).astype("float32"), top_k * SEARCH_EXPANSION_FACTOR)
 
     results = []
     seen_names = set()
 
-    # 슬픔, 그리움에 해당하는 꽃만 유사도로 추천
+    # 감정에 맞는 꽃만 추천 (예: 슬픔, 그리움 관련)
     for i in indices[0]:
         flower = metadata_list[i]
-        
-        # emotion_tags에서 괄호 내용을 제외하고 태그만 비교
         flower_tags = [tag.split('(')[0].strip() for tag in flower.get("emotion_tags", [])]
 
-        # 슬픔, 그리움에 맞는 꽃만 필터링
+        # 감정에 맞는 꽃만 필터링
         if emotion_category_cleaned in flower_tags:
             if flower["name"] in seen_names:
                 continue
@@ -136,7 +130,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
             if len(results) >= top_k:
                 break
 
-    # 감정에 맞는 꽃이 부족하면 다른 감정 태그를 가진 꽃 중에서 유사도 기반으로 채우기
+    # 감정에 맞는 꽃이 부족하면 다른 감정 태그를 가진 꽃 중에서 유사도 순으로 채우기
     if len(results) < top_k:
         for i in indices[0]:
             flower = metadata_list[i]
