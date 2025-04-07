@@ -109,7 +109,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     results = []
     seen_names = set()
 
-    # 감정에 맞는 꽃만 추천 (예: 슬픔, 그리움 관련)
+    # 1. 감정에 맞는 꽃만 추천 (우선순위)
     for i in indices[0]:
         flower = metadata_list[i]
         flower_tags = [tag.split('(')[0].strip() for tag in flower.get("emotion_tags", [])]
@@ -130,7 +130,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
             if len(results) >= top_k:
                 break
 
-    # 감정에 맞는 꽃이 부족하면 다른 감정 태그를 가진 꽃 중에서 유사도 순으로 채우기
+    # 2. 감정에 맞는 꽃이 부족하면, 다른 감정 태그를 가진 꽃들 중 유사도 높은 꽃을 채우기
     if len(results) < top_k:
         for i in indices[0]:
             flower = metadata_list[i]
