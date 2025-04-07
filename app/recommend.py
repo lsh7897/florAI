@@ -113,31 +113,30 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     results = []
     seen_names = set()
 
-    # 꽃 필터링: 감정에 맞는 꽃 먼저 필터링하고, 없을 경우 유사도 순으로
+    # 슬픔, 그리움에 해당하는 꽃만 유사도로 추천
     for i in indices[0]:
         flower = metadata_list[i]
         
         # emotion_tags에서 괄호 내용을 제외하고 태그만 비교
         flower_tags = [tag.split('(')[0].strip() for tag in flower.get("emotion_tags", [])]
 
-        # 슬픔 계열 꽃 필터링: "슬픔" 또는 "그리움"과 관련된 꽃을 우선 추천
+        # 슬픔, 그리움에 맞는 꽃만 필터링
         if emotion_category_cleaned in flower_tags:
-            # 감정에 맞는 꽃만 필터링
             if flower["name"] in seen_names:
                 continue
             seen_names.add(flower["name"])
-            
+
             # 추천 이유 생성
             reason = generate_reason(expanded_query, flower["description"], flower["name"])
             results.append({
                 "FLW_IDX": flower["FLW_IDX"],
                 "reason": reason
             })
-            
+
             if len(results) >= top_k:
                 break
 
-    # 감정에 맞는 꽃이 없다면, 유사도 순으로 추천 (여기서 3개까지 추천)
+    # 감정에 맞는 꽃이 부족하면 다른 감정 태그를 가진 꽃 중에서 유사도 기반으로 채우기
     if len(results) < top_k:
         for i in indices[0]:
             flower = metadata_list[i]
@@ -155,6 +154,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
                 break
 
     return {"recommendations": results}
+
 
 
 
