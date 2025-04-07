@@ -175,6 +175,9 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
     # 키워드 확장 및 감정 분류
     expanded_query, emotion_category = expand_keywords(keywords)  # 4~6문장 확장
     
+    if not expanded_query:
+        return {"error": "입력된 키워드를 기반으로 확장된 문장이 없습니다."}
+
     # 감정 카테고리에서 주요 감정 추출
     main_emotion = emotion_category.split('(')[0].strip() if '(' in emotion_category else emotion_category.strip()
 
@@ -187,6 +190,9 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
         ]
     else:
         filtered_flowers = metadata_list
+
+    if not filtered_flowers:
+        return {"error": "해당 감정에 맞는 꽃이 없습니다."}
 
     # 유사도 계산을 위한 쿼리 벡터 생성
     query_vector = embed_query(expanded_query)
@@ -235,5 +241,8 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
 
             if len(results) >= top_k:
                 break
+
+    if not results:
+        return {"error": "추천할 꽃이 없습니다. 다시 시도해 주세요."}
 
     return {"recommendations": results}
