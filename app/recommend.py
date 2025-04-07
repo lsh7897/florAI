@@ -71,17 +71,20 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
             f"그래서 이 꽃을 통해 내 마음을 전하고 싶어요. 이 꽃이 우리의 관계에 큰 의미를 더해줄 것 같아요."
         )
 
-        # LLMChain을 활용해 문장을 4~6문장으로 확장
+        # **수정된 부분**: LLMChain을 활용한 문장 확장 프롬프트 정의
         expand_prompt = PromptTemplate(
             input_variables=["base_sentence"],
             template="""이 문장을 4~6문장으로 확장해 주세요. 감정을 충분히 담아내고, 자연스럽고 부드러운 문장으로 구성해 주세요:
             {base_sentence}
             """
         )
-        
-        # 확장 체인 실행
+
+        # **수정된 부분**: LLMChain 정의 (expand_chain)
         expand_chain = LLMChain(llm=llm, prompt=expand_prompt)
+
+        # **수정된 부분**: 확장된 문장 생성 (확실하게 run() 메서드 호출)
         expanded = expand_chain.run({"base_sentence": base_sentence}).strip()
+
         return expanded
 
     raise ValueError("키워드는 최소 5개의 요소(관계, 성별, 감정, 세부감정, 성향)를 포함해야 합니다.")
