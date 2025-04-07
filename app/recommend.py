@@ -8,7 +8,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
 # 🔹 FAISS index 경로
-INDEX_PATH = "faiss_index/flower_index.faiss"
+INDEX_PATH = "flower_index.faiss"
 SEARCH_EXPANSION_FACTOR = 5  # top_k * 5 검색
 
 # 🔹 Load FAISS index
