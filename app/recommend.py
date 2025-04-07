@@ -5,7 +5,6 @@ import numpy as np
 from app.utils import embed_query, generate_reason
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
 
 # 🔹 FAISS index 경로
 INDEX_PATH = "flower_index.faiss"
@@ -21,7 +20,7 @@ with open("flower_metadata.json", encoding="utf-8") as f:
 # 🔹 Set up shared LLM
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
-# 🔹 Emotion Classification Prompt & Chain
+# 🔹 Emotion Classification Prompt & Chain (신규 방식)
 emotion_prompt = PromptTemplate(
     input_variables=["keywords"],
     template="""
@@ -37,9 +36,9 @@ emotion_prompt = PromptTemplate(
     특별함(비밀), 특별함(신비), 특별함(마법), 특별한(고귀), 특별한(고급)
     """
 )
-emotion_chain = LLMChain(llm=llm, prompt=emotion_prompt)
+emotion_chain = emotion_prompt | llm
 
-# 🔹 Query 확장 Prompt & Chain
+# 🔹 Query 확장 Prompt & Chain (신규 방식)
 expand_prompt = PromptTemplate(
     input_variables=["base_sentence"],
     template="""
@@ -50,17 +49,15 @@ expand_prompt = PromptTemplate(
     문장: {base_sentence}
     """
 )
-expand_chain = LLMChain(llm=llm, prompt=expand_prompt)
-
+expand_chain = expand_prompt | llm
 
 # 🔧 감정 분류
 def classify_emotion(keywords: str) -> str:
-    return emotion_chain.run({"keywords": keywords}).strip()
-
+    return emotion_chain.invoke({"keywords": keywords}).strip()
 
 # 🔧 키워드 → 자연어 문장 (확장 포함)
 def expand_keywords(keywords: list[str], structured: bool = True) -> str:
-    if structured and isinstance(keywords, list) and len(keywords) >= 4:
+    if structured and isinstance(keywords, list) and len(keywords) >= 5:
         target = keywords[0]
         gender = keywords[1]
         emotion_main = keywords[2]
@@ -72,12 +69,10 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
             f"그 사람은 {personality}, 그래서 더욱 조심스럽고 진심을 담아 표현하고 싶어요."
         )
 
-        # GPT로 확장
-        expanded = expand_chain.run({"base_sentence": base_sentence}).strip()
+        expanded = expand_chain.invoke({"base_sentence": base_sentence}).strip()
         return expanded
 
     raise ValueError("키워드는 최소 5개의 요소(관계, 성별, 감정, 세부감정, 성향)를 포함해야 합니다.")
-
 
 # 🔧 전체 꽃 추천
 def get_flower_recommendations(keywords: str, top_k: int = 3):
