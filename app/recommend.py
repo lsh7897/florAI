@@ -173,74 +173,64 @@ def calculate_combined_score(emotion_match: bool, distance: float) -> float:
 def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str, Any]:
     """키워드 기반 꽃 추천 함수"""
     # 키워드 확장 및 감정 분류
-    expanded_query, emotion_category = expand_keywords(keywords)
+    expanded_query, emotion_category = expand_keywords(keywords)  # 4~6문장 확장
     
-    # 감정 카테고리에서 주요 감정 추출 (괄호 부분 제거)
+    # 감정 카테고리에서 주요 감정 추출
     main_emotion = emotion_category.split('(')[0].strip() if '(' in emotion_category else emotion_category.strip()
-    
-    # 쿼리 벡터 생성
-    query_vector = embed_query(expanded_query)
 
-    # query_vector가 2D 배열이 되도록 변환
-    query_vector = np.array(query_vector).reshape(1, -1)  # (1, n) 형태로 변환
+    # "그리움" 관련 꽃들을 우선 추천 (예: 돌아와 주세요 메시지를 전달하는 꽃)
+    if main_emotion == "슬픔" or main_emotion == "그리움":
+        # "그리움"과 관련된 꽃말만 필터링
+        filtered_flowers = [
+            flower for flower in metadata_list
+            if any("그리움" in tag for tag in flower.get("emotion_tags", []))  # 그리움 관련 꽃만
+        ]
+    else:
+        filtered_flowers = metadata_list
+
+    # 유사도 계산을 위한 쿼리 벡터 생성
+    query_vector = embed_query(expanded_query)
+    query_vector = np.array(query_vector).reshape(1, -1)  # 2D 배열로 변환
 
     # 유사도 검색 (후보 꽃 검색)
     distances, indices = index.search(query_vector.astype("float32"), top_k * SEARCH_EXPANSION_FACTOR)
-    
-    # 결과 처리를 위한 준비
-    candidates = []
+
+    results = []
     seen_names = set()
-    
-    # 후보 꽃 처리
-    for i, idx in enumerate(indices[0]):
-        if idx >= len(metadata_list):
-            continue
-            
-        flower = metadata_list[idx]
+
+    # 필터링된 꽃들 중에서 추천
+    for i in indices[0]:
+        flower = filtered_flowers[i]  # 필터된 꽃 목록에서만 선택
         if flower["name"] in seen_names:
             continue
-            
-        # 이미 처리한 꽃 추가
         seen_names.add(flower["name"])
-        
-        # 감정 태그 확인
-        flower_emotions = [tag.split('(')[0].strip() for tag in flower.get("emotion_tags", [])]
-        emotion_match = main_emotion in flower_emotions
-        
-        # 결합 점수 계산
-        combined_score = calculate_combined_score(emotion_match, distances[0][i])
-        
-        # 후보에 추가
-        candidates.append({
-            "flower": flower,
-            "distance": distances[0][i],
-            "emotion_match": emotion_match,
-            "combined_score": combined_score
-        })
-    
-    # 결합 점수 기준으로 정렬
-    candidates.sort(key=lambda x: x["combined_score"], reverse=True)
-    
-    # 최종 추천 결과 생성
-    results = []
-    for candidate in candidates[:top_k]:
-        flower = candidate["flower"]
-        
+
         # 추천 이유 생성
-        reason = custom_generate_reason(
-            expanded_query, 
-            flower["description"], 
-            flower["name"]
-        )
-        
+        reason = generate_reason(expanded_query, flower["description"], flower["name"])
         results.append({
             "FLW_IDX": flower["FLW_IDX"],
-            "name": flower["name"],  # 꽃 이름 추가
-            "reason": reason,
-            "score": float(candidate["combined_score"]),  # JSON 직렬화를 위해 float로 변환
-            "emotion_match": candidate["emotion_match"]
+            "reason": reason
         })
-    
-    return {
-    "recommendations": results
-}
+
+        if len(results) >= top_k:
+            break
+
+    # 감정에 맞는 꽃이 부족하면 다른 감정 태그를 가진 꽃 중에서 유사도 순으로 채우기
+    if len(results) < top_k:
+        for i in indices[0]:
+            flower = metadata_list[i]  # 전체 리스트에서 추가 추천
+            if flower["name"] in seen_names:
+                continue
+            seen_names.add(flower["name"])
+
+            reason = generate_reason(expanded_query, flower["description"], flower["name"])
+            results.append({
+                "FLW_IDX": flower["FLW_IDX"],
+                "reason": reason
+            })
+
+            if len(results) >= top_k:
+                break
+
+    return {"recommendations": results}
+
