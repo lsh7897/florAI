@@ -120,12 +120,9 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         # emotion_tags에서 괄호 내용을 제외하고 태그만 비교
         flower_tags = [tag.split('(')[0].strip() for tag in flower.get("emotion_tags", [])]
 
-        # 감정 태그가 일치하는 꽃이 있을 경우에만 추가
+        # 슬픔 계열 꽃 필터링: "슬픔" 또는 "그리움"과 관련된 꽃을 우선 추천
         if emotion_category_cleaned in flower_tags:
-            # "슬픔" 또는 "그리움"과 관련된 꽃이 "사랑"을 포함하고 있다면 제외
-            if emotion_category_cleaned in ["슬픔", "그리움"] and "사랑" in flower_tags:
-                continue  # "사랑"이 포함된 꽃은 제외
-
+            # 감정에 맞는 꽃만 필터링
             if flower["name"] in seen_names:
                 continue
             seen_names.add(flower["name"])
@@ -158,5 +155,6 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
                 break
 
     return {"recommendations": results}
+
 
 
