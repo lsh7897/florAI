@@ -3,13 +3,10 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from typing import Union
-import os
 import traceback
-from app.utils import embed_query, generate_reason
 from app.recommend import get_flower_recommendations
 
 app = FastAPI()
-
 templates = Jinja2Templates(directory="templates")
 
 class QueryInput(BaseModel):
@@ -22,7 +19,6 @@ def recommend_flowers(input: QueryInput):
         result = get_flower_recommendations(query)
         return result["recommendations"]
     except Exception as e:
-        import traceback
         print(traceback.format_exc())
         return {"error": str(e)}
 
@@ -33,5 +29,5 @@ async def index(request: Request):
         "title": "FlorAI 꽃 추천 API",
         "heading": "FlorAI 꽃 추천 API",
         "description": "이 페이지는 FlorAI API 서버가 정상 작동 중임을 나타내며, 예시적인 패턴을 보여줍니다.",
-        "example_query": "사랑 고밝"
+        "example_query": "부모, 슬픔, 그리움, 차분한 사람입니다"
     })

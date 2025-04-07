@@ -1,16 +1,15 @@
 import os
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain_openai import OpenAIEmbeddings
 
-# 🔹 LangChain LLM 설정
+# LLM for reason generation
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
 def embed_query(query: str):
-    embedder = OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY"))  
+    embedder = OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY"))
     vector = embedder.embed_query(query)
-    return [vector]
+    return [vector]  # FAISS expects 2D array
 
 def generate_reason(query: str, description: str, flower_name: str):
     prompt = PromptTemplate(
