@@ -200,6 +200,8 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
 
     # 필터링된 꽃들 중에서 추천
     for i in indices[0]:
+        if i >= len(filtered_flowers):
+            continue  # 인덱스가 범위를 벗어나면 무시
         flower = filtered_flowers[i]  # 필터된 꽃 목록에서만 선택
         if flower["name"] in seen_names:
             continue
@@ -218,7 +220,9 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
     # 감정에 맞는 꽃이 부족하면 다른 감정 태그를 가진 꽃 중에서 유사도 순으로 채우기
     if len(results) < top_k:
         for i in indices[0]:
-            flower = metadata_list[i]  # 전체 리스트에서 추가 추천
+            if i >= len(filtered_flowers):
+                continue  # 인덱스가 범위를 벗어나면 무시
+            flower = filtered_flowers[i]  # 필터된 꽃 목록에서만 선택
             if flower["name"] in seen_names:
                 continue
             seen_names.add(flower["name"])
@@ -233,4 +237,3 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
                 break
 
     return {"recommendations": results}
-
