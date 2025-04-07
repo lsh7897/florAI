@@ -232,9 +232,9 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
             if len(results) >= top_k:
                 break
 
-    # 결과가 없으면 빈 리스트로 반환
+    # 결과가 없으면 빈 배열로 반환
     if not results:
         return {"recommendations": [], "error": "추천할 꽃이 없습니다. 다시 시도해 주세요."}
 
-    # **배열 형태로 반환**하도록 보장
+    # 최종 추천 결과 반환 (배열 형식으로)
     return {"recommendations": results}
