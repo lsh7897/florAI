@@ -3,7 +3,7 @@ import json
 import os
 import numpy as np
 from app.utils import embed_query, generate_reason
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
@@ -15,7 +15,7 @@ with open("flower_metadata.json", encoding="utf-8") as f:
     metadata_list = json.load(f)
 
 # LLM setup
-llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
+llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
 def classify_emotion(keywords: str) -> str:
     prompt = PromptTemplate(
