@@ -69,7 +69,7 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
             f"그 사람은 {personality}, 그래서 더욱 조심스럽고 진심을 담아 표현하고 싶어요."
         )
 
-        expanded = expand_chain.invoke({"base_sentence": base_sentence}).strip()
+        expanded = expand_chain.invoke({"base_sentence": base_sentence}).content.strip()
         return expanded
 
     raise ValueError("키워드는 최소 5개의 요소(관계, 성별, 감정, 세부감정, 성향)를 포함해야 합니다.")
