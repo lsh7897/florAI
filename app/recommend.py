@@ -173,16 +173,19 @@ def calculate_combined_score(emotion_match: bool, distance: float) -> float:
 def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str, Any]:
     """키워드 기반 꽃 추천 함수"""
     # 키워드 확장 및 감정 분류
-    expanded_query, emotion_category = expand_keywords(keywords)  # 두 값을 unpack
+    expanded_query, emotion_category = expand_keywords(keywords)
     
     # 감정 카테고리에서 주요 감정 추출 (괄호 부분 제거)
     main_emotion = emotion_category.split('(')[0].strip() if '(' in emotion_category else emotion_category.strip()
     
     # 쿼리 벡터 생성
     query_vector = embed_query(expanded_query)
-    
+
+    # query_vector가 2D 배열이 되도록 변환
+    query_vector = np.array(query_vector).reshape(1, -1)  # (1, n) 형태로 변환
+
     # 유사도 검색 (후보 꽃 검색)
-    distances, indices = index.search(np.array([query_vector]).astype("float32"), top_k * SEARCH_EXPANSION_FACTOR)
+    distances, indices = index.search(query_vector.astype("float32"), top_k * SEARCH_EXPANSION_FACTOR)
     
     # 결과 처리를 위한 준비
     candidates = []
