@@ -8,7 +8,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
 # Load FAISS index
-index = faiss.read_index("faiss_index/flower_index.faiss")
+index = faiss.read_index("flower_index.faiss")
 
 # Load metadata
 with open("flower_metadata.json", encoding="utf-8") as f:
