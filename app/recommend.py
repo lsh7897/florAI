@@ -91,25 +91,61 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
 
 
 def get_flower_recommendations(keywords: list[str], top_k: int = 3):
+    # 문장 확장 (4~6문장으로)
     expanded_query = expand_keywords(keywords)
-    query_vector = embed_query(expanded_query)
+    
+    # 사용자의 감정 카테고리 추출 (슬픔, 그리움 등)
+    emotion_category = classify_emotion(keywords)
 
-    distances, indices = index.search(np.array(query_vector).astype("float32"), top_k * 2)
+    # emotion_tags에서 괄호 안의 내용 제거하고 태그명만 비교
+    emotion_category_cleaned = emotion_category.split('(')[0].strip()
+
+    # 유사도 계산을 위한 쿼리 벡터 생성
+    query_vector = embed_query(expanded_query)
+    
+    # 유사도 검색 (상위 5개 꽃 먼저 검색)
+    distances, indices = index.search(np.array(query_vector).astype("float32"), top_k * SEARCH_EXPANSION_FACTOR)
 
     results = []
     seen_names = set()
+
+    # 꽃 필터링: 감정에 맞는 꽃 먼저 필터링하고, 없을 경우 유사도 순으로
     for i in indices[0]:
         flower = metadata_list[i]
-        if flower["name"] in seen_names:
-            continue
-        seen_names.add(flower["name"])
-        reason = generate_reason(expanded_query, flower["description"], flower["name"])
-        results.append({
-            "FLW_IDX": flower["FLW_IDX"],
-            "reason": reason
-        })
-        if len(results) >= top_k:
-            break
+        
+        # emotion_tags에서 괄호 내용을 제외하고 태그만 비교
+        flower_tags = [tag.split('(')[0].strip() for tag in flower.get("emotion_tags", [])]
+
+        # 감정 태그가 일치하는 꽃이 있을 경우에만 추가
+        if emotion_category_cleaned in flower_tags:
+            if flower["name"] in seen_names:
+                continue
+            seen_names.add(flower["name"])
+            
+            # 추천 이유 생성
+            reason = generate_reason(expanded_query, flower["description"], flower["name"])
+            results.append({
+                "FLW_IDX": flower["FLW_IDX"],
+                "reason": reason
+            })
+            
+            if len(results) >= top_k:
+                break
+
+    # 감정에 맞는 꽃이 없다면, 유사도 순으로 추천
+    if not results:
+        for i in indices[0]:
+            flower = metadata_list[i]
+            if flower["name"] in seen_names:
+                continue
+            seen_names.add(flower["name"])
+
+            reason = generate_reason(expanded_query, flower["description"], flower["name"])
+            results.append({
+                "FLW_IDX": flower["FLW_IDX"],
+                "reason": reason
+            })
+            if len(results) >= top_k:
+                break
 
     return {"recommendations": results}
-
