@@ -5,6 +5,7 @@ import numpy as np
 from app.utils import embed_query, generate_reason
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
 
 
 # 패스 전체 열람
