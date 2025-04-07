@@ -1,16 +1,11 @@
 from fastapi import FastAPI, Request
-from pydantic import BaseModel
-from typing import Union
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-import faiss
-import json
+from pydantic import BaseModel
+from typing import Union
 import os
-import numpy as np
+import traceback
 from app.utils import embed_query, generate_reason
-from langchain.chat_models import ChatOpenAI
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
 from app.recommend import get_flower_recommendations
 
 app = FastAPI()

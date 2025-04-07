@@ -1,9 +1,10 @@
 fastapi
-uvicorn
-faiss-cpu
-openai
-python-dotenv
-langchain
-langchain_community
-tiktoken
+uvicorn[standard]
 jinja2
+langchain>=0.1.14
+langchain-openai>=0.0.5
+openai>=1.3.5
+python-dotenv
+faiss-cpu
+tqdm
+pydantic>=2.0

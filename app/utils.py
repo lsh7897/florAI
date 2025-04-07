@@ -2,15 +2,15 @@ import os
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 
 # 🔹 LangChain LLM 설정
 llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
 def embed_query(query: str):
-    embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
-    vector = embedder.embed_query(query)  # list[float]
-    return [vector]  # faiss는 2D array 필요
+    embedder = OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY"))  
+    vector = embedder.embed_query(query)
+    return [vector]
 
 def generate_reason(query: str, description: str, flower_name: str):
     prompt = PromptTemplate(
