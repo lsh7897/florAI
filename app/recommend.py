@@ -54,20 +54,36 @@ def classify_emotion(keywords: str) -> str:
 
 
 def expand_keywords(keywords: list[str], structured: bool = True) -> str:
-    if structured and isinstance(keywords, list) and len(keywords) >= 5:
+    if structured and len(keywords) >= 5:
         target = keywords[0]
         gender = keywords[1]
         emotion_main = keywords[2]
         emotion_detail = keywords[3]
         personality = keywords[4]
 
-        base = (
-            f"나는 성별이 {gender}인 {target}에게 {emotion_main}의 감정에 {emotion_detail}을 더해서 전하고 싶어요. "
-            f"그 사람은 {personality}, 가장 사랑할 만한 감정을 가진 방식으로 전해야 해요."
+        # 좀 더 풍부한 기본 문장 생성
+        base_sentence = (
+            f"나는 성별이 {gender}인 {target}에게 {emotion_main}의 감정을 전하고 싶어요. "
+            f"그 사람은 {personality}한 성격을 가진 사람이고, {emotion_detail} {emotion_main}을 전하기에 적합한 사람이에요. "
+            f"내가 {target}에게 전하고 싶은 감정은 단순한 말로는 다 표현할 수 없고, "
+            f"그 사람에게 내 진심을 잘 전달할 수 있는 특별한 방법이 필요해요. "
+            f"그래서 이 꽃을 통해 내 마음을 전하고 싶어요. 이 꽃이 우리의 관계에 큰 의미를 더해줄 것 같아요."
         )
-        return expand_chain.invoke({"base_sentence": base}).content.strip()
 
-    raise ValueError("키워드는 그대, 성별, 감정, 세부 감정, 성향 포함 5개 이상이어야 합니다.")
+        # LLMChain을 활용해 문장을 4~6문장으로 확장
+        expand_prompt = PromptTemplate(
+            input_variables=["base_sentence"],
+            template="""이 문장을 4~6문장으로 확장해 주세요. 감정을 충분히 담아내고, 자연스럽고 부드러운 문장으로 구성해 주세요:
+            {base_sentence}
+            """
+        )
+        
+        # 확장 체인 실행
+        expand_chain = LLMChain(llm=llm, prompt=expand_prompt)
+        expanded = expand_chain.run({"base_sentence": base_sentence}).strip()
+        return expanded
+
+    raise ValueError("키워드는 최소 5개의 요소(관계, 성별, 감정, 세부감정, 성향)를 포함해야 합니다.")
 
 
 def get_flower_recommendations(keywords: list[str], top_k: int = 3):
