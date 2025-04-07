@@ -172,12 +172,8 @@ def calculate_combined_score(emotion_match: bool, distance: float) -> float:
 
 def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str, Any]:
     """키워드 기반 꽃 추천 함수"""
-    # 키워드가 충분한지 확인
-    if len(keywords) < 3:
-        raise ValueError("키워드는 최소 3개 이상이어야 합니다. (대상, 감정, 세부감정 등)")
-    
     # 키워드 확장 및 감정 분류
-    expanded_query, emotion_category = expand_keywords(keywords)
+    expanded_query, emotion_category = expand_keywords(keywords)  # 두 값을 unpack
     
     # 감정 카테고리에서 주요 감정 추출 (괄호 부분 제거)
     main_emotion = emotion_category.split('(')[0].strip() if '(' in emotion_category else emotion_category.strip()
