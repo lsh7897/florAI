@@ -68,7 +68,7 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
         personality = keywords[4]
 
         base_sentence = (
-            f"나는 성별이 {gender}인 {target}에게 {emotion_main}의 감정을 전하고 싶어요. "
+            f"나는 성별이 {gender}인 {target}에게 {emotion_main}의 감정에 {emotion_detail}을 더해서 전하고 싶어요. "
             f"그 사람은 {personality}, 그래서 더욱 조심스럽고 진심을 담아 표현하고 싶어요."
         )
 
