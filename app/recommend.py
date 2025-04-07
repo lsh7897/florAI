@@ -21,7 +21,7 @@ with open("flower_metadata.json", encoding="utf-8") as f:
 # 🔹 Set up shared LLM
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
-# 🔹 Prompt & Chain (Emotion Classification)
+# 🔹 Emotion Classification Prompt & Chain
 emotion_prompt = PromptTemplate(
     input_variables=["keywords"],
     template="""
@@ -39,31 +39,47 @@ emotion_prompt = PromptTemplate(
 )
 emotion_chain = LLMChain(llm=llm, prompt=emotion_prompt)
 
+# 🔹 Query 확장 Prompt & Chain
+expand_prompt = PromptTemplate(
+    input_variables=["base_sentence"],
+    template="""
+    아래 문장을 감정을 담은 자연스러운 글로 4~6문장으로 확장해줘.  
+    문장은 진심이 담긴 말투로, 전달하고자 하는 감정이 잘 느껴지도록 구성해줘.  
+    너무 딱딱하거나 템플릿처럼 보이지 않게, 부드럽고 자연스럽게 써줘.
+
+    문장: {base_sentence}
+    """
+)
+expand_chain = LLMChain(llm=llm, prompt=expand_prompt)
+
+
+# 🔧 감정 분류
 def classify_emotion(keywords: str) -> str:
     return emotion_chain.run({"keywords": keywords}).strip()
 
 
+# 🔧 키워드 → 자연어 문장 (확장 포함)
 def expand_keywords(keywords: list[str], structured: bool = True) -> str:
-    if structured and isinstance(keywords, list) and len(keywords) >= 6:
+    if structured and isinstance(keywords, list) and len(keywords) >= 5:
         target = keywords[0]
         gender = keywords[1]
         emotion_main = keywords[2]
         emotion_detail = keywords[3]
         personality = keywords[4]
 
-        return (
+        base_sentence = (
             f"나는 성별이 {gender}인 {target}에게 {emotion_main}의 감정을 전하고 싶어요. "
-            f"그 사람은 {personality}, 그래서 더욱 조심스럽고 진심을 담아 표현하고 싶어요. "
-            f"{emotion_detail} {emotion_main}은 단순한 감정이 아니라, 그 사람과 나 사이에 오랜 시간 쌓여온 마음이에요. "
-            f"말로 다 전할 수 없기에 꽃으로 대신 전하고 싶고, "
-            f"이 꽃이 우리의 관계를 따뜻하게 이어주는 매개체가 되었으면 해요. "
-            f"{target}에게 진심을 담아 건네는 이 꽃은 나의 마음 그 자체입니다."
+            f"그 사람은 {personality}, 그래서 더욱 조심스럽고 진심을 담아 표현하고 싶어요."
         )
 
-    # fallback 제거 → 입력이 부족하면 명확히 알림
-    raise ValueError("키워드는 최소 4개의 요소(관계, 감정, 세부감정, 성향)를 포함해야 합니다.")
+        # GPT로 확장
+        expanded = expand_chain.run({"base_sentence": base_sentence}).strip()
+        return expanded
+
+    raise ValueError("키워드는 최소 5개의 요소(관계, 성별, 감정, 세부감정, 성향)를 포함해야 합니다.")
 
 
+# 🔧 전체 꽃 추천
 def get_flower_recommendations(keywords: str, top_k: int = 3):
     expanded_query = expand_keywords(keywords)
     emotion_category = classify_emotion(keywords)
@@ -91,7 +107,7 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
 
         try:
             reason = generate_reason(expanded_query, flower["description"], flower["name"])
-        except Exception as e:
+        except Exception:
             reason = "[추천 이유 생성 실패]"
 
         final_results.append({
