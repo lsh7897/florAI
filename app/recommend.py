@@ -118,6 +118,10 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
 
         # 감정 태그가 일치하는 꽃이 있을 경우에만 추가
         if emotion_category_cleaned in flower_tags:
+            # 사랑 관련 꽃은 "슬픔" 또는 "그리움"과 어울리지 않으면 제외
+            if "사랑" in flower_tags and (emotion_category_cleaned in ["슬픔", "그리움"]):
+                continue  # 사랑 관련 꽃 제외
+
             if flower["name"] in seen_names:
                 continue
             seen_names.add(flower["name"])
@@ -132,8 +136,8 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
             if len(results) >= top_k:
                 break
 
-    # 감정에 맞는 꽃이 없다면, 유사도 순으로 추천
-    if not results:
+    # 감정에 맞는 꽃이 없다면, 유사도 순으로 추천 (여기서 3개까지 추천)
+    if len(results) < top_k:
         for i in indices[0]:
             flower = metadata_list[i]
             if flower["name"] in seen_names:
@@ -145,7 +149,10 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
                 "FLW_IDX": flower["FLW_IDX"],
                 "reason": reason
             })
+
             if len(results) >= top_k:
                 break
 
     return {"recommendations": results}
+
+
