@@ -60,7 +60,7 @@ def classify_emotion(keywords: str) -> str:
 
 # 🔧 키워드 → 자연어 문장 (확장 포함)
 def expand_keywords(keywords: list[str], structured: bool = True) -> str:
-    if structured and isinstance(keywords, list) and len(keywords) >= 5:
+    if structured and isinstance(keywords, list) and len(keywords) >= 4:
         target = keywords[0]
         gender = keywords[1]
         emotion_main = keywords[2]
