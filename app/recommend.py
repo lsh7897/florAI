@@ -6,6 +6,7 @@ from app.utils import embed_query, generate_reason
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 
+
 # 패스 전체 열람
 INDEX_PATH = "flower_index.faiss"
 SEARCH_EXPANSION_FACTOR = 5
@@ -69,7 +70,7 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
     raise ValueError("키워드는 그대, 성별, 감정, 세부 감정, 성향 포함 5개 이상이어야 합니다.")
 
 
-def get_flower_recommendations_no_tag(keywords: list[str], top_k: int = 3):
+def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     expanded_query = expand_keywords(keywords)
     query_vector = embed_query(expanded_query)
 
