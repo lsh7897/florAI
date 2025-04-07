@@ -21,20 +21,23 @@ def classify_emotion(keywords: str) -> str:
     prompt = PromptTemplate(
         input_variables=["keywords"],
         template="""
-        다음 키워드는 꽃을 추천받기 위한 상황입니다:
+        다음은 사용자가 꽃을 추천받기 위한 키워드입니다:
         {keywords}
 
-        다음 감정 카테고리 중 가장 적절한 하나만 골라줘 (정확히 하나만):
-        사랑(강렬한), 사랑(순수한), 사랑(영원한), 사랑(행복한), 사랑(따뜻한),
-        슬픔(화해), 슬픔(이별), 슬픔(그리움), 슬픔(위로),
-        축하(승진), 축하(개업), 축하(합격), 축하(생일), 축하(출산),
-        응원(새로운 시작), 응원(합격 기원), 응원(격려), 응원(꿈을 향한 도전),
-        행복(영원한), 행복(순수한), 행복(함께한), 행복(다가올),
-        특별함(비밀), 특별함(신비), 특별함(마법), 특별한(고귀), 특별한(고급)
+        키워드를 분석해서 아래 감정 카테고리 중 **가장 잘 어울리는 하나**만 골라줘.
+        정답은 아래 리스트 중에서 정확히 하나만 반환해줘 (괄호 포함해서).
+
+        - 사랑(강렬한), 사랑(순수한), 사랑(영원한), 사랑(행복한), 사랑(따뜻한)
+        - 슬픔(화해), 슬픔(이별), 슬픔(그리움), 슬픔(위로)
+        - 축하(승진), 축하(개업), 축하(합격), 축하(생일), 축하(출산)
+        - 응원(새로운 시작), 응원(합격 기원), 응원(격려), 응원(꿈을 향한 도전)
+        - 행복(영원한), 행복(순수한), 행복(함께한), 행복(다가올)
+        - 특별함(비밀), 특별함(신비), 특별함(마법), 특별함(고귀), 특별함(고급)
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run({"keywords": keywords}).strip()
+
 
 def expand_keywords(keywords: list[str], structured: bool = True) -> str:
     if structured and isinstance(keywords, list) and len(keywords) >= 4:
@@ -42,9 +45,12 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
         emotion_main = keywords[1]
         emotion_detail = keywords[2]
         personality = keywords[3]
-        return f"{emotion_main}이 제일 핵심적인 키워드로서 {target}에게 {emotion_main}에 대한 감정을 표현하고 싶어. {emotion_detail} {emotion_main}을 생각하며 꽃을 받는 상대방은 {personality}."
-    
-    # fallback
+        return (
+            f"{emotion_detail} {emotion_main} 감정을 {target}에게 표현하고 싶어. "
+            f"그 감정은 {personality}인 사람에게 깊은 인상을 줄 수 있을 거야."
+        )
+
+    # fallback for freeform input
     prompt = PromptTemplate(
         input_variables=["keywords"],
         template="""
@@ -56,9 +62,10 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run({"keywords": ",".join(keywords)}).strip()
 
+
 def get_flower_recommendations(keywords: str, top_k: int = 3):
     expanded_query = expand_keywords(keywords)
-    emotion_category = classify_emotion(keywords)
+    emotion_category = classify_emotion(expanded_query)
     query_vector = embed_query(expanded_query)
 
     distances, indices = index.search(np.array(query_vector).astype("float32"), top_k * 5)
@@ -67,10 +74,15 @@ def get_flower_recommendations(keywords: str, top_k: int = 3):
     for i in indices[0]:
         flower = metadata_list[i]
         base_score = distances[0][list(indices[0]).index(i)]
-        boost = -0.3 if emotion_category in flower.get("emotion_tags", []) else 0.0
+        # 감정 태그 일치 여부 기반 스코어 보정 (더 강하게)
+        if emotion_category in flower.get("emotion_tags", []):
+            boost = -1.0  # 더 강한 가중치 부여
+        else:
+            boost = +0.5  # 감정 불일치 시 패널티
         final_score = base_score + boost
         results_with_score.append((i, final_score))
 
+    # 유사도+감정 기반 정렬
     results_with_score.sort(key=lambda x: x[1])
     seen_names = set()
     final_results = []
