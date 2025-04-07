@@ -53,7 +53,7 @@ expand_chain = expand_prompt | llm
 
 # 🔧 감정 분류
 def classify_emotion(keywords: str) -> str:
-    return emotion_chain.invoke({"keywords": keywords}).strip()
+    return emotion_chain.invoke({"keywords": keywords}).content.strip()
 
 # 🔧 키워드 → 자연어 문장 (확장 포함)
 def expand_keywords(keywords: list[str], structured: bool = True) -> str:
