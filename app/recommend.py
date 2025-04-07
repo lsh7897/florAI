@@ -181,18 +181,8 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
     # 감정 카테고리에서 주요 감정 추출
     main_emotion = emotion_category.split('(')[0].strip() if '(' in emotion_category else emotion_category.strip()
 
-    # "그리움" 관련 꽃들을 우선 추천 (예: 돌아와 주세요 메시지를 전달하는 꽃)
-    if main_emotion == "슬픔" or main_emotion == "그리움":
-        # "그리움"과 관련된 꽃말만 필터링
-        filtered_flowers = [
-            flower for flower in metadata_list
-            if any("그리움" in tag for tag in flower.get("emotion_tags", []))  # 그리움 관련 꽃만
-        ]
-    else:
-        filtered_flowers = metadata_list
-
-    if not filtered_flowers:
-        return {"recommendations": [], "error": "해당 감정에 맞는 꽃이 없습니다."}
+    # 필터링 없이 전체 꽃 목록에서 추천 시작
+    filtered_flowers = metadata_list
 
     # 유사도 계산을 위한 쿼리 벡터 생성
     query_vector = embed_query(expanded_query)
@@ -204,11 +194,11 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
     results = []
     seen_names = set()
 
-    # 그리움과 관련된 꽃을 우선 추천
+    # 전체 꽃 목록에서 유사도 높은 꽃 추천
     for i in indices[0]:
         if i >= len(filtered_flowers):
             continue  # 인덱스가 범위를 벗어나면 무시
-        flower = filtered_flowers[i]  # 필터된 꽃 목록에서만 선택
+        flower = filtered_flowers[i]  # 전체 꽃 목록에서 선택
         if flower["name"] in seen_names:
             continue
         seen_names.add(flower["name"])
@@ -228,7 +218,7 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
         for i in indices[0]:
             if i >= len(filtered_flowers):
                 continue  # 인덱스가 범위를 벗어나면 무시
-            flower = filtered_flowers[i]  # 필터된 꽃 목록에서만 선택
+            flower = filtered_flowers[i]  # 전체 꽃 목록에서 선택
             if flower["name"] in seen_names:
                 continue
             seen_names.add(flower["name"])
