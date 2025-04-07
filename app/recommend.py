@@ -69,49 +69,26 @@ def expand_keywords(keywords: list[str], structured: bool = True) -> str:
     raise ValueError("키워드는 그대, 성별, 감정, 세부 감정, 성향 포함 5개 이상이어야 합니다.")
 
 
-def get_flower_recommendations(keywords: list[str], top_k: int = 3):
+def get_flower_recommendations_no_tag(keywords: list[str], top_k: int = 3):
     expanded_query = expand_keywords(keywords)
-    emotion_category = classify_emotion(keywords)
     query_vector = embed_query(expanded_query)
 
-    # 감정 카테고리가 맞는 꽃을 무엇보다 먼저 검색
-    filtered_indices = [i for i, flower in enumerate(metadata_list) if emotion_category in flower.get("emotion_tags", [])]
+    distances, indices = index.search(np.array(query_vector).astype("float32"), top_k * 2)
 
-    if not filtered_indices:
-        filtered_indices = list(range(len(metadata_list)))  # fallback
-
-    # FAISS가 가장 가게적으로 검색
-    distances, indices = index.search(np.array(query_vector).astype("float32"), top_k * SEARCH_EXPANSION_FACTOR)
-
-    results_with_score = []
-    for i in indices[0]:
-        if i not in filtered_indices:
-            continue
-        flower = metadata_list[i]
-        base_score = distances[0][list(indices[0]).index(i)]
-        results_with_score.append((i, base_score))
-
-    results_with_score.sort(key=lambda x: x[1])
+    results = []
     seen_names = set()
-    final_results = []
-
-    for i, _ in results_with_score:
+    for i in indices[0]:
         flower = metadata_list[i]
         if flower["name"] in seen_names:
             continue
         seen_names.add(flower["name"])
-
-        try:
-            reason = generate_reason(expanded_query, flower["description"], flower["name"])
-        except Exception:
-            reason = "[\ucd94\ucc9c \uc774\uc720 \uc0dd\uc131 \uc2e4\ud328]"
-
-        final_results.append({
+        reason = generate_reason(expanded_query, flower["description"], flower["name"])
+        results.append({
             "FLW_IDX": flower["FLW_IDX"],
             "reason": reason
         })
-
-        if len(final_results) >= top_k:
+        if len(results) >= top_k:
             break
 
-    return {"recommendations": final_results}
+    return {"recommendations": results}
+
