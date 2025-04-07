@@ -2,7 +2,7 @@ import os
 import json
 import faiss
 import numpy as np
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Tuple
 from app.utils import embed_query, generate_reason
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
@@ -43,15 +43,15 @@ llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo-16k")
 # 감정 분류 프롬프트 개선
 emotion_prompt = PromptTemplate(
     input_variables=["keywords", "query_context"],
-    template="""
+    template=""" 
     다음은 꽃을 추천받기 위한 키워드와 상황입니다:
-    
+
     키워드: {keywords}
     상황 설명: {query_context}
-    
+
     위 정보를 바탕으로 다음 감정 카테고리 중에서 가장 적절한 것을 골라주세요.
     여러 감정이 복합되어 있다면, 주된 감정 하나와 부차적인 감정 하나를 함께 알려주세요.
-    
+
     감정 카테고리:
     - 사랑: 강렬한, 순수한, 영원한, 행복한, 따뜻한
     - 슬픔: 화해, 이별, 그리움, 위로
@@ -59,7 +59,7 @@ emotion_prompt = PromptTemplate(
     - 응원: 새로운 시작, 합격 기원, 격려, 꿈을 향한 도전
     - 행복: 영원한, 순수한, 함께한, 다가올
     - 특별함: 비밀, 신비, 마법, 고귀, 고급
-    
+
     형식: [주감정(세부)], [부차적 감정(세부)]
     예시: 사랑(따뜻한), 응원(격려)
     """
@@ -69,19 +69,19 @@ emotion_chain = LLMChain(llm=llm, prompt=emotion_prompt)
 # 키워드 확장 프롬프트 개선
 expand_prompt = PromptTemplate(
     input_variables=["keywords", "emotion"],
-    template="""
+    template=""" 
     다음 키워드와 감정을 바탕으로, 꽃을 선물하는 상황을 자세하고 감정이 풍부하게 설명하는 문단을 작성해주세요.
     문단은 5-7개의 짧고 자연스러운 문장으로 구성되어야 합니다.
-    
+
     키워드: {keywords}
     주요 감정: {emotion}
-    
+
     다음과 같은 내용을 포함하되, 자연스럽게 통합해주세요:
     1. 선물하는 대상과의 관계나 상황
     2. 전달하고 싶은 감정의 깊이와 뉘앙스
     3. 꽃을 통해 표현하고 싶은 마음
     4. 선물 받는 사람의 성격이나 특성(알고 있는 경우)
-    
+
     작성 시 주의사항:
     - 과장된 표현보다는 진솔하고 따뜻한 감정 표현을 사용해주세요
     - 구체적인 상황이나 기억을 언급하면 더 좋습니다
@@ -93,13 +93,13 @@ expand_chain = LLMChain(llm=llm, prompt=expand_prompt)
 # 추천 이유 생성 프롬프트 개선
 reason_prompt = PromptTemplate(
     input_variables=["situation", "flower_info", "flower_name"],
-    template="""
+    template=""" 
     다음은 꽃을 선물하려는 상황과 추천하려는 꽃에 대한 정보입니다:
-    
+
     상황: {situation}
     꽃 이름: {flower_name}
     꽃 정보: {flower_info}
-    
+
     위 정보를 바탕으로, 이 꽃이 해당 상황에 왜 적합한지 설득력 있게 설명하는 추천 이유를 3-4문장으로 작성해주세요.
     꽃말, 색상, 의미 등을 연결지어 설명하면 좋습니다.
     """
@@ -109,7 +109,7 @@ reason_chain = LLMChain(llm=llm, prompt=reason_prompt)
 def parse_structured_keywords(keywords: List[str]) -> Dict[str, str]:
     """키워드 목록에서 구조화된 정보 추출"""
     result = {}
-    
+
     if len(keywords) >= 1:
         result["target"] = keywords[0]
     if len(keywords) >= 2:
@@ -123,20 +123,25 @@ def parse_structured_keywords(keywords: List[str]) -> Dict[str, str]:
         
     return result
 
-def expand_keywords(keywords: List[str]) -> str:
-    """키워드를 확장하여 상세한 상황 설명으로 변환"""
+def classify_emotion(keywords: List[str]) -> str:
+    """키워드를 바탕으로 감정 분류"""
+    keywords_str = ", ".join(keywords)
+    return emotion_chain.run({
+        "keywords": keywords_str,
+        "query_context": "고객이 꽃을 추천받기 위해 입력한 키워드입니다."
+    })
+
+def expand_keywords(keywords: List[str]) -> Tuple[str, str]:
+    """키워드를 확장하여 상세한 상황 설명으로 변환하고, 감정 분류 결과도 반환"""
     # 키워드 구조화
     keyword_info = parse_structured_keywords(keywords)
     
     # 감정 분류
     keywords_str = ", ".join(keywords)
-    emotion_result = emotion_chain.run({
-        "keywords": keywords_str,
-        "query_context": "고객이 꽃을 추천받기 위해 입력한 키워드입니다."
-    })
+    emotion_result = classify_emotion(keywords)
     
     # 감정 정보에서 주요 감정 추출
-    main_emotion = emotion_result.split(',')[0].strip()
+    main_emotion = emotion_result.split(',')[0].strip() if ',' in emotion_result else emotion_result.strip()
     
     # 확장된 상황 설명 생성
     expanded_text = expand_chain.run({
@@ -144,7 +149,7 @@ def expand_keywords(keywords: List[str]) -> str:
         "emotion": main_emotion
     })
     
-    return expanded_text, main_emotion
+    return expanded_text, emotion_result
 
 def custom_generate_reason(situation: str, flower_info: str, flower_name: str) -> str:
     """꽃 추천 이유 생성"""
@@ -165,8 +170,7 @@ def calculate_combined_score(emotion_match: bool, distance: float) -> float:
     # 최종 점수 계산
     return (EMOTION_WEIGHT * emotion_score) + (SIMILARITY_WEIGHT * similarity)
 
-
-def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str, List[Dict[str, Any]]]:
+def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str, Any]:
     """키워드 기반 꽃 추천 함수"""
     # 키워드가 충분한지 확인
     if len(keywords) < 3:
@@ -176,7 +180,7 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
     expanded_query, emotion_category = expand_keywords(keywords)
     
     # 감정 카테고리에서 주요 감정 추출 (괄호 부분 제거)
-    main_emotion = emotion_category.split('(')[0].strip()
+    main_emotion = emotion_category.split('(')[0].strip() if '(' in emotion_category else emotion_category.strip()
     
     # 쿼리 벡터 생성
     query_vector = embed_query(expanded_query)
@@ -234,12 +238,10 @@ def get_flower_recommendations(keywords: List[str], top_k: int = 3) -> Dict[str,
             "FLW_IDX": flower["FLW_IDX"],
             "name": flower["name"],  # 꽃 이름 추가
             "reason": reason,
-            "score": candidate["combined_score"],
+            "score": float(candidate["combined_score"]),  # JSON 직렬화를 위해 float로 변환
             "emotion_match": candidate["emotion_match"]
         })
     
     return {
-        "recommendations": results,
-        "query_context": expanded_query,
-        "emotion_category": emotion_category
-    }
+    "recommendations": results
+}
