@@ -15,7 +15,7 @@ class QueryInput(BaseModel):
 @app.post("/recommend")
 def recommend_flowers(input: QueryInput):
     try:
-        query = input.query if isinstance(input.query, str) else ", ".join(input.query)
+        query = input.query if isinstance(input.query, list) else input.query.split(",")
         result = get_flower_recommendations(query)
         return result["recommendations"]
     except Exception as e:
