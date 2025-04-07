@@ -44,14 +44,15 @@ def classify_emotion(keywords: str) -> str:
 
 
 def expand_keywords(keywords: list[str], structured: bool = True) -> str:
-    if structured and isinstance(keywords, list) and len(keywords) >= 4:
+    if structured and isinstance(keywords, list) and len(keywords) >= 6:
         target = keywords[0]
-        emotion_main = keywords[1]
-        emotion_detail = keywords[2]
-        personality = keywords[3]
+        gender = keywords[1]
+        emotion_main = keywords[2]
+        emotion_detail = keywords[3]
+        personality = keywords[4]
 
         return (
-            f"나는 {target}에게 {emotion_main}의 감정을 전하고 싶어요. "
+            f"나는 성별이 {gender}인 {target}에게 {emotion_main}의 감정을 전하고 싶어요. "
             f"그 사람은 {personality}, 그래서 더욱 조심스럽고 진심을 담아 표현하고 싶어요. "
             f"{emotion_detail} {emotion_main}은 단순한 감정이 아니라, 그 사람과 나 사이에 오랜 시간 쌓여온 마음이에요. "
             f"말로 다 전할 수 없기에 꽃으로 대신 전하고 싶고, "
