@@ -7,9 +7,9 @@ from langchain.chains import LLMChain
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
 def embed_query(query: str):
-    embedder = OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY"))
-    vector = embedder.embed_query(query)
-    return [vector]  # FAISS expects 2D array
+    embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-ada-002")
+    vector = embedder.embed_documents([query])  # 임베딩된 문서들
+    return vector  # FAISS expects 2D array
 
 def generate_reason(query: str, description: str, flower_name: str):
     prompt = PromptTemplate(
