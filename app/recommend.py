@@ -1,4 +1,3 @@
-
 import os
 import json
 from dotenv import load_dotenv
@@ -36,12 +35,12 @@ def expand_query_components(keywords: list[str]):
 
     emo = (
         f"표현하려는 핵심 감정은 '{emotion}'이고, 세부 감정은 '{detail}'입니다. "
-        f"이 감정을 가장 자연스럽고 아름답게 전달할 수 있는 꽃을 찾고 있어요."
+        f"이 감정을 가장 정확하고 확실히히 전달할 수 있는 꽃을 찾고 있어요."
     )
 
     style = (
-        f"{gender}이고 {personality} 성향의 사람에게 감정을 더욱 깊게 전달할 수 있는 "
-        f"색감, 향기, 분위기를 가진 꽃을 고려해줘."
+        f"{gender}이고 {personality} 성향의 사람이 {emotion}({detail})을  어떻게 느낄지"
+        f"{personality} 성향의 사람에게 {emotion}({detail})이 어떻게 잘 표현할 수 있을 꽃을 찾고 있어요요."
     )
 
     return desc, emo, style
@@ -58,6 +57,8 @@ def generate_reason(query: str, description: str, flower_name: str, flower_meani
 
         이 꽃이 '{query}'에 어울리는 이유를 구체적으로 설명해줘.
         꽃 이름({flower})도 반드시 포함하고, 꽃말을 중심으로 이꽃이 구매자가 당사자에게 어떠한 메세지를 보낼 수 있을지 설득력 있게 표현해줘.
+        말투는 {emotion}에 맞춰서 조절해줘. 
+        슬픔이면 조용하고 따뜻하게, 응원이면 희망차고 긍정적으로, 사랑이면 깊고 섬세하게, 축하면 경쾌하고 발랄하게, 특별함은 속삭이듯 비밀스럽게 .
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
@@ -87,7 +88,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         for name, vector in vectors.items()
     }
 
-    weights = {"desc": 0.6, "emotion": 0.2, "meaning": 0.2}
+    weights = {"desc": 0.6, "emotion": 0.3, "meaning": 0.1}
     score_map = {}
     for vector_name, result in results.items():
         for res in result:

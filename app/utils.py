@@ -4,6 +4,7 @@ from langchain_openai import OpenAIEmbeddings
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 # 임베딩 초기화
