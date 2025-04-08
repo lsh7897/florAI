@@ -10,20 +10,20 @@ from app.utils import cosine_similarity, embed_text
 
 load_dotenv()
 
-# Qdrant setup
+# Qdrant 설정
 qdrant = QdrantClient(
     url=os.getenv("QDRANT_HOST"),
     api_key=os.getenv("QDRANT_API_KEY")
 )
 COLLECTION_NAME = "flowers"
 
-# Embedding setup
+# OpenAI 임베딩
 embedder = OpenAIEmbeddings(
     openai_api_key=os.getenv("OPENAI_API_KEY"),
     model="text-embedding-ada-002"
 )
 
-# GPT setup
+# GPT 모델
 llm = ChatOpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),
     model="gpt-3.5-turbo"
@@ -34,22 +34,16 @@ def expand_query_components(keywords: list[str]) -> tuple[str, str, str]:
     base = (keywords + [""] * 5)[:5]
     target, main_emotion, detail_emotion, personality, gender = base
 
-    # ① 추천 목적 설명
     desc = (
         f"{main_emotion}이 제일 핵심적인 키워드로서 "
         f"{target}에게 {main_emotion}에 대한 감정을 표현하고 싶어. "
         f"{detail_emotion} {main_emotion}을 생각하며 꽃을 받는 상대방은 {personality}."
     )
-
-    # ② 감정 중심 설명
     emo = f"이 감정은 {main_emotion}({detail_emotion})입니다. 대상은 {gender}입니다."
-
-    # ③ 스타일 기반 설명
     style = (
         f"{gender}이고 {personality} 성향의 사람에게 어울릴만한 "
         f"색, 향기, 계절감을 가진 꽃을 추천해줘."
     )
-
     return desc, emo, style
 
 def generate_reason(query: str, description: str, flower_name: str) -> str:
@@ -77,45 +71,40 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     emo_vec = embedder.embed_query(emo_query)
     style_vec = embedder.embed_query(style_query)
 
-    # Qdrant 검색 (각각 top_k * 5개 정도씩)
+    # Qdrant 검색
     results = {
-        results = {
-    "desc": qdrant.search_collection(
-        collection_name=COLLECTION_NAME,
-        query_vector=("desc", desc_vec),
-        limit=top_k * 5
-    ),
-    "emotion": qdrant.search_collection(
-        collection_name=COLLECTION_NAME,
-        query_vector=("emotion", emo_vec),
-        limit=top_k * 5
-    ),
-    "style": qdrant.search_collection(
-        collection_name=COLLECTION_NAME,
-        query_vector=("style", style_vec),
-        limit=top_k * 5
-    )
-}
-
+        "desc": qdrant.search_collection(
+            collection_name=COLLECTION_NAME,
+            query_vector=("desc", desc_vec),
+            limit=top_k * 5
+        ),
+        "emotion": qdrant.search_collection(
+            collection_name=COLLECTION_NAME,
+            query_vector=("emotion", emo_vec),
+            limit=top_k * 5
+        ),
+        "style": qdrant.search_collection(
+            collection_name=COLLECTION_NAME,
+            query_vector=("style", style_vec),
+            limit=top_k * 5
+        )
     }
 
-    # 모든 후보 id 모으기
+    # 모든 후보 id 수집
     candidate_ids = set(hit.id for hits in results.values() for hit in hits)
 
     scored = []
     for idx in candidate_ids:
-        # 벡터별 score 추출
         d_score = next((r.score for r in results["desc"] if r.id == idx), 0.0)
         e_score = next((r.score for r in results["emotion"] if r.id == idx), 0.0)
         s_score = next((r.score for r in results["style"] if r.id == idx), 0.0)
-
         final_score = 0.5 * d_score + 0.3 * e_score + 0.2 * s_score
+
         payload = next((r.payload for r in results["desc"] + results["emotion"] + results["style"] if r.id == idx), {})
         scored.append((payload, final_score))
 
-    # 점수 기준 정렬
+    # 점수 정렬 후 Top K
     scored.sort(key=lambda x: x[1], reverse=True)
-
     final = []
     for payload, score in scored:
         reason = generate_reason(desc_query, payload["description"], payload["name"])
