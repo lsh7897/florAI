@@ -23,15 +23,15 @@ embedder = OpenAIEmbeddings(
     model="text-embedding-ada-002"
 )
 
-# ✅ FLW_IDX 포함된 CSV로 설명 불러오기
-csv_data = pd.read_csv("flowers_with_idx.csv", encoding="utf-8")
+# FLW_IDX 포함된 CSV로 설명 불러오기
+csv_data = pd.read_csv("flowers_with_gpt.csv", encoding="utf-8")
 csv_data = csv_data.set_index("FLW_IDX")
 
-# ✅ JSON 데이터 불러오기
+# JSON 데이터 불러오기
 with open("flower_metadata.json", encoding="utf-8") as f:
     flower_data = json.load(f)
 
-# ✅ Qdrant 컬렉션 생성
+# Qdrant 컬렉션 생성
 qdrant.recreate_collection(
     collection_name=COLLECTION_NAME,
     vectors_config={
@@ -50,7 +50,7 @@ for item in tqdm(flower_data):
 
         # 🔹 CSV에서 확장된 desc 설명 가져오기
         if flw_idx not in csv_data.index:
-            print(f"⚠️ FLW_IDX {flw_idx} 누락 → CSV 설명 없음, 스킵됨")
+            print(f"FLW_IDX {flw_idx} 누락 → CSV 설명 없음, 스킵됨")
             continue
         desc_text = csv_data.loc[flw_idx]["꽃말(설명)"]
 
@@ -58,7 +58,7 @@ for item in tqdm(flower_data):
         emo_text = ", ".join(item.get("emotion_tags", []))
         meaning_text = item.get("description", "")
         if not meaning_text:
-            print(f"⚠️ {name} → 짧은 꽃말 없음, 스킵됨")
+            print(f"{name} → 짧은 꽃말 없음, 스킵됨")
             continue
 
         desc_vec = embedder.embed_query(desc_text)
@@ -77,8 +77,8 @@ for item in tqdm(flower_data):
             )
         )
     except Exception as e:
-        print(f"❌ {item.get('name', 'Unknown')} 처리 중 오류 발생:", e)
+        print(f"{item.get('name', 'Unknown')} 처리 중 오류 발생:", e)
 
-# ✅ Qdrant 업로드
+# Qdrant 업로드
 qdrant.upsert(collection_name=COLLECTION_NAME, points=points)
-print("✅ Qdrant 벡터 업로드 완료!")
+print("Qdrant 벡터 업로드 완료!")
