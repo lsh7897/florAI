@@ -47,9 +47,9 @@ def expand_query_components(keywords: list[str]):
 
 
 # GPT 설명 생성
-def generate_reason(query: str, description: str, flower_name: str, flower_meaning: str) -> str:
+def generate_reason(query: str, description: str, flower_name: str, flower_meaning: str, emotion: str) -> str:
     prompt = PromptTemplate(
-        input_variables=["query", "description", "flower", "meaning"],
+        input_variables=["query", "description", "flower", "meaning", "emotion"],
         template="""
         사용자 의도: {query}
         꽃 설명: {description}
@@ -58,7 +58,7 @@ def generate_reason(query: str, description: str, flower_name: str, flower_meani
         이 꽃이 '{query}'에 어울리는 이유를 구체적으로 설명해줘.
         꽃 이름({flower})도 반드시 포함하고, 꽃말을 중심으로 이꽃이 구매자가 당사자에게 어떠한 메세지를 보낼 수 있을지 설득력 있게 표현해줘.
         말투는 {emotion}에 맞춰서 조절해줘. 
-        슬픔이면 조용하고 따뜻하게, 응원이면 희망차고 긍정적으로, 사랑이면 깊고 섬세하게, 축하면 경쾌하고 발랄하게, 특별함은 속삭이듯 비밀스럽게 .
+        슬픔이면 조용하고 따뜻하게, 응원이면 희망차고 긍정적으로, 사랑이면 깊고 섬세하게, 축하면 경쾌하고 발랄하게, 특별함은 속삭이듯 비밀스럽게.
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
@@ -66,12 +66,14 @@ def generate_reason(query: str, description: str, flower_name: str, flower_meani
         "query": query,
         "description": description,
         "flower": flower_name,
-        "meaning": flower_meaning
+        "meaning": flower_meaning,
+        "emotion": emotion
     }).strip()
 
 # 추천 메인 함수
 def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     desc_query, emo_query, style_query = expand_query_components(keywords)
+    emotion = keywords[1] if len(keywords) >= 2 else ""
 
     desc_vec = embedder.embed_query(desc_query)
     emo_vec = embedder.embed_query(emo_query)
@@ -127,7 +129,8 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
                             query=",".join(keywords),
                             description=description,
                             flower_name=name,
-                            flower_meaning=description
+                            flower_meaning=description,
+                            emotion=emotion
                         )
                     except Exception as e:
                         print(f"❗ {name} GPT 설명 생성 오류:", e)
