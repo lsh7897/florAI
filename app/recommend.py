@@ -57,13 +57,11 @@ def generate_reason(query: str, description: str, flower_name: str, flower_meani
 def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     desc_query, emo_query, style_query = expand_query_components(keywords)
 
-    # 벡터 생성
     desc_vec = embedder.embed_query(desc_query)
     emo_vec = embedder.embed_query(emo_query)
     meaning_vec = embedder.embed_query(style_query)
 
-    # 검색
-    SEARCH_TOP_K = 30
+    SEARCH_TOP_K = 50  # 여유 있게 확보
     vectors = {"desc": desc_vec, "emotion": emo_vec, "meaning": meaning_vec}
     results = {
         name: qdrant.search(
@@ -74,17 +72,14 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         for name, vector in vectors.items()
     }
 
-    # 가중치 설정
     weights = {"desc": 0.6, "emotion": 0.25, "meaning": 0.15}
     score_map = {}
-
     for vector_name, result in results.items():
         for res in result:
             name = res.payload["name"]
             score = res.score
             score_map.setdefault(name, []).append((vector_name, score))
 
-    # 최종 점수 계산
     flower_scores = []
     for name, scores in score_map.items():
         score_total = 0.0
@@ -96,28 +91,41 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         flower_scores.append((name, score_total))
 
     flower_scores.sort(key=lambda x: x[1], reverse=True)
-    top_names = [x[0] for x in flower_scores[:top_k]]
+    top_names = [x[0] for x in flower_scores]
 
-    # 최종 추천 정리
     final_recommendations = []
     seen = set()
-    for vector_name, result in results.items():
-        for res in result:
-            payload = res.payload
-            if payload["name"] in top_names and payload["name"] not in seen:
-                seen.add(payload["name"])
-                reason = generate_reason(
-                    query=",".join(keywords),
-                    description=payload["description"],
-                    flower_name=payload["name"],
-                    flower_meaning=payload.get("description", "")
-                )
-                final_recommendations.append({
-                    "FLW_IDX": payload["FLW_IDX"],
-                    "name": payload["name"],
-                    "score": round(score_map[payload["name"]][0][1], 4),
-                    "reason": reason
-                })
-                break
+    for name in top_names:
+        for vector_name, result in results.items():
+            for res in result:
+                payload = res.payload
+                if payload["name"] == name and name not in seen:
+                    seen.add(name)
+
+                    description = payload.get("description", "")
+                    if isinstance(description, list):
+                        description = " ".join(description)
+
+                    try:
+                        reason = generate_reason(
+                            query=",".join(keywords),
+                            description=description,
+                            flower_name=name,
+                            flower_meaning=description
+                        )
+                    except Exception as e:
+                        print(f"❗ {name} GPT 설명 생성 오류:", e)
+                        reason = f"{name}는 감정을 담아 표현하기 좋은 꽃이에요."
+
+                    final_recommendations.append({
+                        "FLW_IDX": payload["FLW_IDX"],
+                        "name": name,
+                        "score": round(score_map[name][0][1], 4),
+                        "reason": reason
+                    })
+
+                    break
+        if len(final_recommendations) >= top_k:
+            break
 
     return {"recommendations": final_recommendations}
