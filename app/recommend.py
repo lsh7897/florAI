@@ -178,5 +178,3 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
 
     return {"recommendations": final_recommendations}
 
-save_keyword_log(keywords)
-
