@@ -26,15 +26,18 @@ llm = ChatOpenAI(
     model="gpt-3.5-turbo"
 )
 
-# 문장 생성
+# 문장 생성: 스타일 대신 꽃말 강조로 변경
 def expand_query_components(keywords: list[str]) -> tuple[str, str, str]:
     base = (keywords + [""] * 5)[:5]
     target, emotion, detail, personality, gender = base
 
-    desc = f"{target}에게 {emotion}({detail})의 감정을 표현하고 싶어요. 상대는 {gender}이고 {personality}입니다."
-    emo = f"이 감정은 {emotion}({detail})입니다."
-    style = f"{gender}이고 {personality} 성향의 사람에게 어울릴만한 색, 향기, 계절감을 가진 꽃을 추천해줘."
-    return desc, emo, style
+    desc = f"{target}에게 {emotion}({detail})의 감정을 전하고 싶은 상황입니다. 상대는 {gender}이고 {personality}인 사람이에요. 이 감정을 말로 대신하지 못하니, 꽃으로 표현하려고 해요."
+
+    emo = f"{target}에게 전하고 싶은 감정은 '{emotion}({detail})'입니다. 말로 표현하기 어려운 감정을 꽃을 통해 대신 전하고 싶습니다."
+
+    meaning = f"{emotion}({detail})의 감정을 가장 잘 상징할 수 있는 꽃말을 가진 꽃을 추천해주세요. 이 감정의 의미를 강하게 전달하는 상징적인 꽃이 필요해요."
+
+    return desc, emo, meaning
 
 # GPT 설명 생성
 def generate_reason(query: str, description: str, flower_name: str) -> str:
@@ -55,11 +58,11 @@ def generate_reason(query: str, description: str, flower_name: str) -> str:
 
 # 추천
 def get_flower_recommendations(keywords: list[str], top_k: int = 3):
-    desc_query, emo_query, style_query = expand_query_components(keywords)
+    desc_query, emo_query, meaning_query = expand_query_components(keywords)
 
     desc_vec = embedder.embed_query(desc_query)
     emo_vec = embedder.embed_query(emo_query)
-    style_vec = embedder.embed_query(style_query)
+    meaning_vec = embedder.embed_query(meaning_query)
 
     desc_results = qdrant.search(
         collection_name=COLLECTION_NAME,
@@ -71,49 +74,46 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         query_vector={"name": "emotion", "vector": emo_vec},
         limit=15
     )
-    style_results = qdrant.search(
+    meaning_results = qdrant.search(
         collection_name=COLLECTION_NAME,
-        query_vector={"name": "style", "vector": style_vec},
+        query_vector={"name": "meaning", "vector": meaning_vec},
         limit=15
     )
 
-    # 유사도 정규화 (0~1 구간)
     def normalize(scores):
         arr = np.array(scores)
         min_v, max_v = arr.min(), arr.max()
         return (arr - min_v) / (max_v - min_v + 1e-8)
 
-    # 유사도 맵
     def build_score_map(results):
         return {r.payload["name"]: r.score for r in results}
 
     desc_map = build_score_map(desc_results)
     emo_map = build_score_map(emo_results)
-    style_map = build_score_map(style_results)
+    meaning_map = build_score_map(meaning_results)
 
-    all_names = set(desc_map) | set(emo_map) | set(style_map)
+    all_names = set(desc_map) | set(emo_map) | set(meaning_map)
 
     desc_norm = normalize([desc_map.get(n, 0) for n in all_names])
     emo_norm = normalize([emo_map.get(n, 0) for n in all_names])
-    style_norm = normalize([style_map.get(n, 0) for n in all_names])
+    meaning_norm = normalize([meaning_map.get(n, 0) for n in all_names])
 
-    weights = {"desc": 0.4, "emotion": 0.3, "style": 0.3}
+    weights = {"desc": 0.4, "emotion": 0.3, "meaning": 0.3}
     final_scores = {}
     for i, name in enumerate(all_names):
         final_scores[name] = (
             desc_norm[i] * weights["desc"] +
             emo_norm[i] * weights["emotion"] +
-            style_norm[i] * weights["style"]
+            meaning_norm[i] * weights["meaning"]
         )
 
-    # 점수 상위 꽃 추출
     sorted_names = sorted(final_scores.items(), key=lambda x: x[1], reverse=True)
     selected = sorted_names[:top_k]
 
     final = []
     seen = set()
     for name, score in selected:
-        for r in desc_results + emo_results + style_results:
+        for r in desc_results + emo_results + meaning_results:
             if r.payload["name"] == name and name not in seen:
                 seen.add(name)
                 reason = generate_reason(desc_query, r.payload["description"], name)
