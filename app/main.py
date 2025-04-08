@@ -1,4 +1,4 @@
-
+from app import analytics
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
 from typing import Union
@@ -26,3 +26,5 @@ async def index():
         "message": "FlorAI 꽃 추천 API가 정상 작동 중입니다.",
         "example_query": "자녀, 슬픔, 그리움, 차분한 사람입니다"
     }
+
+app.include_router(analytics.router)

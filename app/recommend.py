@@ -7,6 +7,7 @@ from langchain.chains import LLMChain
 from qdrant_client import QdrantClient
 from qdrant_client.models import VectorParams, Distance
 import random
+from log_utils import save_keyword_log
 
 load_dotenv()
 
@@ -176,3 +177,6 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
             break
 
     return {"recommendations": final_recommendations}
+
+save_keyword_log(keywords)
+
