@@ -25,8 +25,8 @@ llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 # 감정 프롬프트 구성
 def expand_query_components(keywords: list[str]):
     if len(keywords) < 5:
-        keywords += [""] * (5 - len(keywords))
-    gender, target, emotion, detail, personality= keywords
+        raise ValueError("입력된 키워드는 최소 5개여야 합니다.")
+    gender, target, emotion, detail, personality = keywords
 
     desc = (
         f"{target}에게 {emotion}({detail})의 감정을 진심으로 전하고 싶어요. "
@@ -40,8 +40,8 @@ def expand_query_components(keywords: list[str]):
     )
 
     style = (
-        f"{gender}이고 {personality} 성향의 사람이 {emotion}({detail})을  어떻게 느낄지"
-        f"{personality} 성향의 사람에게 {emotion}({detail})이 어떻게 잘 표현할 수 있을 꽃을 찾고 있어요요."
+        f"{gender}이고 {personality} 성향의 사람이 {emotion}({detail})을 어떻게 느낄지"
+        f"{emotion}({detail})이 어떻게 잘 표현할 수 있을 꽃을 찾고 있어요."
     )
 
     return desc, emo, style
@@ -103,22 +103,26 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
 
     # 가중 평균
     weights = {"desc": 0.4, "emotion": 0.4, "meaning": 0.2}
-    score_map = {}
+    flower_scores = []
     for vector_name, result in results.items():
         for res in result:
             name = res.payload["name"]
             score = res.score
-            score_map.setdefault(name, []).append((vector_name, score))
+            flower_scores.append((name, vector_name, score))
 
-    flower_scores = []
-    for name, scores in score_map.items():
-        score_total = 0.0
-        used = {"desc": 0.0, "emotion": 0.0, "meaning": 0.0}
-        for vector_name, score in scores:
-            used[vector_name] = score
-        for k, v in weights.items():
-            score_total += used[k] * v
-        flower_scores.append((name, score_total))
+    # 가중 평균 계산
+    final_scores = {}
+    for name, vector_name, score in flower_scores:
+        if name not in final_scores:
+            final_scores[name] = {"desc": 0, "emotion": 0, "meaning": 0}
+        final_scores[name][vector_name] += score
+
+    weighted_scores = []
+    for name, scores in final_scores.items():
+        score_total = sum([scores[k] * weights[k] for k in scores])
+        weighted_scores.append((name, score_total))
+
+    weighted_scores.sort(key=lambda x: x[1], reverse=True)
 
     flower_scores.sort(key=lambda x: x[1], reverse=True)
     candidates = flower_scores[:30]  # 정확도 확보용 후보군
