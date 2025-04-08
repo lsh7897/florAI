@@ -10,11 +10,12 @@ from app.utils import cosine_similarity, embed_text
 
 load_dotenv()
 
-# Qdrant 설정
+# Qdrant 클라이언트 - HTTP API 모드로 설정
 qdrant = QdrantClient(
     url=os.getenv("QDRANT_HOST"),
-    api_key=os.getenv("QDRANT_API_KEY")
+    api_key=os.getenv("QDRANT_API_KEY"),
 )
+
 COLLECTION_NAME = "flowers"
 
 # OpenAI 임베딩
@@ -30,7 +31,6 @@ llm = ChatOpenAI(
 )
 
 def expand_query_components(keywords: list[str]) -> tuple[str, str, str]:
-    # 키워드 구조: [대상, 감정, 세부감정, 성향, 성별]
     base = (keywords + [""] * 5)[:5]
     target, main_emotion, detail_emotion, personality, gender = base
 
@@ -63,36 +63,33 @@ def generate_reason(query: str, description: str, flower_name: str) -> str:
     }).strip()
 
 def get_flower_recommendations(keywords: list[str], top_k: int = 3):
-    # 문장 3종 생성
     desc_query, emo_query, style_query = expand_query_components(keywords)
 
-    # 벡터 3종 생성
     desc_vec = embedder.embed_query(desc_query)
     emo_vec = embedder.embed_query(emo_query)
     style_vec = embedder.embed_query(style_query)
 
-    # Qdrant 검색
+    # search_collection 사용
     results = {
-        "desc": qdrant.search_points(
+        "desc": qdrant.search(
             collection_name=COLLECTION_NAME,
-            query_vector=("desc", desc_vec),
+            query_vector={"name": "desc", "vector": desc_vec},
             limit=top_k * 5
         ),
-        "emotion": qdrant.search_points(
+        "emotion": qdrant.search(
             collection_name=COLLECTION_NAME,
-            query_vector=("emotion", emo_vec),
+            query_vector={"name": "emotion", "vector": emo_vec},
             limit=top_k * 5
         ),
-        "style": qdrant.search_points(
+        "style": qdrant.search(
             collection_name=COLLECTION_NAME,
-            query_vector=("style", style_vec),
+            query_vector={"name": "style", "vector": style_vec},
             limit=top_k * 5
         )
     }
 
-    # 모든 후보 id 수집
+    # ID 통합 및 점수 계산
     candidate_ids = set(hit.id for hits in results.values() for hit in hits)
-
     scored = []
     for idx in candidate_ids:
         d_score = next((r.score for r in results["desc"] if r.id == idx), 0.0)
@@ -103,7 +100,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         payload = next((r.payload for r in results["desc"] + results["emotion"] + results["style"] if r.id == idx), {})
         scored.append((payload, final_score))
 
-    # 점수 정렬 후 Top K
+    # 정렬 및 결과 생성
     scored.sort(key=lambda x: x[1], reverse=True)
     final = []
     for payload, score in scored:
