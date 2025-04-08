@@ -30,13 +30,26 @@ llm = ChatOpenAI(
 )
 
 def expand_query_components(keywords: list[str]) -> tuple[str, str, str]:
-    # 기존 키워드 구조: [대상, 감정, 세부감정, 성향]
-    if len(keywords) < 4:
-        keywords = keywords + [""] * (4 - len(keywords))
-    target, main_emotion, detail_emotion, personality = keywords
-    desc = f"{main_emotion}이 제일 핵심적인 키워드로서 {target}에게 {main_emotion}에 대한 감정을 표현하고 싶어. {detail_emotion} {main_emotion}을 생각하며 꽃을 받는 상대방은 {personality}."
-    emo = f"이 감정은 {main_emotion}({detail_emotion})입니다."
-    style = f"{personality} 성향의 사람에게 어울릴만한 색, 향기, 계절감을 가진 꽃을 추천해줘."
+    # 키워드 구조: [대상, 감정, 세부감정, 성향, 성별]
+    base = (keywords + [""] * 5)[:5]
+    target, main_emotion, detail_emotion, personality, gender = base
+
+    # ① 추천 목적 설명
+    desc = (
+        f"{main_emotion}이 제일 핵심적인 키워드로서 "
+        f"{target}에게 {main_emotion}에 대한 감정을 표현하고 싶어. "
+        f"{detail_emotion} {main_emotion}을 생각하며 꽃을 받는 상대방은 {personality}."
+    )
+
+    # ② 감정 중심 설명
+    emo = f"이 감정은 {main_emotion}({detail_emotion})입니다. 대상은 {gender}입니다."
+
+    # ③ 스타일 기반 설명
+    style = (
+        f"{gender}이고 {personality} 성향의 사람에게 어울릴만한 "
+        f"색, 향기, 계절감을 가진 꽃을 추천해줘."
+    )
+
     return desc, emo, style
 
 def generate_reason(query: str, description: str, flower_name: str) -> str:
