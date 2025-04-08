@@ -26,7 +26,7 @@ llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 def expand_query_components(keywords: list[str]):
     if len(keywords) < 5:
         keywords += [""] * (5 - len(keywords))
-    target, emotion, detail, personality, gender = keywords
+    gender, target, emotion, detail, personality= keywords
 
     desc = (
         f"{target}에게 {emotion}({detail})의 감정을 진심으로 전하고 싶어요. "
