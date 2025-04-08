@@ -51,8 +51,8 @@ for idx, item in enumerate(tqdm(data)):
     # 문장 생성
     desc_text = desc
     emo_text = f"이 꽃은 감정적으로 {', '.join(emotions)}와 관련이 있습니다." if emotions else "감정 정보 없음"
-    style_text = f"{item['color']} 색이며 {item['smell']} 향기를 가지고 있습니다. 계절: " + ", ".join(
-        [s for s in ["봄", "여름", "가을", "겨울"] if item.get(f"season_{s}", False)]
+    style_text = f"{item.get('color', '미상')} 색이며 {item.get('smell', '무향')} 향기를 가지고 있습니다. 계절: " + ", ".join(
+    [s for s in ["봄", "여름", "가을", "겨울"] if item.get(f"season_{s}", False)]
     )
 
     # 임베딩
