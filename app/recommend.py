@@ -40,8 +40,8 @@ def expand_query_components(keywords: list[str]):
     )
 
     style = (
-        f"{gender}이고 {personality} 성향의 사람이 {emotion}({detail})을 어떻게 느낄지"
-        f"{emotion}({detail})이 어떻게 잘 표현할 수 있을 꽃을 찾고 있어요."
+        f"{gender}이고 {personality} 성향의 사람이 {emotion}({detail})을  어떻게 느낄지"
+        f"{personality} 성향의 사람에게 {emotion}({detail})이 어떻게 잘 표현할 수 있을 꽃을 찾고 있어요요."
     )
 
     return desc, emo, style
@@ -103,7 +103,13 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
 
     # 가중 평균
     weights = {"desc": 0.4, "emotion": 0.4, "meaning": 0.2}
-    # 후보군 점수 계산
+    score_map = {}
+    for vector_name, result in results.items():
+        for res in result:
+            name = res.payload["name"]
+            score = res.score
+            score_map.setdefault(name, []).append((vector_name, score))
+
     flower_scores = []
     for name, scores in score_map.items():
         score_total = 0.0
@@ -117,7 +123,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     flower_scores.sort(key=lambda x: x[1], reverse=True)
     candidates = flower_scores[:30]  # 정확도 확보용 후보군
 
-    # 그룹화 + 랜덤 추출
+    # 다양성 그룹화 + 랜덤 추출
     grouped = []
     used = set()
     for name, score in candidates:
@@ -125,13 +131,13 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
             continue
         group = [(n, s) for n, s in candidates if abs(s - score) <= 0.03 and n not in used]
         chosen = random.choice(group)
-        grouped.append(chosen)  # chosen을 그룹에 추가
+        grouped.append(chosen)
         for n, _ in group:
             used.add(n)
         if len(grouped) >= top_k:
             break
 
-    top_names = [x[0] for x in grouped]  # top_names는 꽃 이름만 추출
+    top_names = [x[0] for x in grouped]
 
     # 결과 생성
     final_recommendations = []
@@ -170,3 +176,4 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
             break
 
     return {"recommendations": final_recommendations}
+
