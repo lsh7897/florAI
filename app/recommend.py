@@ -27,10 +27,25 @@ def expand_query_components(keywords: list[str]):
     if len(keywords) < 5:
         keywords += [""] * (5 - len(keywords))
     target, emotion, detail, personality, gender = keywords
-    desc = f"{target}에게 {emotion}({detail})의 감정을 표현하고 싶어요. 상대는 {gender}이고 {personality}입니다."
-    emo = f"이 감정은 {emotion}({detail})입니다."
-    style = f"{gender}이고 {personality} 성향의 사람에게 어울릴만한 꽃을 추천해줘."
+
+    desc = (
+        f"{target}에게 {emotion}({detail})의 감정을 진심으로 전하고 싶어요. "
+        f"그 사람은 {gender}이며, {personality} 성향을 가지고 있어요. "
+        f"이 감정은 단순한 표현이 아니라, 마음 깊은 곳에서 우러나온 그사람에게 전하고 싶은 진심이에요."
+    )
+
+    emo = (
+        f"표현하려는 핵심 감정은 '{emotion}'이고, 세부 감정은 '{detail}'입니다. "
+        f"이 감정을 가장 자연스럽고 아름답게 전달할 수 있는 꽃을 찾고 있어요."
+    )
+
+    style = (
+        f"{gender}이고 {personality} 성향의 사람에게 감정을 더욱 깊게 전달할 수 있는 "
+        f"색감, 향기, 분위기를 가진 꽃을 고려해줘."
+    )
+
     return desc, emo, style
+
 
 # GPT 설명 생성
 def generate_reason(query: str, description: str, flower_name: str, flower_meaning: str) -> str:
@@ -42,7 +57,7 @@ def generate_reason(query: str, description: str, flower_name: str, flower_meani
         꽃말: {meaning}
 
         이 꽃이 '{query}'에 어울리는 이유를 구체적으로 설명해줘.
-        꽃 이름({flower})도 반드시 포함하고, 꽃말을 중심으로 감정과 메시지를 설득력 있게 표현해줘.
+        꽃 이름({flower})도 반드시 포함하고, 꽃말을 중심으로 이꽃이 구매자가 당사자에게 어떠한 메세지를 보낼 수 있을지 설득력 있게 표현해줘.
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
@@ -72,7 +87,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         for name, vector in vectors.items()
     }
 
-    weights = {"desc": 0.6, "emotion": 0.25, "meaning": 0.15}
+    weights = {"desc": 0.6, "emotion": 0.2, "meaning": 0.2}
     score_map = {}
     for vector_name, result in results.items():
         for res in result:
