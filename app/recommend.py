@@ -48,28 +48,30 @@ def expand_query_components(keywords: list[str]):
 
 
 # GPT 설명 생성
-def generate_reason(query: str, description: str, flower_name: str, flower_meaning: str, emotion: str) -> str:
-    prompt = PromptTemplate(
-        input_variables=["query", "description", "flower", "meaning", "emotion"],
-        template="""
-        사용자 의도: {query}
-        꽃 설명: {description}
-        꽃말: {meaning}
+def generate_reason(query: str, description: str, flower_name: str, flower_meaning: str, emotion: str, target: str) -> str:
+    prompt = PromptTemplate("""
+        당신은 꽃 추천 전문가입니다. 아래 정보를 바탕으로, 구매자가 '{target}'에게 꽃을 선물하려는 상황에 맞게 추천 이유를 작성해주세요.
 
-        아래 조건에 맞게 이 꽃이 '{query}'에 어울리는 이유를 설명해줘:
+        [입력 정보]
+        - 사용자 의도: {query}
+        - 꽃 이름: {flower}
+        - 꽃 설명: {description}
+        - 꽃말(핵심 의미): {meaning}
+        - 추천 어조 감정: {emotion} (예: 사랑, 응원, 슬픔, 축하, 행복, 특별함)
 
-        1. 꽃 이름({flower})을 초반에 언급하고, 이 꽃이 가진 상징적인 의미와 분위기를 요약해줘.
-        2. '꽃말'은 중심 메시지로 삼되, 반복하거나 뻔하게 말하지 말고 감정을 녹여서 자연스럽게 표현해줘.
-        3. 구매자가 상대방에게 전하고 싶은 감정이 진심처럼 느껴지도록, 감정선을 잘 이어줘.
-        4. 전체 문장은 너무 길지 않게, 핵심 중심으로 문단 2~3개로 나눠줘.
-
-        말투는 '{emotion}' 감정에 맞춰서 다음 스타일을 따라줘:
+        [작성 지침]
+        1. '{flower}'는 첫 문단에서 자연스럽게 등장시켜 주세요. 그 꽃의 상징성과 분위기를 간결하게 요약해 주세요.
+        2. '{meaning}'은 중심 메시지로 삼되, 감정이 담기게 풀어주세요. 단, 그대로 반복하지 않고 창의적이고 자연스럽게 녹여주세요.
+        3. 추천 이유는 구매자가 '{target}'에게 전하고 싶은 감정이 진심처럼 느껴지도록 써주세요.
+        4. 전체 문장은 2~3개의 짧은 문단으로 나누고, 존댓말을 사용하세요.
+        5. 감정({emotion})에 따라 다음 어조 스타일을 반영해 주세요:
         - 슬픔: 조용하고 따뜻하게
         - 응원: 희망차고 긍정적으로
         - 사랑: 깊고 섬세하게
         - 축하: 경쾌하고 발랄하게
+        - 행복: 기쁘고 즐겁게
         - 특별함: 속삭이듯 비밀스럽게
-        """
+    """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run({
@@ -77,7 +79,8 @@ def generate_reason(query: str, description: str, flower_name: str, flower_meani
         "description": description,
         "flower": flower_name,
         "meaning": flower_meaning,
-        "emotion": emotion
+        "emotion": emotion,
+        "target": target
     }).strip()
 
 # 추천 메인 함수
