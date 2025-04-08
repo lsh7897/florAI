@@ -3,7 +3,7 @@ uvicorn[standard]
 openai
 langchain
 langchain-openai
-qdrant-client
+qdrant-client>=1.6.0
 python-dotenv
 tqdm
 pandas
