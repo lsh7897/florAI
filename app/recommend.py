@@ -79,9 +79,24 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
 
     # Qdrant 검색 (각각 top_k * 5개 정도씩)
     results = {
-        "desc": qdrant.search(COLLECTION_NAME, query_vector=desc_vec, top=top_k * 5, vector_name="desc"),
-        "emotion": qdrant.search(COLLECTION_NAME, query_vector=emo_vec, top=top_k * 5, vector_name="emotion"),
-        "style": qdrant.search(COLLECTION_NAME, query_vector=style_vec, top=top_k * 5, vector_name="style")
+        results = {
+    "desc": qdrant.search_collection(
+        collection_name=COLLECTION_NAME,
+        query_vector=("desc", desc_vec),
+        limit=top_k * 5
+    ),
+    "emotion": qdrant.search_collection(
+        collection_name=COLLECTION_NAME,
+        query_vector=("emotion", emo_vec),
+        limit=top_k * 5
+    ),
+    "style": qdrant.search_collection(
+        collection_name=COLLECTION_NAME,
+        query_vector=("style", style_vec),
+        limit=top_k * 5
+    )
+}
+
     }
 
     # 모든 후보 id 모으기
