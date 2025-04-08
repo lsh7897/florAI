@@ -103,31 +103,21 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
 
     # 가중 평균
     weights = {"desc": 0.4, "emotion": 0.4, "meaning": 0.2}
+    # 후보군 점수 계산
     flower_scores = []
-    for vector_name, result in results.items():
-        for res in result:
-            name = res.payload["name"]
-            score = res.score
-            flower_scores.append((name, vector_name, score))
-
-    # 가중 평균 계산
-    final_scores = {}
-    for name, vector_name, score in flower_scores:
-        if name not in final_scores:
-            final_scores[name] = {"desc": 0, "emotion": 0, "meaning": 0}
-        final_scores[name][vector_name] += score
-
-    weighted_scores = []
-    for name, scores in final_scores.items():
-        score_total = sum([scores[k] * weights[k] for k in scores])
-        weighted_scores.append((name, score_total))
-
-    weighted_scores.sort(key=lambda x: x[1], reverse=True)
+    for name, scores in score_map.items():
+        score_total = 0.0
+        used = {"desc": 0.0, "emotion": 0.0, "meaning": 0.0}
+        for vector_name, score in scores:
+            used[vector_name] = score
+        for k, v in weights.items():
+            score_total += used[k] * v
+        flower_scores.append((name, score_total))
 
     flower_scores.sort(key=lambda x: x[1], reverse=True)
     candidates = flower_scores[:30]  # 정확도 확보용 후보군
 
-    # 다양성 그룹화 + 랜덤 추출
+    # 그룹화 + 랜덤 추출
     grouped = []
     used = set()
     for name, score in candidates:
@@ -135,13 +125,13 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
             continue
         group = [(n, s) for n, s in candidates if abs(s - score) <= 0.03 and n not in used]
         chosen = random.choice(group)
-        grouped.append(chosen)
+        grouped.append(chosen)  # chosen을 그룹에 추가
         for n, _ in group:
             used.add(n)
         if len(grouped) >= top_k:
             break
 
-    top_names = [x[0] for x in grouped]
+    top_names = [x[0] for x in grouped]  # top_names는 꽃 이름만 추출
 
     # 결과 생성
     final_recommendations = []
@@ -180,4 +170,3 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
             break
 
     return {"recommendations": final_recommendations}
-
