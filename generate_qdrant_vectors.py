@@ -1,93 +1,86 @@
 
 import os
 import json
-import pandas as pd
 from tqdm import tqdm
-from qdrant_client import QdrantClient
-from qdrant_client.http.models import VectorParams, Distance, PointStruct
-from langchain_openai import OpenAIEmbeddings
 from dotenv import load_dotenv
+from qdrant_client import QdrantClient
+from qdrant_client.http import models as rest
+from langchain_openai import OpenAIEmbeddings
 
-# Load environment variables
 load_dotenv()
 
-# Qdrant client setup
+# 환경변수
+QDRANT_URL = os.getenv("QDRANT_HOST")
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
+COLLECTION_NAME = "flowers"
+
+# 클라이언트 초기화
 qdrant = QdrantClient(
-    url=os.getenv("QDRANT_HOST"),
-    api_key=os.getenv("QDRANT_API_KEY")
+    url=QDRANT_URL,
+    api_key=QDRANT_API_KEY,
 )
 
-# Embedding model setup
+# 임베딩 모델
 embedder = OpenAIEmbeddings(
     openai_api_key=os.getenv("OPENAI_API_KEY"),
     model="text-embedding-ada-002"
 )
 
-# Load data
-df = pd.read_csv("flowers_with_gpt.csv")
-with open("flower_metadata.json", encoding="utf-8") as f:
-    metadata = json.load(f)
+# JSON 파일 로딩
+with open("flower_metadata.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
 
-# Convert metadata to dict by FLW_IDX
-metadata_dict = {item["FLW_IDX"]: item for item in metadata}
-
-# Vector field names
-VECTOR_DIM = 1536
-COLLECTION_NAME = "flowers"
-
-# Create Qdrant collection
+# 컬렉션 재생성
 qdrant.recreate_collection(
     collection_name=COLLECTION_NAME,
     vectors_config={
-        "desc": VectorParams(size=VECTOR_DIM, distance=Distance.COSINE),
-        "emotion": VectorParams(size=VECTOR_DIM, distance=Distance.COSINE),
-        "style": VectorParams(size=VECTOR_DIM, distance=Distance.COSINE)
+        "desc": rest.VectorParams(size=1536, distance=rest.Distance.COSINE),
+        "emotion": rest.VectorParams(size=1536, distance=rest.Distance.COSINE),
+        "style": rest.VectorParams(size=1536, distance=rest.Distance.COSINE),
     }
 )
 
-# Prepare and insert points
+# 벡터 및 페이로드 구성
 points = []
-for i, row in tqdm(df.iterrows(), total=len(df)):
-    flw_idx = row["FLW_IDX"]
-    flower_meta = metadata_dict.get(flw_idx, {})
+for idx, item in enumerate(tqdm(data)):
+    name = item["name"]
+    desc = item["description"]
+    emotions = item.get("emotion_tags", [])
+    flw_idx = item["FLW_IDX"]
 
-    # Description vector
-    desc_text = str(row["꽃말(설명)"])
-    desc_vec = embedder.embed_query(desc_text)
+    # 문장 생성
+    desc_text = desc
+    emo_text = f"이 꽃은 감정적으로 {', '.join(emotions)}와 관련이 있습니다." if emotions else "감정 정보 없음"
+    style_text = f"{item['color']} 색이며 {item['smell']} 향기를 가지고 있습니다. 계절: " + ", ".join(
+        [s for s in ["봄", "여름", "가을", "겨울"] if item.get(f"season_{s}", False)]
+    )
 
-    # Emotion vector
-    emotion_tags = flower_meta.get("emotion_tags", [])
-    emotion_sentence = "이 꽃은 " + ", ".join(emotion_tags) + "의 감정을 담고 있어요."
-    emotion_vec = embedder.embed_query(emotion_sentence)
+    # 임베딩
+    try:
+        desc_vec = embedder.embed_query(desc_text)
+        emo_vec = embedder.embed_query(emo_text)
+        style_vec = embedder.embed_query(style_text)
+    except Exception as e:
+        print(f"❌ 임베딩 실패: {name} - {e}")
+        continue
 
-    # Style vector
-    color = flower_meta.get("color", "")
-    scent = flower_meta.get("scent", "")
-    seasons = [k for k in ["spring", "summer", "autumn", "winter"] if flower_meta.get(k)]
-    season_text = ", ".join(seasons)
-    style_sentence = f"{color} 색의 꽃이며, 향기는 {scent}이고, 계절은 {season_text}입니다."
-    style_vec = embedder.embed_query(style_sentence)
-
-    # Payload
     payload = {
-        "FLW_IDX": flw_idx,
-        "name": row["꽃 이름"],
-        "description": desc_text,
-        "emotion_tags": emotion_tags,
-        "color": color,
-        "scent": scent,
-        "season": seasons
+        "name": name,
+        "description": desc,
+        "emotion_tags": emotions,
+        "FLW_IDX": flw_idx
     }
 
-    points.append(PointStruct(
-        id=int(flw_idx.replace("F", "")),  # Qdrant ID는 int로
-        vector={
-            "desc": desc_vec,
-            "emotion": emotion_vec,
-            "style": style_vec
-        },
+    points.append(rest.PointStruct(
+        id=idx,
+        vector={"desc": desc_vec, "emotion": emo_vec, "style": style_vec},
         payload=payload
     ))
 
-# Upload points in batch
-qdrant.upsert(collection_name=COLLECTION_NAME, points=points)
+# 업로드
+qdrant.upsert(
+    collection_name=COLLECTION_NAME,
+    points=points
+)
+
+print(f"✅ 업로드 완료: {len(points)}개 꽃 정보 Qdrant에 저장됨")
