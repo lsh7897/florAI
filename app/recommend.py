@@ -6,6 +6,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from qdrant_client import QdrantClient
 from qdrant_client.models import VectorParams, Distance
+import random
 
 load_dotenv()
 
@@ -75,11 +76,12 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     desc_query, emo_query, style_query = expand_query_components(keywords)
     emotion = keywords[1] if len(keywords) >= 2 else ""
 
+    # 임베딩
     desc_vec = embedder.embed_query(desc_query)
     emo_vec = embedder.embed_query(emo_query)
     meaning_vec = embedder.embed_query(style_query)
 
-    SEARCH_TOP_K = 50  # 여유 있게 확보
+    SEARCH_TOP_K = 50
     vectors = {"desc": desc_vec, "emotion": emo_vec, "meaning": meaning_vec}
     results = {
         name: qdrant.search(
@@ -90,6 +92,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         for name, vector in vectors.items()
     }
 
+    # 가중 평균
     weights = {"desc": 0.6, "emotion": 0.3, "meaning": 0.1}
     score_map = {}
     for vector_name, result in results.items():
@@ -109,8 +112,25 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         flower_scores.append((name, score_total))
 
     flower_scores.sort(key=lambda x: x[1], reverse=True)
-    top_names = [x[0] for x in flower_scores]
+    candidates = flower_scores[:30]  # 정확도 확보용 후보군
 
+    # 다양성 그룹화 + 랜덤 추출
+    grouped = []
+    used = set()
+    for name, score in candidates:
+        if name in used:
+            continue
+        group = [(n, s) for n, s in candidates if abs(s - score) <= 0.03 and n not in used]
+        chosen = random.choice(group)
+        grouped.append(chosen)
+        for n, _ in group:
+            used.add(n)
+        if len(grouped) >= top_k:
+            break
+
+    top_names = [x[0] for x in grouped]
+
+    # 결과 생성
     final_recommendations = []
     seen = set()
     for name in top_names:
@@ -142,7 +162,6 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
                         "score": round(score_map[name][0][1], 4),
                         "reason": reason
                     })
-
                     break
         if len(final_recommendations) >= top_k:
             break
