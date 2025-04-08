@@ -120,4 +120,4 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
                 })
                 break
 
-    return final_recommendations
+    return {"recommendations": final_recommendations}
