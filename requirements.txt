@@ -1,8 +1,9 @@
-qdrant-client
+fastapi
+uvicorn[standard]
 openai
 langchain
 langchain-openai
-tqdm
+qdrant-client
 python-dotenv
+tqdm
 pandas
-uvicorn[standard]
