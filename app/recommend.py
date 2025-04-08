@@ -25,8 +25,8 @@ llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 # 감정 프롬프트 구성
 def expand_query_components(keywords: list[str]):
     if len(keywords) < 5:
-        raise ValueError("입력된 키워드는 최소 5개여야 합니다.")
-    gender, target, emotion, detail, personality = keywords
+        keywords += [""] * (5 - len(keywords))
+    gender, target, emotion, detail, personality= keywords
 
     desc = (
         f"{target}에게 {emotion}({detail})의 감정을 진심으로 전하고 싶어요. "
