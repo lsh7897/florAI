@@ -86,7 +86,8 @@ def generate_reason(query: str, description: str, flower_name: str, flower_meani
 # 추천 메인 함수
 def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     desc_query, emo_query, style_query = expand_query_components(keywords)
-    emotion = keywords[1] if len(keywords) >= 2 else ""
+    emotion = keywords[2] if len(keywords) >= 3 else ""
+    target = keywords[1] if len(keywords) >= 2 else ""
 
     # 임베딩
     desc_vec = embedder.embed_query(desc_query)
@@ -162,7 +163,8 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
                             description=description,
                             flower_name=name,
                             flower_meaning=description,
-                            emotion=emotion
+                            emotion=emotion,
+                            target=target
                         )
                     except Exception as e:
                         print(f"❗ {name} GPT 설명 생성 오류:", e)
