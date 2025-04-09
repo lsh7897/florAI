@@ -49,7 +49,9 @@ def expand_query_components(keywords: list[str]):
 
 # GPT 설명 생성
 def generate_reason(query: str, description: str, flower_name: str, flower_meaning: str, emotion: str, target: str) -> str:
-    prompt = PromptTemplate("""
+    prompt = PromptTemplate(
+        input_variables=["query", "description", "flower", "meaning", "emotion"],
+        template="""
         당신은 꽃 추천 전문가입니다. 아래 정보를 바탕으로, 구매자가 '{target}'에게 꽃을 선물하려는 상황에 맞게 추천 이유를 작성해주세요.
 
         [입력 정보]
