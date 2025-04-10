@@ -1,11 +1,11 @@
 import os
 import json
+import numpy as np
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from qdrant_client import QdrantClient
-from qdrant_client.models import VectorParams, Distance
 import random
 
 load_dotenv()
@@ -15,40 +15,41 @@ qdrant = QdrantClient(
     url=os.getenv("QDRANT_HOST"),
     api_key=os.getenv("QDRANT_API_KEY")
 )
-
 COLLECTION_NAME = "flowers"
 
-# 임베딩 & GPT
-embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-3-small")
+# GPT & 임베딩
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
+embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-3-small")
 
-# 감정 프롬프트 구성
+# 벡터 정규화 함수
+def normalize(v):
+    v = np.array(v)
+    norm = np.linalg.norm(v)
+    return (v / norm).tolist() if norm != 0 else v.tolist()
+
+# 감정 프롬프트 확장
 def expand_query_components(keywords: list[str]):
     if len(keywords) < 5:
         keywords += [""] * (5 - len(keywords))
-    gender, target, emotion, detail, personality= keywords
+    gender, target, emotion, detail, personality = keywords
 
     desc = (
         f"{target}에게 {emotion}({detail})의 감정을 진심으로 전하고 싶어요. "
         f"그 사람은 {gender}이며, {personality} 성향을 가지고 있어요. "
         f"이 감정은 단순한 표현이 아니라, 마음 깊은 곳에서 우러나온 그사람에게 전하고 싶은 진심이에요."
     )
-
     emo = (
         f"표현하려는 핵심 감정은 '{emotion}'이고, 세부 감정은 '{detail}'입니다. "
         f"이 감정을 가장 정확하고 확실히히 전달할 수 있는 꽃을 찾고 있어요."
     )
-
     style = (
-        f"{gender}이고 {personality} 성향의 사람이 {emotion}({detail})을  어떻게 느낄지"
-        f"{emotion}({detail})이 어떻게 잘 표현할 수 있을 꽃을 찾고 있어요요."
+        f"{gender}이고 {personality} 성향의 사람이 {emotion}({detail})을 어떻게 느낄지"
+        f"{emotion}({detail})을 어떻게 잘 표현할 수 있을 꽃을 찾고 있어요."
     )
-
     return desc, emo, style
 
-
-# GPT 설명 생성
-def generate_reason(query: str, description: str, flower_name: str, flower_meaning: str, emotion: str, target: str) -> str:
+# GPT 추천 이유 생성
+def generate_reason(query, description, flower_name, flower_meaning, emotion, target):
     prompt = PromptTemplate(
         input_variables=["query", "description", "flower", "meaning", "emotion", "target"],
         template="""
@@ -73,7 +74,7 @@ def generate_reason(query: str, description: str, flower_name: str, flower_meani
         - 축하: 경쾌하고 발랄하게
         - 행복: 기쁘고 즐겁게
         - 특별함: 속삭이듯 비밀스럽게
-    """
+        """
     )
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run({
@@ -91,11 +92,12 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     emotion = keywords[2] if len(keywords) >= 3 else ""
     target = keywords[1] if len(keywords) >= 2 else ""
 
-    # 임베딩
-    desc_vec = embedder.embed_query(desc_query)
-    emo_vec = embedder.embed_query(emo_query)
-    meaning_vec = embedder.embed_query(style_query)
+    # 임베딩 + 정규화
+    desc_vec = normalize(embedder.embed_query(desc_query))
+    emo_vec = normalize(embedder.embed_query(emo_query))
+    meaning_vec = normalize(embedder.embed_query(style_query))
 
+    # 벡터 검색
     SEARCH_TOP_K = 50
     vectors = {"desc": desc_vec, "emotion": emo_vec, "meaning": meaning_vec}
     results = {
@@ -108,7 +110,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     }
 
     # 가중 평균
-    weights = {"desc": 0.4, "emotion": 0.4, "meaning": 0.2}
+    weights = {"desc": 0.6, "emotion": 0.3, "meaning": 0.1}
     score_map = {}
     for vector_name, result in results.items():
         for res in result:
@@ -127,15 +129,15 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         flower_scores.append((name, score_total))
 
     flower_scores.sort(key=lambda x: x[1], reverse=True)
-    candidates = flower_scores[:30]  # 정확도 확보용 후보군
+    candidates = flower_scores[:30]
 
-    # 다양성 그룹화 + 랜덤 추출
+    # 그룹화 완화
     grouped = []
     used = set()
     for name, score in candidates:
         if name in used:
             continue
-        group = [(n, s) for n, s in candidates if abs(s - score) <= 0.03 and n not in used]
+        group = [(n, s) for n, s in candidates if abs(s - score) <= 0.05 and n not in used]
         chosen = random.choice(group)
         grouped.append(chosen)
         for n, _ in group:
@@ -143,22 +145,18 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
         if len(grouped) >= top_k:
             break
 
-    top_names = [x[0] for x in grouped]
-
     # 결과 생성
     final_recommendations = []
     seen = set()
-    for name in top_names:
+    for name in [x[0] for x in grouped]:
         for vector_name, result in results.items():
             for res in result:
                 payload = res.payload
                 if payload["name"] == name and name not in seen:
                     seen.add(name)
-
                     description = payload.get("description", "")
                     if isinstance(description, list):
                         description = " ".join(description)
-
                     try:
                         reason = generate_reason(
                             query=",".join(keywords),
@@ -171,7 +169,6 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
                     except Exception as e:
                         print(f"❗ {name} GPT 설명 생성 오류:", e)
                         reason = f"{name}는 감정을 담아 표현하기 좋은 꽃이에요."
-
                     final_recommendations.append({
                         "FLW_IDX": payload["FLW_IDX"],
                         "name": name,
@@ -183,4 +180,3 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
             break
 
     return {"recommendations": final_recommendations}
-
