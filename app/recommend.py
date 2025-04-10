@@ -19,7 +19,7 @@ qdrant = QdrantClient(
 COLLECTION_NAME = "flowers"
 
 # 임베딩 & GPT
-embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-ada-002")
+embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-3-small")
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
 
 # 감정 프롬프트 구성
