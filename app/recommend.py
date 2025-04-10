@@ -19,7 +19,7 @@ COLLECTION_NAME = "flowers"
 
 # GPT & 임베딩
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
-embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-ada-002")
+embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-3-small")
 
 # 벡터 정규화 함수
 def normalize(v):

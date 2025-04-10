@@ -29,7 +29,7 @@ COLLECTION_NAME = "flowers"
 # 🔹 OpenAI 임베딩 모델 초기화
 embedder = OpenAIEmbeddings(
     openai_api_key=OPENAI_API_KEY,
-    model="text-embedding-ada-002"
+    model="text-embedding-3-small"
 )
 
 # 🔹 벡터 정규화 함수
