@@ -7,3 +7,5 @@ qdrant-client>=1.6.0
 python-dotenv
 tqdm
 pandas
+httpx>=0.23.0
+requests

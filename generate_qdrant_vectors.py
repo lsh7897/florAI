@@ -20,7 +20,7 @@ COLLECTION_NAME = "flowers"
 
 embedder = OpenAIEmbeddings(
     openai_api_key=os.getenv("OPENAI_API_KEY"),
-    model="text-embedding-ada-002"
+    model="text-embedding-3-small"
 )
 
 # FLW_IDX 포함된 CSV로 설명 불러오기
