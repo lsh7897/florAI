@@ -10,7 +10,7 @@ load_dotenv()
 # 임베딩 초기화
 embedder = OpenAIEmbeddings(
     openai_api_key=os.getenv("OPENAI_API_KEY"),
-    model="text-embedding-3-small"
+    model="text-embedding-ada-002"
 )
 
 def embed_text(text: str) -> list[float]:
