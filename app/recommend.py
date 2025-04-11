@@ -19,7 +19,7 @@ COLLECTION_NAME = "flowers"
 
 # GPT & 임베딩
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
-embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-ada-002")
+embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-3-small")
 
 # 벡터 정규화 함수
 def normalize(v):
@@ -128,9 +128,22 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
             score_total += used[k] * v
         flower_scores.append((name, score_total))
 
-    # 상위 점수 순으로 정렬하고 top_k만 선택 (랜덤 없음)
     flower_scores.sort(key=lambda x: x[1], reverse=True)
-    grouped = flower_scores[:top_k]
+    candidates = flower_scores[:30]
+
+    # 그룹화 완화
+    grouped = []
+    used = set()
+    for name, score in candidates:
+        if name in used:
+            continue
+        group = [(n, s) for n, s in candidates if abs(s - score) <= 0.05 and n not in used]
+        chosen = random.choice(group)
+        grouped.append(chosen)
+        for n, _ in group:
+            used.add(n)
+        if len(grouped) >= top_k:
+            break
 
     # 결과 생성
     final_recommendations = []
