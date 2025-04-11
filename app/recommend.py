@@ -110,7 +110,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     }
 
     # 가중 평균
-    weights = {"desc": 0.6, "emotion": 0.3, "meaning": 0.1}
+    weights = {"desc": 0.4, "emotion": 0.4, "meaning": 0.2}
     score_map = {}
     for vector_name, result in results.items():
         for res in result:
