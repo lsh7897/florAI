@@ -167,7 +167,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
                             target=target
                         )
                     except Exception as e:
-                        print(f"❗ {name} GPT 설명 생성 오류:", e)
+                        print(f" {name} GPT 설명 생성 오류:", e)
                         reason = f"{name}는 감정을 담아 표현하기 좋은 꽃이에요."
                     final_recommendations.append({
                         "FLW_IDX": payload["FLW_IDX"],
