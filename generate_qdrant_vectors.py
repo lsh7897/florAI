@@ -20,23 +20,22 @@ qdrant = QdrantClient(
     api_key=QDRANT_API_KEY,
     prefer_grpc=False,
     timeout=30.0,
-    # check_version=False  # 필요시 경고 제거용
 )
 
 # 🔹 컬렉션 이름
 COLLECTION_NAME = "flowers"
 
-# 🔹 OpenAI 임베딩 모델 초기화
+# 🔹 OpenAI 최신 임베딩 모델 초기화
 embedder = OpenAIEmbeddings(
     openai_api_key=OPENAI_API_KEY,
-    model="text-embedding-ada-002"
+    model="text-embedding-3-small"
 )
 
-# 🔹 벡터 정규화 함수
+# 🔹 벡터 정규화 함수 (float32 기반 정확한 정규화)
 def normalize(v):
-    v = np.array(v)
+    v = np.array(v, dtype=np.float32)
     norm = np.linalg.norm(v)
-    return (v / norm).tolist() if norm != 0 else v.tolist()
+    return (v / norm).astype(np.float32).tolist() if norm != 0 else v.tolist()
 
 # 🔹 CSV 데이터 로딩
 csv_data = pd.read_csv("flowers_with_gpt.csv", encoding="utf-8")
@@ -46,7 +45,7 @@ csv_data = csv_data.set_index("FLW_IDX")
 with open("flower_metadata.json", encoding="utf-8") as f:
     flower_data = json.load(f)
 
-# 🔹 기존 컬렉션 삭제 후 생성
+# 🔹 기존 컬렉션 삭제 후 새로 생성
 if qdrant.collection_exists(collection_name=COLLECTION_NAME):
     qdrant.delete_collection(collection_name=COLLECTION_NAME)
     print("🗑 기존 컬렉션 삭제 완료!")
