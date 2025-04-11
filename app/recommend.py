@@ -98,7 +98,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     meaning_vec = normalize(embedder.embed_query(style_query))
 
     # 벡터 검색
-    SEARCH_TOP_K = 30
+    SEARCH_TOP_K = 20
     vectors = {"desc": desc_vec, "emotion": emo_vec, "meaning": meaning_vec}
     results = {
         name: qdrant.search(
