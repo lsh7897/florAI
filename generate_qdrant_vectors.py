@@ -28,7 +28,7 @@ COLLECTION_NAME = "flowers"
 # 🔹 OpenAI 최신 임베딩 모델 초기화
 embedder = OpenAIEmbeddings(
     openai_api_key=OPENAI_API_KEY,
-    model="text-embedding-3-small"
+    model="text-embedding-ada-002"
 )
 
 # 🔹 벡터 정규화 함수 (float32 기반 정확한 정규화)
