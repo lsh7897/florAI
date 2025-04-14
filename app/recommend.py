@@ -19,7 +19,7 @@ COLLECTION_NAME = "flowers"
 
 # GPT & 임베딩
 llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
-embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-ada-002")
+embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-3-small")
 
 # 벡터 정규화 함수
 def normalize(v):
@@ -98,7 +98,7 @@ def get_flower_recommendations(keywords: list[str], top_k: int = 3):
     meaning_vec = normalize(embedder.embed_query(style_query))
 
     # 벡터 검색
-    SEARCH_TOP_K = 20
+    SEARCH_TOP_K = 10
     vectors = {"desc": desc_vec, "emotion": emo_vec, "meaning": meaning_vec}
     results = {
         name: qdrant.search(
