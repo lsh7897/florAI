@@ -18,7 +18,7 @@ qdrant = QdrantClient(
 COLLECTION_NAME = "flowers"
 
 # GPT & 임베딩
-llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
+llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"), model="gpt-4o")
 embedder = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"), model="text-embedding-ada-002")
 
 # 벡터 정규화 함수
